@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet"/>
+	<link href="{{ url_for('static', filename='trowel.svg') }}" rel="icon"/>
+	<meta charset="utf-8"/>
+	<meta content="width=device-width, initial-scale=1" name="viewport"/>
+	<meta content="Luiz Joaquim Aderaldo Amichi" name="author"/>
+	<title>Login</title>
+</head>
+
+<body class="bg-light text-center">
+	<div class="bg-dark mb-5 py-3 text-center">
+		<h1 class="text-light">Depósito de Materiais de Construção São Judas Tadeu</h1>
+	</div>
+	<!-- Formulário de Login -->
+	<div class="container">
+		<div class="form-row justify-content-center">
+			<form action="{{ url_for('authenticate') }}" method="POST">
+				<img alt="Login" class="mb-5" src="{{ url_for('static', filename='padlock.svg') }}" width="72"/>
+				<h3 class="h3 mb-3">Entra com seus dados para acessar o sistema</h3>
+				<div class="col-auto mb-3">
+					<label class="sr-only" for="unsername">Usuário</label>
+					<input autofocus class="form-control" id="unsername" name="username" placeholder="Usuário" required type="text"/>
+				</div>
+				<div class="col-auto mb-3">
+					<label for="password" class="sr-only">Senha</label>
+					<input class="form-control" id="password" name="password" placeholder="Senha" required type="password"/>
+				</div>
+				<div class="col-auto mb-3">
+					<button class="btn btn-block btn-dark btn-lg" type="submit">Entrar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!--/ Formulário de Login -->
+
+	{% if get_flashed_messages() %}
+	<p class="text-center">{{ get_flashed_messages()[0] }}</p>
+	{% endif %}
+
+	<!-- Rodapé -->
+	<footer class="bg-dark fixed-bottom mt-5 py-3 text-white-50">
+		<div class="text-center">
+			Copyright &copy; 2017 Depósito de Materiais de Construção São Judas Tadeu
+			<a href="https://luizamichi.com.br">
+				<img alt="Luiz Joaquim Aderaldo Amichi" class="d-block mx-auto mt-2" src="{{ url_for('static', filename='luiz_amichi.svg') }}" title="Desenvolvido por Luiz Joaquim Aderaldo Amichi" width="50"/>
+			</a>
+		</div>
+	</footer>
+	<!--/ Rodapé -->
+</body>
+
+</html>
