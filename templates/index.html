@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet"/>
+	<link href="{{ url_for('static', filename='trowel.svg') }}" rel="icon"/>
+	<meta charset="utf-8"/>
+	<meta content="width=device-width, initial-scale=1" name="viewport"/>
+	<meta content="Luiz Joaquim Aderaldo Amichi" name="author"/>
+	<title>Depósito de Materiais de Construção São Judas Tadeu</title>
+</head>
+
+<body class="bg-light">
+	<!-- Cabeçalho -->
+	<div class="bg-dark py-3 text-center">
+		<h1 class="text-light">Depósito de Materiais de Construção São Judas Tadeu</h1>
+	</div>
+	<!--/ Cabeçalho -->
+
+	<div class="container">
+		<!-- Menu Superior -->
+		<ul class="my-3 nav nav-pills nav-fill" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link {{ 'active' if page=='home' else '' }}" data-toggle="tab" href="#home">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ 'active' if page=='about' else '' }}" data-toggle="tab" href="#about">Sobre nós</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ 'active' if page=='contact' else '' }}" data-toggle="tab" href="#contact">Contato</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ 'active' if page=='products' else '' }}" data-toggle="tab" href="#products">Produtos</a>
+			</li>
+		</ul>
+		<!--/ Menu Superior -->
+
+		<hr/>
+
+		<!-- Conteúdo da Página -->
+		<div class="tab-content">
+			<!-- Seção Home -->
+			<div class="container tab-pane {{ 'active' if page not in ['about', 'sobre', 'contact', 'contato', 'products', 'produtos'] else 'fade' }}" id="home">
+				<div class="mt-5 text-center">
+					<img alt="Depósito de Materiais de Construção São Judas Tadeu" class="img-fluid" src="{{ url_for('static', filename='logo.png') }}" width="1000"/>
+				</div>
+				<div class="my-5 text-justify">
+					<p>Reformar ou construir demanda tempo, organização e dinheiro. Afinal, você precisa se programar e fazer uma lista de materiais de construção para cada etapa de sua obra: desde o marco zero até o momento de colocar os quadros na parede.</p>
+					<p>Aqui no Depósito São Judas Tadeu você encontra tudo que precisa para sua construção e reforma. Cimentos, argamassas, aços, blocos, tijolos e todos os acessórios necessários para garantir uma obra de qualidade.</p>
+				</div>
+			</div>
+			<!--/ Seção Home -->
+
+			<!-- Seção About -->
+			<div class="container tab-pane {{ 'active' if page in ['about', 'sobre'] else 'fade' }}" id="about">
+				<h1>Sobre nós</h1>
+				<div class="mt-5 text-justify">
+					<p>Nosso trabalho é auxiliar sua construção. E tem sido assim, continuamente, ano após ano.</p>
+					<p>Tão importante quanto adquirir um produto de qualidade é comprar de quem você confia. Quem compra conosco tem a certeza de realizar bons negócios.</p>
+					<p>Nosso depósito conta com todos os materiais que você necessita: elétrico, portas e janelas, madeiras, toda a linha de tubo e conexões, telhas, lajotas, ferro, cal, cimento, areia, pedra, louças e acessórios.</p>
+				</div>
+				<div class="my-5 text-center">
+					<img alt="Depósito de Materiais de Construção São Judas Tadeu" class="img-fluid rounded" src="{{ url_for('static', filename='dpsjt.jpg') }}" width="750"/>
+				</div>
+			</div>
+			<!--/ Seção About -->
+
+			<!-- Seção Contact -->
+			<div class="container tab-pane {{ 'active' if page in ['contact', 'contato'] else 'fade' }}" id="contact">
+				<h1>Contato</h1>
+				<div class="mt-5">
+					<p><strong>Endereço:</strong> Avenida Joaquim Alves Bento de Lima, 213</p>
+					<p><strong>Bairro:</strong> Centro</p>
+					<p><strong>Cidade:</strong> Alvorada do Sul, PR</p>
+					<p><strong>CEP:</strong> 86150-000</p>
+					<p><strong>Telefone:</strong> +55 (43) 3661-2014</p>
+					<p><strong>Celular:</strong> +55 (43) 99925-6634</p>
+					<p><strong>E-mail:</strong> dpsjt@hotmail.com</p>
+				</div>
+				<div class="embed-responsive embed-responsive-16by9 my-5">
+					<iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14714.25922717916!2d-51.2335556!3d-22.7815264!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6239859df137540c!2sDep%C3%B3sito%20S%C3%A3o%20Judas%20Tadeu!5e0!3m2!1spt-BR!2sbr!4v1590147369837!5m2!1spt-BR!2sbr" title="Mapa"></iframe>
+				</div>
+			</div>
+			<!--/ Seção Contact -->
+
+			<!-- Seção Products -->
+			<div class="container tab-pane {{ 'active' if page in ['products', 'produtos'] else 'fade' }}" id="products">
+				<h1>Produtos</h1>
+				<div class="my-5">
+					<ul class="list-group list-group-flush">
+						<li class="bg-light list-group-item">Cal e cimento</li>
+						<li class="bg-light list-group-item">Areia e pedra</li>
+						<li class="bg-light list-group-item">Argamassa e rejunte</li>
+						<li class="bg-light list-group-item">Ferro</li>
+						<li class="bg-light list-group-item">Lajotas e tijolos</li>
+						<li class="bg-light list-group-item">Louças e acessórios</li>
+						<li class="bg-light list-group-item">Madeiras</li>
+						<li class="bg-light list-group-item">Materiais elétricos</li>
+						<li class="bg-light list-group-item">Materiais hidráulicos</li>
+						<li class="bg-light list-group-item">Portas e Janelas</li>
+						<li class="bg-light list-group-item">Telhas</li>
+						<li class="bg-light list-group-item">Tintas e sprays</li>
+						<li class="bg-light list-group-item">Toda a linha de tubo e conexões</li>
+					</ul>
+				</div>
+			</div>
+			<!--/ Seção Products -->
+		</div>
+		<!--/ Conteúdo da Página -->
+	</div>
+
+	<!-- Rodapé -->
+	<footer class="bg-dark py-3 text-white-50">
+		<div class="text-center">
+			Copyright &copy; 2017 Depósito de Materiais de Construção São Judas Tadeu
+			<a href="https://luizamichi.com.br">
+				<img alt="Luiz Joaquim Aderaldo Amichi" class="d-block mx-auto mt-2" src="{{ url_for('static', filename='luiz_amichi.svg') }}" title="Desenvolvido por Luiz Joaquim Aderaldo Amichi" width="50"/>
+			</a>
+		</div>
+	</footer>
+	<!--/ Rodapé -->
+
+	<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+
+	<!-- Animação do Menu Superior -->
+	<script>
+		$(document).ready(function() {
+			$(".nav-pills a").addClass("text-dark");
+			$(".nav-pills a.active").addClass("bg-danger text-white").removeClass("text-dark");
+
+			$(".nav-pills a").click(function() {
+				$(".nav-pills a").addClass("text-dark").removeClass("bg-danger text-white");
+				$(this).addClass("bg-danger text-white").removeClass("text-dark");
+			});
+		});
+	</script>
+	<!--/ Animação do Menu Superior -->
+</body>
+
+</html>
