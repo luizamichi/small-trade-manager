@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+	<link href="{{ url_for('static', filename='img/trowel.svg') }}" rel="icon"/>
+	<meta content="Luiz Joaquim Aderaldo Amichi" name="author"/>
+	<meta charset="utf-8"/>
+	<meta content="width=device-width, initial-scale=1" name="viewport"/>
+	<title>{% block title %}Depósito de Materiais de Construção São Judas Tadeu{% endblock %}</title>
+</head>
+
+<body>
+	<!-- Cabeçalho -->
+	<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="#">
+				<img alt="Depósito de Materiais de Construção São Judas Tadeu" class="img-fluid" src="{{ url_for('static', filename='img/logo.png') }}" width="100"/>
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu de navegação">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbar">
+				<ul class="nav navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link {{ 'active' if page == 'home' else '' }}" href="{{ url_for('system') }}">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link {{ 'active' if page == 'providers' else '' }}" href="{{ url_for('providers') }}">Fornecedores</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link {{ 'active' if page == 'products' else '' }}" href="{{ url_for('products') }}">Produtos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link {{ 'active' if page == 'users' else '' }}" href="{{ url_for('users') }}">Usuários</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link {{ 'active' if page == 'logout' else '' }}" href="{{ url_for('logout') }}">Sair</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!--/ Cabeçalho -->
+
+	{% block content %}
+	{% endblock %}
+	<div style="margin-bottom: 100px;"></div>
+
+	<!-- Rodapé -->
+	<footer class="bg-dark fixed-bottom py-3 text-white-50">
+		<div class="text-center">
+			Copyright &copy; 2018 Depósito de Materiais de Construção São Judas Tadeu
+			<a href="https://luizamichi.com.br">
+				<img alt="Luiz Joaquim Aderaldo Amichi" class="d-block mx-auto mt-2" src="{{ url_for('static', filename='img/luiz_amichi.svg') }}" title="Desenvolvido por Luiz Joaquim Aderaldo Amichi" width="50"/>
+			</a>
+		</div>
+	</footer>
+	<!--/ Rodapé -->
+
+	<script src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.tablesorter.min.js')}}"></script>
+
+	<!-- Ordenação da Tabela -->
+	<script>
+		$(function () {
+			$('table').tablesorter();
+		});
+	</script>
+	<!--/ Ordenação da Tabela -->
+
+	<!-- Atribuição Automática dos Campos da Tabela -->
+	<script>
+		$("[data-row='product']").click(function () {
+			$("#id_remove").val($(this).children("[data-name='product_id']").text());
+			$("#id_update").val($(this).children("[data-name='product_id']").text());
+			$("#name_update").val($(this).children("[data-name='product_name']").text());
+			$("#gross_price_update").val($(this).children("[data-name='product_gross_price']").text().replace("R$ ", "").replace(".", "").replace(",", "."));
+			$("#net_price_update").val($(this).children("[data-name='product_net_price']").text().replace("R$ ", "").replace(".", "").replace(",", "."));
+			$("#provider_update").val($(this).children("[data-name='product_provider']").text());
+		});
+
+		$("[data-row='provider']").click(function () {
+			$("#id_remove").val($(this).children("[data-name='provider_id']").text());
+			$("#id_update").val($(this).children("[data-name='provider_id']").text());
+			$("#name_update").val($(this).children("[data-name='provider_name']").text());
+			$("#cnpj_update").val($(this).children("[data-name='provider_cnpj']").text());
+		});
+
+		$("[data-row='user']").click(function () {
+			$("#id_remove").val($(this).children("[data-name='user_id']").text());
+			$("#id_update").val($(this).children("[data-name='user_id']").text());
+			$("#name_update").val($(this).children("[data-name='user_name']").text());
+			$("#username_update").val($(this).children("[data-name='user_username']").text());
+			$("#password_update").val($(this).children("[data-name='user_password']").text());
+		});
+	</script>
+	<!--/ Atribuição Automática dos Campos da Tabela -->
+</body>
+
+</html>
