@@ -1,0 +1,118 @@
+{% extends 'base_system.html' %}
+
+{% set page = 'providers' %}
+
+{% block title %}{{ super() }} - Fornecedores{% endblock %}
+
+{% block content %}
+<div class="container">
+	{% if get_flashed_messages() %}
+	<div class="text-center mt-3">
+		<div class="alert alert-{{ get_flashed_messages()[1] }}" role="alert">{{ get_flashed_messages()[0] }}</div>
+	</div>
+	{% endif %}
+</div>
+
+<!-- Formulário de Consulta -->
+<div class="container-fluid mt-3">
+	<form action="{{ url_for('read_provider') }}" method="get">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-7">
+				<label class="sr-only" for="search">Nome</label>
+				<input class="form-control mb-3" id="search" name="name" placeholder="Nome do Fornecedor" required type="text"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Procurar</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Consulta -->
+
+{% if providers %}
+<!-- Tabela de Fornecedores -->
+<div class="table-responsive">
+	<table class="table table-hover table-sm">
+		<caption></caption>
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nome</th>
+				<th scope="col">CNPJ</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for provider in providers %}
+			<tr data-row="provider">
+				<th scope="col" data-name="provider_id">{{ provider.id }}</th>
+				<td data-name="provider_name">{{ provider.name }}</td>
+				<td data-name="provider_cnpj">{{ provider.cnpj }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+<!--/ Tabela de Fornecedores -->
+{% endif %}
+
+<!-- Formulário de Inserção -->
+<div class="container-fluid">
+	<form action="{{ url_for('create_provider') }}" method="post">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-5">
+				<label class="sr-only" for="name_insert">Nome</label>
+				<input class="form-control mb-3" id="name_insert" name="name" placeholder="Nome" required type="text"/>
+			</div>
+			<div class="col-sm-2">
+				<label class="sr-only" for="cnpj_insert">CNPJ</label>
+				<input class="form-control mb-3" id="cnpj_insert" name="cnpj" placeholder="CNPJ" required type="text"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Cadastrar</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Inserção -->
+
+<!-- Formulário de Alteração -->
+<div class="container-fluid">
+	<form action="{{ url_for('update_provider') }}" method="post">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-1">
+				<label class="sr-only" for="id_update">ID</label>
+				<input class="form-control mb-3" id="id_update" min="1" name="id" placeholder="ID" required type="number"/>
+			</div>
+			<div class="col-sm-4">
+				<label class="sr-only" for="name_update">Nome</label>
+				<input class="form-control mb-3" id="name_update" name="name" placeholder="Nome" required type="text"/>
+			</div>
+			<div class="col-sm-2">
+				<label class="sr-only" for="cnpj_update">CNPJ</label>
+				<input class="form-control mb-3" id="cnpj_update" name="cnpj" placeholder="CNPJ" required type="text"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Alterar</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Alteração -->
+
+<!-- Formulário de Remoção -->
+<div class="container-fluid mb-3">
+	<form action="{{ url_for('delete_provider') }}" method="post">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-7">
+				<label class="sr-only" for="id_remove">ID</label>
+				<input class="form-control mb-3" id="id_remove" min="1" name="id" placeholder="ID" required type="number"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Remover</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Remoção -->
+
+{% endblock %}
