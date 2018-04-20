@@ -1,8 +1,8 @@
-class Product():
-	def __init__(self, id=0, name='', price=0.0):
+class Provider():
+	def __init__(self, id=0, name='', cnpj=''):
 		self._id = id
 		self._name = name
-		self._price = price
+		self._cnpj = cnpj
 
 	@property
 	def id(self):
@@ -21,9 +21,9 @@ class Product():
 		self._name = name
 
 	@property
-	def price(self):
-		return self._price
+	def cnpj(self):
+		return self._cnpj
 
-	@price.setter
-	def price(self, price):
-		self._price = price
+	@cnpj.setter
+	def cnpj(self, cnpj):
+		self._cnpj = cnpj
