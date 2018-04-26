@@ -1,0 +1,128 @@
+{% extends 'base_system.html' %}
+
+{% set page = 'users' %}
+
+{% block title %}{{ super() }} - Usuários{% endblock %}
+
+{% block content %}
+<div class="container">
+	{% if get_flashed_messages() %}
+	<div class="text-center mt-3">
+		<div class="alert alert-{{ get_flashed_messages()[1] }}" role="alert">{{ get_flashed_messages()[0] }}</div>
+	</div>
+	{% endif %}
+</div>
+
+<!-- Formulário de Consulta -->
+<div class="container-fluid mt-3">
+	<form action="{{ url_for('read_user') }}" method="get">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-7">
+				<label class="sr-only" for="search">Nome</label>
+				<input class="form-control mb-3" id="search" name="name" placeholder="Nome do Usuário" required type="text"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Procurar</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Consulta -->
+
+{% if users %}
+<!-- Tabela de Usuários -->
+<div class="table-responsive">
+	<table class="table table-hover table-sm">
+		<caption></caption>
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Login</th>
+				<th scope="col">Senha</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users %}
+			<tr data-row="user">
+				<th scope="col" data-name="user_id">{{ user.id }}</th>
+				<td data-name="user_name">{{ user.name }}</td>
+				<td data-name="user_username">{{ user.username }}</td>
+				<td data-name="user_password">{{ user.password }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+<!--/ Tabela de Usuários -->
+{% endif %}
+
+<!-- Formulário de Inserção -->
+<div class="container-fluid">
+	<form action="{{ url_for('create_user') }}" method="post">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-3">
+				<label class="sr-only" for="name_insert">Nome</label>
+				<input class="form-control mb-3" id="name_insert" name="name" placeholder="Nome" required type="text"/>
+			</div>
+			<div class="col-sm-2">
+				<label class="sr-only" for="username_insert">Login</label>
+				<input class="form-control mb-3" id="username_insert" name="username" placeholder="Login" required type="text"/>
+			</div>
+			<div class="col-sm-2">
+				<label class="sr-only" for="password_insert">Senha</label>
+				<input class="form-control mb-3" id="password_insert" name="password" placeholder="Senha" required type="password"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Cadastrar</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Inserção -->
+
+<!-- Formulário de Alteração -->
+<div class="container-fluid">
+	<form action="{{ url_for('update_user') }}" method="post">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-1">
+				<label class="sr-only" for="id_update">ID</label>
+				<input class="form-control mb-3" id="id_update" min="1" name="id" placeholder="ID" required type="number"/>
+			</div>
+			<div class="col-sm-2">
+				<label class="sr-only" for="name_update">Nome</label>
+				<input class="form-control mb-3" id="name_update" name="name" placeholder="Nome" required type="text"/>
+			</div>
+			<div class="col-sm-2">
+				<label class="sr-only" for="username_update">Login</label>
+				<input class="form-control mb-3" id="username_update" name="username" placeholder="Login" required type="text"/>
+			</div>
+			<div class="col-sm-2">
+				<label class="sr-only" for="password_update">Senha</label>
+				<input class="form-control mb-3" id="password_update" name="password" placeholder="Senha" required type="password"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Alterar</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Alteração -->
+
+<!-- Formulário de Remoção -->
+<div class="container-fluid mb-3">
+	<form action="{{ url_for('delete_user') }}" method="post">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-7">
+				<label class="sr-only" for="id_remove">ID</label>
+				<input class="form-control mb-3" id="id_remove" min="1" name="id" placeholder="ID" required type="number"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Remover</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Remoção -->
+
+{% endblock %}

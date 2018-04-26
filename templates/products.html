@@ -1,0 +1,148 @@
+{% extends 'base_system.html' %}
+
+{% set page = 'products' %}
+
+{% block title %}{{ super() }} - Produtos{% endblock %}
+
+{% block content %}
+<div class="container">
+	{% if get_flashed_messages() %}
+	<div class="text-center mt-3">
+		<div class="alert alert-{{ get_flashed_messages()[1] }}" role="alert">{{ get_flashed_messages()[0] }}</div>
+	</div>
+	{% endif %}
+</div>
+
+<!-- Formulário de Consulta -->
+<div class="container-fluid mt-3">
+	<form action="{{ url_for('read_product') }}" method="get">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-7">
+				<label class="sr-only" for="search">Nome</label>
+				<input class="form-control mb-3" id="search" name="name" placeholder="Nome do Produto" required type="text"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Procurar</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Consulta -->
+
+{% if products %}
+<!-- Tabela de Produtos -->
+<div class="table-responsive">
+	<table class="table table-hover table-sm">
+		<caption></caption>
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Preço Bruto</th>
+				<th scope="col">Preço Líquido</th>
+				<th scope="col">Porcentagem</th>
+				<th scope="col">Fornecedor</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for product in products %}
+			<tr data-row="product">
+				<th scope="col" data-name="product_id">{{ product.id }}</th>
+				<td data-name="product_name">{{ product.name }}</td>
+				<td data-name="product_gross_price">{{ product.gross_price }}</td>
+				<td data-name="product_net_price">{{ product.net_price }}</td>
+				<td data-name="product_profit_percentage">{{ product.profit_percentage }}</td>
+				<td data-name="product_provider">{{ product.provider.name }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+<!--/ Tabela de Produtos -->
+{% endif %}
+
+<!-- Formulário de Inserção -->
+<div class="container-fluid">
+	<form action="{{ url_for('create_product') }}" method="post">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-3">
+				<label class="sr-only" for="name_insert">Nome</label>
+				<input class="form-control mb-3" id="name_insert" name="name" placeholder="Nome" required type="text"/>
+			</div>
+			<div class="col-sm-1">
+				<label class="sr-only" for="gross_price_insert">Preço Bruto</label>
+				<input class="form-control mb-3" id="gross_price_insert" name="gross_price" pattern="^\d+\.\d{2}$" placeholder="Preço Bruto" required type="text"/>
+			</div>
+			<div class="col-sm-1">
+				<label class="sr-only" for="net_price_insert">Preço Líquido</label>
+				<input class="form-control mb-3" id="net_price_insert" name="net_price" pattern="^\d+\.\d{2}$" placeholder="Preço Líquido" required type="text"/>
+			</div>
+			<div class="col-sm-2">
+				<label class="sr-only" for="provider_insert">Fornecedor</label>
+				<input class="form-control mb-3" id="provider_insert" list="providers" name="provider" placeholder="Fornecedor" required type="text"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Cadastrar</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Inserção -->
+
+<!-- Formulário de Alteração -->
+<div class="container-fluid">
+	<form action="{{ url_for('update_product') }}" method="post">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-1">
+				<label class="sr-only" for="id_update">ID</label>
+				<input class="form-control mb-3" id="id_update" min="1" name="id" placeholder="ID" required type="number"/>
+			</div>
+			<div class="col-sm-2">
+				<label class="sr-only" for="name_update">Nome</label>
+				<input class="form-control mb-3" id="name_update" name="name" placeholder="Nome" required type="text"/>
+			</div>
+			<div class="col-sm-1">
+				<label class="sr-only" for="gross_price_update">Preço Bruto</label>
+				<input class="form-control mb-3" id="gross_price_update" name="gross_price" pattern="^\d+\.\d{2}$" placeholder="Preço Bruto" required type="text"/>
+			</div>
+			<div class="col-sm-1">
+				<label class="sr-only" for="net_price_update">Preço Líquido</label>
+				<input class="form-control mb-3" id="net_price_update" name="net_price" pattern="^\d+\.\d{2}$" placeholder="Preço Líquido" required type="text"/>
+			</div>
+			<div class="col-sm-2">
+				<label class="sr-only" for="provider_update">Fornecedor</label>
+				<input class="form-control mb-3" id="provider_update" list="providers" name="provider" placeholder="Fornecedor" required type="text"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Alterar</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Alteração -->
+
+<!-- Formulário de Remoção -->
+<div class="container-fluid mb-3">
+	<form action="{{ url_for('delete_product') }}" method="post">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-7">
+				<label class="sr-only" for="id_remove">ID</label>
+				<input class="form-control mb-3" id="id_remove" min="1" name="id" placeholder="ID" required type="number"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Remover</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Remoção -->
+
+<!-- Seleção de Fornecedores -->
+<datalist id="providers">
+	{% for provider in providers %}
+	<option value="{{ provider.name }}">{{ provider.name }}</option>
+	{% endfor %}
+</datalist>
+<!--/ Seleção de Fornecedores -->
+
+{% endblock %}

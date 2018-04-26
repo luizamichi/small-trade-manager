@@ -1,137 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends 'base_system.html' %}
 
-<head>
-	<link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet"/>
-	<link href="{{ url_for('static', filename='trowel.svg') }}" rel="icon"/>
-	<meta charset="utf-8"/>
-	<meta content="width=device-width, initial-scale=1" name="viewport"/>
-	<meta content="Luiz Joaquim Aderaldo Amichi" name="author"/>
-	<title>Produtos</title>
-</head>
+{% set page = 'home' %}
 
-<body class="bg-light">
-	<!-- Menu Superior -->
-	<nav class="bg-dark navbar navbar-dark mb-3 sticky-top">
-		<a class="navbar-brand" href="#">Produtos</a>
-		<ul class="nav nav-pills">
-			<li class="nav-item">
-				<a class="nav-link text-white-50" href="/logout">Sair</a>
-			</li>
-		</ul>
-	</nav>
-	<!--/ Menu Superior -->
+{% block title %}{{ super() }} - Sistema{% endblock %}
 
+{% block content %}
+<div class="container">
 	{% if get_flashed_messages() %}
-	<p class="text-center">{{ get_flashed_messages()[0] }}</p>
+	<div class="text-center mt-3">
+		<div class="alert alert-success" role="alert">{{ get_flashed_messages()[0] }}</div>
+	</div>
 	{% endif %}
-
-	{% if products %}
-	<!-- Formulário de Consulta -->
-	<div class="container-fluid">
-		<form action="{{ url_for('search') }}" method="post">
-			<div class="form-row justify-content-center">
-				<div class="col-sm-6">
-					<label class="sr-only" for="search">Nome</label>
-					<input class="form-control mb-3" id="search" name="name" placeholder="Nome do Produto" required type="text"/>
-				</div>
-				<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
-					<button class="btn btn-block btn-dark mb-3" type="submit">Procurar</button>
-				</div>
-			</div>
-		</form>
+	<div class="text-center">
+		<img alt="Sistema de Gerenciamento de Conteúdo" class="img-fluid" src="{{ url_for('static', filename='img/cms.svg') }}" width="450"/>
 	</div>
-	<!--/ Formulário de Consulta -->
+</div>
 
-	<!-- Tabela de Produtos -->
-	<div class="table-responsive">
-		<table class="table table-hover table-sm">
-			<thead class="thead-dark">
-				<tr>
-					<th scope="col">ID</th>
-					<th scope="col">Nome</th>
-					<th scope="col">Preço</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for product in products %}
-				<tr>
-					<th scope="col">{{ product.id }}</th>
-					<td>{{ product.name }}</td>
-					<td>{{ product.price }}</td>
-				</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	</div>
-	<!--/ Tabela de Produtos -->
-	{% endif %}
-
-	<!-- Formulário de Inserção -->
-	<div class="container-fluid">
-		<form action="{{ url_for('insert') }}" method="post">
-			<div class="form-row justify-content-center">
-				<div class="col-sm-4">
-					<label class="sr-only" for="name_insert">Nome</label>
-					<input class="form-control mb-3" id="name_insert" name="name" placeholder="Nome" required type="text"/>
-				</div>
-				<div class="col-sm-2">
-					<label class="sr-only" for="price_insert">Preço</label>
-					<input class="form-control mb-3" id="price_insert" name="price" pattern="^\d+\.\d{2}$" placeholder="Preço" required type="text"/>
-				</div>
-				<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
-					<button class="btn btn-block btn-dark mb-3" type="submit">Cadastrar</button>
-				</div>
-			</div>
-		</form>
-	</div>
-	<!--/ Formulário de Inserção -->
-
-	<!-- Formulário de Alteração -->
-	<div class="container-fluid mb-5">
-		<form action="{{ url_for('update') }}" method="post">
-			<div class="form-row justify-content-center">
-				<div class="col-sm-1">
-					<label class="sr-only" for="id_update">ID</label>
-					<input class="form-control mb-3" id="id_update" min="1" name="id" placeholder="ID" required type="number"/>
-				</div>
-				<div class="col-sm-3">
-					<label class="sr-only" for="name_update">Nome</label>
-					<input class="form-control mb-3" id="name_update" name="name" placeholder="Nome" required type="text"/>
-				</div>
-				<div class="col-sm-2">
-					<label class="sr-only" for="price_update">Preço</label>
-					<input class="form-control mb-3" id="price_update" name="price" pattern="^\d+\.\d{2}$" placeholder="Preço" required type="text"/>
-				</div>
-				<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
-					<button class="btn btn-block btn-dark mb-3" type="submit">Alterar</button>
-				</div>
-			</div>
-		</form>
-	</div>
-	<!--/ Formulário de Alteração -->
-
-	<!-- Rodapé -->
-	<footer class="bg-dark py-3 text-white-50">
-		<div class="text-center">
-			Copyright &copy; 2017 Depósito de Materiais de Construção São Judas Tadeu
-			<a href="https://luizamichi.com.br">
-				<img alt="Luiz Joaquim Aderaldo Amichi" class="d-block mx-auto mt-2" src="{{ url_for('static', filename='luiz_amichi.svg') }}" title="Desenvolvido por Luiz Joaquim Aderaldo Amichi" width="50"/>
-			</a>
-		</div>
-	</footer>
-	<!--/ Rodapé -->
-
-	<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='jquery.tablesorter.min.js') }}"></script>
-
-	<!-- Ordenação da Tabela -->
-	<script>
-		$(function() {
-			$('table').tablesorter();
-		});
-	</script>
-	<!--/ Ordenação da Tabela -->
-</body>
-
-</html>
+{% endblock %}
