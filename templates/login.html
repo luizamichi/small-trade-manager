@@ -22,7 +22,7 @@
 	<!--/ Cabeçalho -->
 
 	<!-- Formulário de Login -->
-	<div class="container" style="margin-bottom: 150px; margin-top: 90px;">
+	<div class="container" style="margin-bottom: 150px; margin-top: 100px;">
 		<div class="form-row justify-content-center">
 			<form action="{{ url_for('login') }}" method="POST">
 				<div class="text-center">
@@ -31,7 +31,7 @@
 				<h3 class="h3 mb-3 text-center">Entra com seus dados para acessar o sistema</h3>
 				<div class="col-auto mb-3">
 					<label class="sr-only" for="unsername">Usuário</label>
-					<input autofocus class="form-control" id="unsername" name="username" placeholder="Usuário" required type="text"/>
+					<input autofocus class="form-control" id="unsername" name="alias" placeholder="Usuário" required type="text"/>
 				</div>
 				<div class="col-auto mb-3">
 					<label for="password" class="sr-only">Senha</label>
@@ -41,7 +41,7 @@
 					<button class="btn btn-block btn-dark btn-lg" type="submit">Entrar</button>
 				</div>
 				{% if get_flashed_messages() %}
-				<div class="col-auto mb-3 text-center">
+				<div class="col-auto mb-3">
 					<div class="alert alert-{{ get_flashed_messages()[1] }}" role="alert">{{ get_flashed_messages()[0] }}</div>
 				</div>
 				{% endif %}
@@ -53,7 +53,7 @@
 	<!-- Rodapé -->
 	<footer class="bg-dark fixed-bottom py-3 text-white-50">
 		<div class="text-center">
-			Copyright &copy; 2018 Depósito de Materiais de Construção São Judas Tadeu
+			Copyright &copy; 2019 Depósito de Materiais de Construção São Judas Tadeu
 			<a href="https://luizamichi.com.br">
 				<img alt="Luiz Joaquim Aderaldo Amichi" class="d-block mx-auto mt-2" src="{{ url_for('static', filename='img/luiz_amichi.svg') }}" title="Desenvolvido por Luiz Joaquim Aderaldo Amichi" width="50"/>
 			</a>

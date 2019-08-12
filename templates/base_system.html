@@ -14,7 +14,7 @@
 	<!-- Cabeçalho -->
 	<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
 		<div class="container">
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="{{ url_for('system') }}">
 				<img alt="Depósito de Materiais de Construção São Judas Tadeu" class="img-fluid" src="{{ url_for('static', filename='img/logo.png') }}" width="100"/>
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu de navegação">
@@ -23,13 +23,16 @@
 			<div class="collapse navbar-collapse" id="navbar">
 				<ul class="nav navbar-nav ml-auto">
 					<li class="nav-item">
-						<a class="nav-link {{ 'active' if page == 'home' else '' }}" href="{{ url_for('system') }}">Home</a>
+						<a class="nav-link {{ 'active' if page == 'clients' else '' }}" href="{{ url_for('clients') }}">Clientes</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link {{ 'active' if page == 'providers' else '' }}" href="{{ url_for('providers') }}">Fornecedores</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link {{ 'active' if page == 'products' else '' }}" href="{{ url_for('products') }}">Produtos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link {{ 'active' if page == 'services' else '' }}" href="{{ url_for('services') }}">Serviços</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link {{ 'active' if page == 'users' else '' }}" href="{{ url_for('users') }}">Usuários</a>
@@ -50,7 +53,7 @@
 	<!-- Rodapé -->
 	<footer class="bg-dark fixed-bottom py-3 text-white-50">
 		<div class="text-center">
-			Copyright &copy; 2018 Depósito de Materiais de Construção São Judas Tadeu
+			Copyright &copy; 2019 Depósito de Materiais de Construção São Judas Tadeu
 			<a href="https://luizamichi.com.br">
 				<img alt="Luiz Joaquim Aderaldo Amichi" class="d-block mx-auto mt-2" src="{{ url_for('static', filename='img/luiz_amichi.svg') }}" title="Desenvolvido por Luiz Joaquim Aderaldo Amichi" width="50"/>
 			</a>
@@ -64,39 +67,11 @@
 
 	<!-- Ordenação da Tabela -->
 	<script>
-		$(function () {
+		$(function() {
 			$('table').tablesorter();
 		});
 	</script>
 	<!--/ Ordenação da Tabela -->
-
-	<!-- Atribuição Automática dos Campos da Tabela -->
-	<script>
-		$("[data-row='product']").click(function () {
-			$("#id_remove").val($(this).children("[data-name='product_id']").text());
-			$("#id_update").val($(this).children("[data-name='product_id']").text());
-			$("#name_update").val($(this).children("[data-name='product_name']").text());
-			$("#gross_price_update").val($(this).children("[data-name='product_gross_price']").text().replace("R$ ", "").replace(".", "").replace(",", "."));
-			$("#net_price_update").val($(this).children("[data-name='product_net_price']").text().replace("R$ ", "").replace(".", "").replace(",", "."));
-			$("#provider_update").val($(this).children("[data-name='product_provider']").text());
-		});
-
-		$("[data-row='provider']").click(function () {
-			$("#id_remove").val($(this).children("[data-name='provider_id']").text());
-			$("#id_update").val($(this).children("[data-name='provider_id']").text());
-			$("#name_update").val($(this).children("[data-name='provider_name']").text());
-			$("#cnpj_update").val($(this).children("[data-name='provider_cnpj']").text());
-		});
-
-		$("[data-row='user']").click(function () {
-			$("#id_remove").val($(this).children("[data-name='user_id']").text());
-			$("#id_update").val($(this).children("[data-name='user_id']").text());
-			$("#name_update").val($(this).children("[data-name='user_name']").text());
-			$("#username_update").val($(this).children("[data-name='user_username']").text());
-			$("#password_update").val($(this).children("[data-name='user_password']").text());
-		});
-	</script>
-	<!--/ Atribuição Automática dos Campos da Tabela -->
 </body>
 
 </html>
