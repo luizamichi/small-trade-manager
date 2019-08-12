@@ -17,7 +17,7 @@
 <div class="container-fluid mt-3">
 	<form action="{{ url_for('read_user') }}" method="get">
 		<div class="form-row justify-content-center">
-			<div class="col-sm-7">
+			<div class="col-sm-5">
 				<label class="sr-only" for="search">Nome</label>
 				<input class="form-control mb-3" id="search" name="name" placeholder="Nome do Usuário" required type="text"/>
 			</div>
@@ -38,17 +38,17 @@
 			<tr>
 				<th scope="col">ID</th>
 				<th scope="col">Nome</th>
-				<th scope="col">Login</th>
+				<th scope="col">Apelido</th>
 				<th scope="col">Senha</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for user in users %}
-			<tr data-row="user">
-				<th scope="col" data-name="user_id">{{ user.id }}</th>
-				<td data-name="user_name">{{ user.name }}</td>
-				<td data-name="user_username">{{ user.username }}</td>
-				<td data-name="user_password">{{ user.password }}</td>
+			<tr>
+				<th scope="col">{{ user.id }}</th>
+				<td>{{ user.name }}</td>
+				<td>{{ user.alias }}</td>
+				<td>{{ user.password }}</td>
 			</tr>
 			{% endfor %}
 		</tbody>
@@ -61,15 +61,15 @@
 <div class="container-fluid">
 	<form action="{{ url_for('create_user') }}" method="post">
 		<div class="form-row justify-content-center">
-			<div class="col-sm-3">
+			<div class="col-sm-5">
 				<label class="sr-only" for="name_insert">Nome</label>
 				<input class="form-control mb-3" id="name_insert" name="name" placeholder="Nome" required type="text"/>
 			</div>
-			<div class="col-sm-2">
-				<label class="sr-only" for="username_insert">Login</label>
-				<input class="form-control mb-3" id="username_insert" name="username" placeholder="Login" required type="text"/>
+			<div class="col-sm-3">
+				<label class="sr-only" for="alias_insert">Apelido</label>
+				<input class="form-control mb-3" id="alias_insert" name="alias" placeholder="Apelido" required type="text"/>
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-3">
 				<label class="sr-only" for="password_insert">Senha</label>
 				<input class="form-control mb-3" id="password_insert" name="password" placeholder="Senha" required type="password"/>
 			</div>
@@ -89,15 +89,15 @@
 				<label class="sr-only" for="id_update">ID</label>
 				<input class="form-control mb-3" id="id_update" min="1" name="id" placeholder="ID" required type="number"/>
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-4">
 				<label class="sr-only" for="name_update">Nome</label>
 				<input class="form-control mb-3" id="name_update" name="name" placeholder="Nome" required type="text"/>
 			</div>
-			<div class="col-sm-2">
-				<label class="sr-only" for="username_update">Login</label>
-				<input class="form-control mb-3" id="username_update" name="username" placeholder="Login" required type="text"/>
+			<div class="col-sm-3">
+				<label class="sr-only" for="alias_update">Apelido</label>
+				<input class="form-control mb-3" id="alias_update" name="alias" placeholder="Apelido" required type="text"/>
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-3">
 				<label class="sr-only" for="password_update">Senha</label>
 				<input class="form-control mb-3" id="password_update" name="password" placeholder="Senha" required type="password"/>
 			</div>
@@ -113,7 +113,7 @@
 <div class="container-fluid mb-3">
 	<form action="{{ url_for('delete_user') }}" method="post">
 		<div class="form-row justify-content-center">
-			<div class="col-sm-7">
+			<div class="col-sm-11">
 				<label class="sr-only" for="id_remove">ID</label>
 				<input class="form-control mb-3" id="id_remove" min="1" name="id" placeholder="ID" required type="number"/>
 			</div>
