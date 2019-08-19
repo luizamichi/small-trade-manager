@@ -1,8 +1,9 @@
 class Provider():
-	def __init__(self, id=0, name='', cnpj=''):
+	def __init__(self, id=0, name='', cnpj='', email=None):
 		self._id = id
 		self._name = name
 		self._cnpj = cnpj
+		self._email = email
 
 	@property
 	def id(self):
@@ -27,3 +28,11 @@ class Provider():
 	@cnpj.setter
 	def cnpj(self, cnpj):
 		self._cnpj = cnpj
+
+	@property
+	def email(self):
+		return self._email
+
+	@email.setter
+	def email(self, email):
+		self._email = email

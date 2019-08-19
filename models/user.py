@@ -1,8 +1,8 @@
 class User():
-	def __init__(self, id=0, name='', username='', password=''):
+	def __init__(self, id=0, name='', alias='', password=''):
 		self._id = id
 		self._name = name
-		self._username = username
+		self._alias = alias
 		self._password = password
 
 	@property
@@ -22,12 +22,12 @@ class User():
 		self._name = name
 
 	@property
-	def username(self):
-		return self._username
+	def alias(self):
+		return self._alias
 
-	@username.setter
-	def username(self, username):
-		self._username = username
+	@alias.setter
+	def alias(self, alias):
+		self._alias = alias
 
 	@property
 	def password(self):
