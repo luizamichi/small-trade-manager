@@ -1,5 +1,4 @@
 import sqlite3
-from datetime import datetime
 from config import DATABASE_URI
 
 # Inserir tupla na tabela
@@ -10,7 +9,7 @@ def create(query):
 			cursor.execute(query)
 			connection.commit()
 			return cursor.rowcount
-		except sqlite3.DatabaseError:
+		except:
 			return False
 
 # Procurar tuplas na tabela
@@ -29,14 +28,24 @@ def read_one(query):
 
 # Alterar tupla da tabela
 def update(query):
-	return create(query)
+	with sqlite3.connect(DATABASE_URI) as connection:
+		cursor = connection.cursor()
+		try:
+			cursor.execute(query)
+			connection.commit()
+			return cursor.rowcount
+		except:
+			return False
 
 # Remover tupla da tabela
 def delete(query):
 	with sqlite3.connect(DATABASE_URI) as connection:
 		cursor = connection.cursor()
-		cursor.execute(query)
-		return cursor.rowcount
+		try:
+			cursor.execute(query)
+			return cursor.rowcount
+		except:
+			return False
 
 # Exportar tabelas a partir de um arquivo DB
 def export(filename):
