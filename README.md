@@ -17,20 +17,36 @@ No download, você encontrará os seguintes diretórios e arquivos:
 │   └── update.log
 ├── models/
 │   ├── __init__.py
+│   ├── client.py
 │   ├── product.py
 │   ├── provider.py
+│   ├── service.py
 │   └── user.py
 ├── static/
 │   ├── css/
 │   │   └── bootstrap.min.css
 │   ├── img/
+│   │   ├── brick.svg
+│   │   ├── cement.svg
 │   │   ├── cms.svg
 │   │   ├── dpsjt.jpg
+│   │   ├── lamp.svg
 │   │   ├── logo.png
 │   │   ├── logo.psd
 │   │   ├── luiz_amichi.svg
 │   │   ├── padlock.svg
-│   │   └── trowel.svg
+│   │   ├── paint_spray.svg
+│   │   ├── pipe.svg
+│   │   ├── pliers.svg
+│   │   ├── roof.svg
+│   │   ├── sand.svg
+│   │   ├── tap.svg
+│   │   ├── toilet.svg
+│   │   ├── tread.svg
+│   │   ├── trowel.svg
+│   │   ├── window.svg
+│   │   ├── wire.svg
+│   │   └── woods.svg
 │   └── js/
 │       ├── bootstrap.min.js
 │       ├── jquery.min.js
@@ -38,10 +54,12 @@ No download, você encontrará os seguintes diretórios e arquivos:
 ├── templates/
 │   ├── base.html
 │   ├── base_system.html
+│   ├── clients.html
 │   ├── index.html
 │   ├── login.html
 │   ├── products.html
 │   ├── providers.html
+│   ├── services.html
 │   ├── system.html
 │   └── users.html
 ├── app.py
@@ -66,7 +84,7 @@ Primeira inicialização do software com a base de dados vazia e usuário *defau
 $ python3 app.py initdb
 ```
 
-Primeira inicialização do software com a base de dados populada com alguns fornecedores e produtos (simbólicos) para fins de teste:
+Primeira inicialização do software com a base de dados populada com alguns clientes, fornecedores e produtos (simbólicos) para fins de teste:
 ```sh
 $ python3 app.py initdb populate
 ```
