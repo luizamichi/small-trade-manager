@@ -1,8 +1,8 @@
 {% extends 'base_system.html' %}
 
-{% set page = 'products' %}
+{% set page = 'services' %}
 
-{% block title %}{{ super() }} - Produtos{% endblock %}
+{% block title %}{{ super() }} - Serviços{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -15,11 +15,11 @@
 
 <!-- Formulário de Consulta -->
 <div class="container-fluid mt-3">
-	<form action="{{ url_for('read_product') }}" method="get">
+	<form action="{{ url_for('read_service') }}" method="get">
 		<div class="form-row justify-content-center">
 			<div class="col-sm-5">
 				<label class="sr-only" for="search">Nome</label>
-				<input class="form-control mb-3" id="search" name="name" placeholder="Nome do Produto" required type="text"/>
+				<input class="form-control mb-3" id="search" name="name" placeholder="Nome do Serviço" required type="text"/>
 			</div>
 			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
 				<button class="btn btn-block btn-dark mb-3" type="submit">Procurar</button>
@@ -29,8 +29,8 @@
 </div>
 <!--/ Formulário de Consulta -->
 
-{% if products %}
-<!-- Tabela de Produtos -->
+{% if services %}
+<!-- Tabela de Serviços -->
 <div class="table-responsive">
 	<table class="table table-hover table-sm">
 		<caption></caption>
@@ -38,48 +38,34 @@
 			<tr>
 				<th scope="col">ID</th>
 				<th scope="col">Nome</th>
-				<th scope="col">Preço Bruto</th>
-				<th scope="col">Preço Líquido</th>
-				<th scope="col">Porcentagem</th>
-				<th scope="col">Fornecedor</th>
+				<th scope="col">Preço</th>
 			</tr>
 		</thead>
 		<tbody>
-			{% for product in products %}
+			{% for service in services %}
 			<tr>
-				<th scope="col">{{ product.id }}</th>
-				<td>{{ product.name }}</td>
-				<td>{{ product.gross_price }}</td>
-				<td>{{ product.net_price }}</td>
-				<td>{{ product.profit_percentage }}</td>
-				<td>{{ product.provider.name }}</td>
+				<th scope="col">{{ service.id }}</th>
+				<td>{{ service.name }}</td>
+				<td>{{ service.price }}</td>
 			</tr>
 			{% endfor %}
 		</tbody>
 	</table>
 </div>
-<!--/ Tabela de Produtos -->
+<!--/ Tabela de Serviços -->
 {% endif %}
 
 <!-- Formulário de Inserção -->
 <div class="container-fluid">
-	<form action="{{ url_for('create_product') }}" method="post">
+	<form action="{{ url_for('create_service') }}" method="post">
 		<div class="form-row justify-content-center">
-			<div class="col-sm-4">
+			<div class="col-sm-8">
 				<label class="sr-only" for="name_insert">Nome</label>
 				<input class="form-control mb-3" id="name_insert" name="name" placeholder="Nome" required type="text"/>
 			</div>
-			<div class="col-sm-2">
-				<label class="sr-only" for="gross_price_insert">Preço Bruto</label>
-				<input class="form-control mb-3" id="gross_price_insert" name="gross_price" pattern="^\d+\.\d{2}$" placeholder="Preço Bruto" required type="text"/>
-			</div>
-			<div class="col-sm-2">
-				<label class="sr-only" for="net_price_insert">Preço Líquido</label>
-				<input class="form-control mb-3" id="net_price_insert" name="net_price" pattern="^\d+\.\d{2}$" placeholder="Preço Líquido" required type="text"/>
-			</div>
 			<div class="col-sm-3">
-				<label class="sr-only" for="provider_insert">Fornecedor</label>
-				<input class="form-control mb-3" id="provider_insert" list="providers" name="provider" placeholder="Fornecedor" required type="text"/>
+				<label class="sr-only" for="price_insert">Preço</label>
+				<input class="form-control mb-3" id="price_insert" name="price" pattern="^\d+\.\d{2}$" placeholder="Preço" required type="text"/>
 			</div>
 			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
 				<button class="btn btn-block btn-dark mb-3" type="submit">Cadastrar</button>
@@ -91,27 +77,19 @@
 
 <!-- Formulário de Alteração -->
 <div class="container-fluid">
-	<form action="{{ url_for('update_product') }}" method="post">
+	<form action="{{ url_for('update_service') }}" method="post">
 		<div class="form-row justify-content-center">
 			<div class="col-sm-1">
 				<label class="sr-only" for="id_update">ID</label>
 				<input class="form-control mb-3" id="id_update" min="1" name="id" placeholder="ID" required type="number"/>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-7">
 				<label class="sr-only" for="name_update">Nome</label>
 				<input class="form-control mb-3" id="name_update" name="name" placeholder="Nome" required type="text"/>
 			</div>
-			<div class="col-sm-2">
-				<label class="sr-only" for="gross_price_update">Preço Bruto</label>
-				<input class="form-control mb-3" id="gross_price_update" name="gross_price" pattern="^\d+\.\d{2}$" placeholder="Preço Bruto" required type="text"/>
-			</div>
-			<div class="col-sm-2">
-				<label class="sr-only" for="net_price_update">Preço Líquido</label>
-				<input class="form-control mb-3" id="net_price_update" name="net_price" pattern="^\d+\.\d{2}$" placeholder="Preço Líquido" required type="text"/>
-			</div>
-			<div class="col-sm-2">
-				<label class="sr-only" for="provider_update">Fornecedor</label>
-				<input class="form-control mb-3" id="provider_update" list="providers" name="provider" placeholder="Fornecedor" required type="text"/>
+			<div class="col-sm-3">
+				<label class="sr-only" for="price_insert">Preço</label>
+				<input class="form-control mb-3" id="price_insert" name="price" pattern="^\d+\.\d{2}$" placeholder="Preço" required type="text"/>
 			</div>
 			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
 				<button class="btn btn-block btn-dark mb-3" type="submit">Alterar</button>
@@ -123,7 +101,7 @@
 
 <!-- Formulário de Remoção -->
 <div class="container-fluid mb-3">
-	<form action="{{ url_for('delete_product') }}" method="post">
+	<form action="{{ url_for('delete_service') }}" method="post">
 		<div class="form-row justify-content-center">
 			<div class="col-sm-11">
 				<label class="sr-only" for="id_remove">ID</label>
@@ -136,13 +114,5 @@
 	</form>
 </div>
 <!--/ Formulário de Remoção -->
-
-<!-- Seleção de Fornecedores -->
-<datalist id="providers">
-	{% for provider in providers %}
-	<option value="{{ provider.name }}">{{ provider.name }}</option>
-	{% endfor %}
-</datalist>
-<!--/ Seleção de Fornecedores -->
 
 {% endblock %}

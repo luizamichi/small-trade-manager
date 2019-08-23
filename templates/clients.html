@@ -1,0 +1,168 @@
+{% extends 'base_system.html' %}
+
+{% set page = 'clients' %}
+
+{% block title %}{{ super() }} - Clientes{% endblock %}
+
+{% block content %}
+<div class="container">
+	{% if get_flashed_messages() %}
+	<div class="text-center mt-3">
+		<div class="alert alert-{{ get_flashed_messages()[1] }}" role="alert">{{ get_flashed_messages()[0] }}</div>
+	</div>
+	{% endif %}
+</div>
+
+<!-- Formulário de Consulta -->
+<div class="container-fluid mt-3">
+	<form action="{{ url_for('read_client') }}" method="get">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-5">
+				<label class="sr-only" for="search">Nome</label>
+				<input class="form-control mb-3" id="search" name="name" placeholder="Nome do Cliente" required type="text"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Procurar</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Consulta -->
+
+{% if clients %}
+<!-- Tabela de Clientes -->
+<div class="table-responsive">
+	<table class="table table-hover table-sm">
+		<caption></caption>
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nome</th>
+				<th scope="col">CPF</th>
+				<th scope="col">ENDEREÇO</th>
+				<th scope="col">BAIRRO</th>
+				<th scope="col">CIDADE</th>
+				<th scope="col">TELEFONE</th>
+				<th scope="col">CELULAR</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for client in clients %}
+			<tr>
+				<th scope="col">{{ client.id }}</th>
+				<td>{{ client.name }}</td>
+				<td>{{ client.cpf }}</td>
+				<td>{{ client.address }}</td>
+				<td>{{ client.neighborhood if client.neighborhood else '&empty;'|safe }}</td>
+				<td>{{ client.city }}</td>
+				<td>{{ client.telephone if client.telephone else '&empty;'|safe }}</td>
+				<td>{{ client.cellphone if client.cellphone else '&empty;'|safe }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+<!--/ Tabela de Clientes -->
+{% endif %}
+
+<!-- Formulário de Inserção -->
+<div class="container-fluid">
+	<form action="{{ url_for('create_client') }}" method="post">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-3">
+				<label class="sr-only" for="name_insert">Nome</label>
+				<input class="form-control mb-3" id="name_insert" name="name" placeholder="Nome" required type="text"/>
+			</div>
+			<div class="col-sm-2">
+				<label class="sr-only" for="cpf_insert">CPF</label>
+				<input class="form-control mb-3" id="cpf_insert" name="cpf" placeholder="CPF" required type="text"/>
+			</div>
+			<div class="col-sm-2">
+				<label class="sr-only" for="address_insert">Endereço</label>
+				<input class="form-control mb-3" id="address_insert" name="address" placeholder="Endereço" required type="text"/>
+			</div>
+			<div class="col-sm-1">
+				<label class="sr-only" for="neighborhood_insert">Bairro</label>
+				<input class="form-control mb-3" id="neighborhood_insert" name="neighborhood" placeholder="Bairro" type="text"/>
+			</div>
+			<div class="col-sm-1">
+				<label class="sr-only" for="city_insert">Cidade</label>
+				<input class="form-control mb-3" id="city_insert" name="city" placeholder="Cidade" required type="text"/>
+			</div>
+			<div class="col-sm-1">
+				<label class="sr-only" for="telephone_insert">Telefone</label>
+				<input class="form-control mb-3" id="telephone_insert" name="telephone" placeholder="Telefone" type="tel"/>
+			</div>
+			<div class="col-sm-1">
+				<label class="sr-only" for="cellphone_insert">Celular</label>
+				<input class="form-control mb-3" id="cellphone_insert" name="cellphone" placeholder="Celular" type="tel"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Cadastrar</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Inserção -->
+
+<!-- Formulário de Alteração -->
+<div class="container-fluid">
+	<form action="{{ url_for('update_client') }}" method="post">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-1">
+				<label class="sr-only" for="id_update">ID</label>
+				<input class="form-control mb-3" id="id_update" min="1" name="id" placeholder="ID" required type="number"/>
+			</div>
+			<div class="col-sm-3">
+				<label class="sr-only" for="name_update">Nome</label>
+				<input class="form-control mb-3" id="name_update" name="name" placeholder="Nome" required type="text"/>
+			</div>
+			<div class="col-sm-2">
+				<label class="sr-only" for="cpf_update">CPF</label>
+				<input class="form-control mb-3" id="cpf_update" name="cpf" placeholder="CPF" required type="text"/>
+			</div>
+			<div class="col-sm-1">
+				<label class="sr-only" for="address_update">Endereço</label>
+				<input class="form-control mb-3" id="address_update" name="address" placeholder="Endereço" required type="text"/>
+			</div>
+			<div class="col-sm-1">
+				<label class="sr-only" for="neighborhood_update">Bairro</label>
+				<input class="form-control mb-3" id="neighborhood_update" name="neighborhood" placeholder="Bairro" type="text"/>
+			</div>
+			<div class="col-sm-1">
+				<label class="sr-only" for="city_update">Cidade</label>
+				<input class="form-control mb-3" id="city_update" name="city" placeholder="Cidade" required type="text"/>
+			</div>
+			<div class="col-sm-1">
+				<label class="sr-only" for="telephone_update">Telefone</label>
+				<input class="form-control mb-3" id="telephone_update" name="telephone" placeholder="Telefone" type="tel"/>
+			</div>
+			<div class="col-sm-1">
+				<label class="sr-only" for="cellphone_update">Celular</label>
+				<input class="form-control mb-3" id="cellphone_update" name="cellphone" placeholder="Celular" type="tel"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Alterar</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Alteração -->
+
+<!-- Formulário de Remoção -->
+<div class="container-fluid mb-3">
+	<form action="{{ url_for('delete_client') }}" method="post">
+		<div class="form-row justify-content-center">
+			<div class="col-sm-11">
+				<label class="sr-only" for="id_remove">ID</label>
+				<input class="form-control mb-3" id="id_remove" min="1" name="id" placeholder="ID" required type="number"/>
+			</div>
+			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
+				<button class="btn btn-block btn-dark mb-3" type="submit">Remover</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!--/ Formulário de Remoção -->
+
+{% endblock %}

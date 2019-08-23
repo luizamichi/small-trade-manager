@@ -4,59 +4,86 @@
 
 {% block content %}
 <!-- Seção Home -->
-<div class="bg-white" id="home">
+<div class="bg-light" id="home">
+	<br/>
 	<div class="container pb-5 pt-3">
-		<h1>Depósito de Materiais de Construção São Judas Tadeu</h1>
+		<h1 class="text-center">Depósito de Materiais de Construção São Judas Tadeu</h1>
 		<hr/>
-		<p class="lead">Reformar ou construir demanda tempo, organização e dinheiro. Afinal, você precisa se programar e fazer uma lista de materiais de construção para cada etapa de sua obra: desde o marco zero até o momento de colocar os quadros na parede.</p>
-		<p class="lead">Aqui no Depósito São Judas Tadeu você encontra tudo que precisa para sua construção e reforma. Cimentos, argamassas, aços, blocos, tijolos e todos os acessórios necessários para garantir uma obra de qualidade.</p>
-		<p class="lead">Trabalhamos com respeito e transparência com nossos cliente, procurando sempre atender de forma rápida, pontual, com qualidade e preços excelentes.</p>
+		<p class="lead text-justify">Reformar ou construir demanda tempo, organização e dinheiro. Afinal, você precisa se programar e fazer uma lista de materiais de construção para cada etapa de sua obra: desde o marco zero até o momento de colocar os quadros na parede.</p>
+		<p class="lead text-justify">Aqui no Depósito São Judas Tadeu você encontra tudo que precisa para sua construção e reforma. Cimentos, argamassas, aços, blocos, tijolos e todos os acessórios necessários para garantir uma obra de qualidade.</p>
+		<p class="lead text-justify">Trabalhamos com respeito e transparência com nossos cliente, procurando sempre atender de forma rápida, pontual, com qualidade e preços excelentes.</p>
 	</div>
 </div>
 <!--/ Seção Home -->
 
-<!-- Seção Sobre -->
-<div class="bg-light" id="about">
-	<div class="container pb-5 pt-3">
-		<h1>Sobre nós</h1>
-		<hr/>
-		<p class="lead">Nosso trabalho é auxiliar sua construção. E tem sido assim, continuamente, ano após ano.</p>
-		<p class="lead">Tão importante quanto adquirir um produto de qualidade é comprar de quem você confia. Quem compra conosco tem a certeza de realizar bons negócios.</p>
-		<p class="lead">Nosso depósito conta com todos os materiais que você necessita: elétrico, portas e janelas, madeiras, toda a linha de tubo e conexões, telhas, lajotas, ferro, cal, cimento, areia, pedra, louças e acessórios.</p>
-		<div class="text-center">
-			<img alt="Depósito de Materiais de Construção São Judas Tadeu" class="img-fluid rounded" src="{{ url_for('static', filename='img/dpsjt.jpg') }}" width="500"/>
-		</div>
-	</div>
-</div>
-<!--/ Seção Sobre -->
-
 <!-- Seção Produtos -->
 <div class="bg-white" id="products">
+	<br/>
 	<div class="container pb-5 pt-3">
-		<h1>Produtos</h1>
+		<h1 class="text-center">Produtos</h1>
 		<hr/>
 		<div class="row">
 			<div class="col-md-6 col-sm-12">
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item">Cal e cimento</li>
-					<li class="list-group-item">Areia e pedra</li>
-					<li class="list-group-item">Argamassa e rejunte</li>
-					<li class="list-group-item">Ferramentas em geral</li>
-					<li class="list-group-item">Ferro, barras e arames</li>
-					<li class="list-group-item">Lajotas e tijolos</li>
-					<li class="list-group-item">Louças e acessórios</li>
+					<li class="list-group-item">
+						<img alt="Areia e pedra" class="mr-2" src="{{ url_for('static', filename='img/sand.svg') }}" width="35"/>
+						Areia e pedra
+					</li>
+					<li class="list-group-item">
+						<img alt="Argamassa e rejunte" class="mr-2" src="{{ url_for('static', filename='img/tread.svg') }}" width="35"/>
+						Argamassa e rejunte
+					</li>
+					<li class="list-group-item">
+						<img alt="Cal e cimento" class="mr-2" src="{{ url_for('static', filename='img/cement.svg') }}" width="35"/>
+						Cal e cimento
+					</li>
+					<li class="list-group-item">
+						<img alt="Ferramentas em geral" class="mr-2" src="{{ url_for('static', filename='img/pliers.svg') }}" width="35"/>
+						Ferramentas em geral
+					</li>
+					<li class="list-group-item">
+						<img alt="Ferro, barras e arames" class="mr-2" src="{{ url_for('static', filename='img/wire.svg') }}" width="35"/>
+						Ferro, barras e arames
+					</li>
+					<li class="list-group-item">
+						<img alt="Tijolo" class="mr-2" src="{{ url_for('static', filename='img/brick.svg') }}" width="35"/>
+						Lajotas e tijolos</li>
+					<li class="list-group-item">
+						<img alt="Louças e acessórios" class="mr-2" src="{{ url_for('static', filename='img/toilet.svg') }}" width="35"/>
+						Louças e acessórios
+					</li>
 					<li class="list-group-item"></li>
 				</ul>
 			</div>
 			<div class="col-md-6 col-sm-12">
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item">Madeiras</li>
-					<li class="list-group-item">Materiais elétricos</li>
-					<li class="list-group-item">Materiais hidráulicos</li>
-					<li class="list-group-item">Portas e Janelas</li>
-					<li class="list-group-item">Telhas</li>
-					<li class="list-group-item">Tintas e sprays</li>
-					<li class="list-group-item">Toda a linha de tubo e conexões</li>
+					<li class="list-group-item">
+						<img alt="Madeiras" class="mr-2" src="{{ url_for('static', filename='img/woods.svg') }}" width="35"/>
+						Madeiras
+					</li>
+					<li class="list-group-item">
+						<img alt="Materiais elétricos" class="mr-2" src="{{ url_for('static', filename='img/lamp.svg') }}" width="35"/>
+						Materiais elétricos</li>
+					<li class="list-group-item">
+						<img alt="Materiais hidráulicos" class="mr-2" src="{{ url_for('static', filename='img/tap.svg') }}" width="35"/>
+						Materiais hidráulicos
+					</li>
+					<li class="list-group-item">
+						<img alt="Portas e janelas" class="mr-2" src="{{ url_for('static', filename='img/window.svg') }}" width="35"/>
+						Portas e janelas
+					</li>
+					<li class="list-group-item">
+						<img alt="Telhas" class="mr-2" src="{{ url_for('static', filename='img/roof.svg') }}" width="35"/>
+						Telhas
+					</li>
+					<li class="list-group-item">
+						<img alt="Tintas e sprays" class="mr-2" src="{{ url_for('static', filename='img/paint_spray.svg') }}" width="35"/>
+						Tintas e sprays
+					</li>
+					<li class="list-group-item">
+						<img alt="Toda a linha de tubo e conexões" class="mr-2" src="{{ url_for('static', filename='img/pipe.svg') }}" width="35"/>
+						Toda a linha de tubo e conexões
+					</li>
 					<li class="list-group-item"></li>
 				</ul>
 			</div>
@@ -65,10 +92,27 @@
 </div>
 <!--/ Seção Produtos -->
 
-<!-- Seção Contato -->
-<div class="bg-light" id="contact">
+<!-- Seção Sobre -->
+<div class="bg-light" id="about">
+	<br/>
 	<div class="container pb-5 pt-3">
-		<h1>Contato</h1>
+		<h1 class="text-center">Sobre nós</h1>
+		<hr/>
+		<p class="lead text-justify">Nosso trabalho é auxiliar sua construção. E tem sido assim, continuamente, ano após ano.</p>
+		<p class="lead text-justify">Tão importante quanto adquirir um produto de qualidade é comprar de quem você confia. Quem compra conosco tem a certeza de realizar bons negócios.</p>
+		<p class="lead text-justify">Nosso depósito conta com todos os materiais que você necessita: elétrico, portas e janelas, madeiras, toda a linha de tubo e conexões, telhas, lajotas, ferro, cal, cimento, areia, pedra, louças e acessórios.</p>
+		<div class="text-center">
+			<img alt="Depósito de Materiais de Construção São Judas Tadeu" class="img-fluid rounded" src="{{ url_for('static', filename='img/dpsjt.jpg') }}" width="500"/>
+		</div>
+	</div>
+</div>
+<!--/ Seção Sobre -->
+
+<!-- Seção Contato -->
+<div class="bg-white" id="contact">
+	<br/>
+	<div class="container pb-5 pt-3">
+		<h1 class="text-center">Contato</h1>
 		<hr/>
 		<div class="row">
 			<div class="col-md-6 col-sm-12">
@@ -82,7 +126,7 @@
 			</div>
 			<div class="col-md-6 col-sm-12">
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14714.25922717916!2d-51.2335556!3d-22.7815264!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6239859df137540c!2sDep%C3%B3sito%20S%C3%A3o%20Judas%20Tadeu!5e0!3m2!1spt-BR!2sbr!4v1590147369837!5m2!1spt-BR!2sbr" title="Google Maps"></iframe>
+					<iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14714.25922717916!2d-51.2335556!3d-22.7815264!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6239859df137540c!2sDep%C3%B3sito%20S%C3%A3o%20Judas%20Tadeu!5e0!3m2!1spt-BR!2sbr!4v1590147369837!5m2!1spt-BR!2sbr" title="Google Maps (Localização)"></iframe>
 				</div>
 			</div>
 		</div>

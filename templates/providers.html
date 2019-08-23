@@ -17,7 +17,7 @@
 <div class="container-fluid mt-3">
 	<form action="{{ url_for('read_provider') }}" method="get">
 		<div class="form-row justify-content-center">
-			<div class="col-sm-7">
+			<div class="col-sm-5">
 				<label class="sr-only" for="search">Nome</label>
 				<input class="form-control mb-3" id="search" name="name" placeholder="Nome do Fornecedor" required type="text"/>
 			</div>
@@ -39,14 +39,16 @@
 				<th scope="col">ID</th>
 				<th scope="col">Nome</th>
 				<th scope="col">CNPJ</th>
+				<th scope="col">E-mail</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for provider in providers %}
-			<tr data-row="provider">
-				<th scope="col" data-name="provider_id">{{ provider.id }}</th>
-				<td data-name="provider_name">{{ provider.name }}</td>
-				<td data-name="provider_cnpj">{{ provider.cnpj }}</td>
+			<tr>
+				<th scope="col">{{ provider.id }}</th>
+				<td>{{ provider.name }}</td>
+				<td>{{ provider.cnpj }}</td>
+				<td>{{ provider.email if provider.email else '&empty;'|safe }}</td>
 			</tr>
 			{% endfor %}
 		</tbody>
@@ -63,9 +65,13 @@
 				<label class="sr-only" for="name_insert">Nome</label>
 				<input class="form-control mb-3" id="name_insert" name="name" placeholder="Nome" required type="text"/>
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-3">
 				<label class="sr-only" for="cnpj_insert">CNPJ</label>
 				<input class="form-control mb-3" id="cnpj_insert" name="cnpj" placeholder="CNPJ" required type="text"/>
+			</div>
+			<div class="col-sm-3">
+				<label class="sr-only" for="email_insert">E-mail</label>
+				<input class="form-control mb-3" id="email_insert" name="email" placeholder="E-mail" type="email"/>
 			</div>
 			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
 				<button class="btn btn-block btn-dark mb-3" type="submit">Cadastrar</button>
@@ -87,9 +93,13 @@
 				<label class="sr-only" for="name_update">Nome</label>
 				<input class="form-control mb-3" id="name_update" name="name" placeholder="Nome" required type="text"/>
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-3">
 				<label class="sr-only" for="cnpj_update">CNPJ</label>
 				<input class="form-control mb-3" id="cnpj_update" name="cnpj" placeholder="CNPJ" required type="text"/>
+			</div>
+			<div class="col-sm-3">
+				<label class="sr-only" for="email_update">E-mail</label>
+				<input class="form-control mb-3" id="email_update" name="email" placeholder="E-mail" type="email"/>
 			</div>
 			<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1">
 				<button class="btn btn-block btn-dark mb-3" type="submit">Alterar</button>
@@ -103,7 +113,7 @@
 <div class="container-fluid mb-3">
 	<form action="{{ url_for('delete_provider') }}" method="post">
 		<div class="form-row justify-content-center">
-			<div class="col-sm-7">
+			<div class="col-sm-11">
 				<label class="sr-only" for="id_remove">ID</label>
 				<input class="form-control mb-3" id="id_remove" min="1" name="id" placeholder="ID" required type="number"/>
 			</div>

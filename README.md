@@ -17,6 +17,7 @@ No download, você encontrará os seguintes diretórios e arquivos:
 │   └── update.log
 ├── models/
 │   ├── __init__.py
+│   ├── client.py
 │   ├── product.py
 │   ├── provider.py
 │   └── user.py
@@ -38,6 +39,7 @@ No download, você encontrará os seguintes diretórios e arquivos:
 ├── templates/
 │   ├── base.html
 │   ├── base_system.html
+│   ├── clients.html
 │   ├── index.html
 │   ├── login.html
 │   ├── products.html
@@ -53,7 +55,7 @@ No download, você encontrará os seguintes diretórios e arquivos:
 Para o funcionamento do software, é necessário possuir o [Python](https://www.python.org/) e o [SQLite](https://www.sqlite.org/) instalados na máquina. Além do interpretador e da biblioteca, são necessários alguns pacotes ([Flask](https://flask.palletsprojects.com/en/1.1.x/) e [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)) que podem ser instalados através do [PIP](https://pypi.org/project/pip/).
 
 Instale as dependências para iniciar o servidor, abaixo é informado o passo a passo para a preparação do ambiente em Linux.
-- [Faça download do ZIP](https://github.com/luizamichi/small-trade-manager/archive/refs/tags/v2.1.zip)
+- [Faça download do ZIP](https://github.com/luizamichi/small-trade-manager/archive/refs/tags/v2.2.zip)
 - Atualize a lista de pacotes: `sudo apt update`
 - Instale o Python, PIP e SQLite: `sudo apt install python3 python3-pip sqlite3`
 - Instale o Flask e o Jinja: `pip install -U Flask Jinja2`
@@ -66,7 +68,7 @@ Primeira inicialização do software com a base de dados vazia e usuário *defau
 $ python3 app.py initdb
 ```
 
-Primeira inicialização do software com a base de dados populada com alguns fornecedores e produtos (simbólicos) para fins de teste:
+Primeira inicialização do software com a base de dados populada com alguns clientes, fornecedores e produtos (simbólicos) para fins de teste:
 ```sh
 $ python3 app.py initdb populate
 ```
