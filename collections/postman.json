@@ -1,0 +1,2868 @@
+{
+	"info": {
+		"_postman_id": "f172fd39-dc45-4617-8a8d-8eff6483f6c6",
+		"name": "Small Trade Manager",
+		"description": "Gerenciador de pequeno negócio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29122256"
+	},
+	"item": [
+		{
+			"name": "Budget",
+			"item": [
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{budgetUrl}}delete?id=1",
+							"host": [
+								"{{baseUrl}}{{budgetUrl}}delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								}
+							]
+						},
+						"description": "Remoção de orçamento"
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "day",
+									"value": "2023-08-20",
+									"description": "Dia"
+								},
+								{
+									"key": "form-of-payment",
+									"value": "Dinheiro",
+									"description": "Forma de pagamento"
+								},
+								{
+									"key": "discount",
+									"value": "0.00",
+									"description": "Desconto"
+								},
+								{
+									"key": "total",
+									"value": "325.00",
+									"description": "Total"
+								},
+								{
+									"key": "products[]",
+									"value": "1",
+									"description": "Produto 1"
+								},
+								{
+									"key": "products-prices[]",
+									"value": "100.00",
+									"description": "Preço do produto 1"
+								},
+								{
+									"key": "products-quantities[]",
+									"value": "2",
+									"description": "Quantidade do produto 1"
+								},
+								{
+									"key": "services[]",
+									"value": "1",
+									"description": "Serviço 1"
+								},
+								{
+									"key": "services[]",
+									"value": "2",
+									"description": "Serviço 2"
+								},
+								{
+									"key": "services-prices[]",
+									"value": "50.00",
+									"description": "Preço do serviço 1"
+								},
+								{
+									"key": "services-prices[]",
+									"value": "75.00",
+									"description": "Preço do serviço 2"
+								},
+								{
+									"key": "services-quantities[]",
+									"value": "2",
+									"description": "Quantidade do serviço 1"
+								},
+								{
+									"key": "services-quantities[]",
+									"value": "1",
+									"description": "Quantidade do serviço 2"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{budgetUrl}}insert",
+							"host": [
+								"{{baseUrl}}{{budgetUrl}}insert"
+							]
+						},
+						"description": "Cadastro de orçamento"
+					},
+					"response": []
+				},
+				{
+					"name": "SELECT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{budgetUrl}}select?all=2023-08-20",
+							"host": [
+								"{{baseUrl}}{{budgetUrl}}select"
+							],
+							"query": [
+								{
+									"key": "all",
+									"value": "2023-08-20",
+									"description": "Todos"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Identificador",
+									"disabled": true
+								},
+								{
+									"key": "client",
+									"value": "",
+									"description": "Cliente",
+									"disabled": true
+								},
+								{
+									"key": "employee",
+									"value": "",
+									"description": "Funcionário",
+									"disabled": true
+								},
+								{
+									"key": "day",
+									"value": "",
+									"description": "Dia",
+									"disabled": true
+								},
+								{
+									"key": "form-of-payment",
+									"value": "",
+									"description": "Forma de pagamento",
+									"disabled": true
+								},
+								{
+									"key": "discount",
+									"value": "",
+									"description": "Desconto",
+									"disabled": true
+								},
+								{
+									"key": "total",
+									"value": "",
+									"description": "Total",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Recuperação de orçamento"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador",
+									"type": "text"
+								},
+								{
+									"key": "day",
+									"value": "2023-08-20",
+									"description": "Dia"
+								},
+								{
+									"key": "form-of-payment",
+									"value": "Cartão de crédito",
+									"description": "Forma de pagamento"
+								},
+								{
+									"key": "discount",
+									"value": "8.00",
+									"description": "Desconto"
+								},
+								{
+									"key": "total",
+									"value": "170.20",
+									"description": "Total"
+								},
+								{
+									"key": "products[]",
+									"value": "1",
+									"description": "Produto 1"
+								},
+								{
+									"key": "products[]",
+									"value": "2",
+									"description": "Produto 2"
+								},
+								{
+									"key": "products-prices[]",
+									"value": "100.00",
+									"description": "Preço do produto 1"
+								},
+								{
+									"key": "products-prices[]",
+									"value": "45.00",
+									"description": "Preço do produto 2"
+								},
+								{
+									"key": "products-quantities[]",
+									"value": "1",
+									"description": "Quantidade do produto 1"
+								},
+								{
+									"key": "products-quantities[]",
+									"value": "1",
+									"description": "Quantidade do produto 2"
+								},
+								{
+									"key": "services[]",
+									"value": "1",
+									"description": "Serviço 1"
+								},
+								{
+									"key": "services-prices[]",
+									"value": "40.00",
+									"description": "Preço do serviço 1"
+								},
+								{
+									"key": "services-quantities[]",
+									"value": "1",
+									"description": "Quantidade do serviço 1"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{budgetUrl}}update",
+							"host": [
+								"{{baseUrl}}{{budgetUrl}}update"
+							]
+						},
+						"description": "Alteração de orçamento"
+					},
+					"response": []
+				}
+			],
+			"description": "Orçamento"
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{clientUrl}}delete?id=1",
+							"host": [
+								"{{baseUrl}}{{clientUrl}}delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								}
+							]
+						},
+						"description": "Remoção de cliente"
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Neymar",
+									"description": "Nome"
+								},
+								{
+									"key": "surname",
+									"value": "Santos",
+									"description": "Sobrenome"
+								},
+								{
+									"key": "rg",
+									"value": "16.300.454-7",
+									"description": "RG"
+								},
+								{
+									"key": "cpf",
+									"value": "039.527.110-04",
+									"description": "CPF"
+								},
+								{
+									"key": "birthday",
+									"value": "1992-02-05",
+									"description": "Data de Nascimento"
+								},
+								{
+									"key": "postal-code",
+									"value": "11724-000",
+									"description": "Código Postal"
+								},
+								{
+									"key": "district",
+									"value": "Jardim Gloria",
+									"description": "Bairro"
+								},
+								{
+									"key": "city",
+									"value": "Praia Grande",
+									"description": "Cidade"
+								},
+								{
+									"key": "state",
+									"value": "SP",
+									"description": "Estado"
+								},
+								{
+									"key": "address",
+									"value": "Avenida Ministro Marcos Freire",
+									"description": "Endereço"
+								},
+								{
+									"key": "number",
+									"value": "2112",
+									"description": "Número"
+								},
+								{
+									"key": "complement",
+									"value": "Instituto Projeto Neymar Jr.",
+									"description": "Complemento"
+								},
+								{
+									"key": "email",
+									"value": "contato@institutonjr.org.br",
+									"description": "E-mail"
+								},
+								{
+									"key": "phone",
+									"value": "(17) 3748-6732",
+									"description": "Telefone"
+								},
+								{
+									"key": "cell-phone",
+									"value": "(15) 97938-8303",
+									"description": "Celular"
+								},
+								{
+									"key": "sex",
+									"value": "M",
+									"description": "Sexo"
+								},
+								{
+									"key": "note",
+									"value": "Neymar Jr., ponta-esquerda e meia-atacante de renome, representa o Al-Hilal e a Seleção Brasileira, destacando-se como a figura proeminente do futebol nacional e um dos mais notáveis talentos globais.",
+									"description": "Observação"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{clientUrl}}insert",
+							"host": [
+								"{{baseUrl}}{{clientUrl}}insert"
+							]
+						},
+						"description": "Cadastro de cliente"
+					},
+					"response": []
+				},
+				{
+					"name": "SELECT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{clientUrl}}select?all=PR",
+							"host": [
+								"{{baseUrl}}{{clientUrl}}select"
+							],
+							"query": [
+								{
+									"key": "all",
+									"value": "PR",
+									"description": "Todos"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Identificador",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "",
+									"description": "Nome",
+									"disabled": true
+								},
+								{
+									"key": "surname",
+									"value": "",
+									"description": "Sobrenome",
+									"disabled": true
+								},
+								{
+									"key": "rg",
+									"value": "",
+									"description": "RG",
+									"disabled": true
+								},
+								{
+									"key": "cpf",
+									"value": "",
+									"description": "CPF",
+									"disabled": true
+								},
+								{
+									"key": "birthday",
+									"value": "",
+									"description": "Data de Nascimento",
+									"disabled": true
+								},
+								{
+									"key": "postal-code",
+									"value": "",
+									"description": "Código Postal",
+									"disabled": true
+								},
+								{
+									"key": "district",
+									"value": "",
+									"description": "Bairro",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "",
+									"description": "Cidade",
+									"disabled": true
+								},
+								{
+									"key": "state",
+									"value": "",
+									"description": "Estado",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "",
+									"description": "Endereço",
+									"disabled": true
+								},
+								{
+									"key": "number",
+									"value": "",
+									"description": "Número",
+									"disabled": true
+								},
+								{
+									"key": "complement",
+									"value": "",
+									"description": "Complemento",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "",
+									"description": "E-mail",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "",
+									"description": "Telefone",
+									"disabled": true
+								},
+								{
+									"key": "cell-phone",
+									"value": "",
+									"description": "Celular",
+									"disabled": true
+								},
+								{
+									"key": "sex",
+									"value": "",
+									"description": "Sexo",
+									"disabled": true
+								},
+								{
+									"key": "note",
+									"value": "",
+									"description": "Observação",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Recuperação de cliente"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								},
+								{
+									"key": "name",
+									"value": "Bruna",
+									"description": "Nome"
+								},
+								{
+									"key": "surname",
+									"value": "Reis Maia",
+									"description": "Sobrenome"
+								},
+								{
+									"key": "rg",
+									"value": "14.749.133-2",
+									"description": "RG"
+								},
+								{
+									"key": "cpf",
+									"value": "422.447.010-18",
+									"description": "CPF"
+								},
+								{
+									"key": "birthday",
+									"value": "1995-08-04",
+									"description": "Data de Nascimento"
+								},
+								{
+									"key": "postal-code",
+									"value": "22793-081",
+									"description": "Código Postal"
+								},
+								{
+									"key": "district",
+									"value": "Barra da Tijuca",
+									"description": "Bairro"
+								},
+								{
+									"key": "city",
+									"value": "Rio de Janeiro",
+									"description": "Cidade"
+								},
+								{
+									"key": "state",
+									"value": "RJ",
+									"description": "Estado"
+								},
+								{
+									"key": "address",
+									"value": "Avenida das Américas",
+									"description": "Endereço"
+								},
+								{
+									"key": "number",
+									"value": "5740",
+									"description": "Número"
+								},
+								{
+									"key": "complement",
+									"value": "Casa Del Mar",
+									"description": "Complemento"
+								},
+								{
+									"key": "email",
+									"value": "brunamarquezine@gmail.com",
+									"description": "E-mail"
+								},
+								{
+									"key": "phone",
+									"value": "(22) 3727-5876",
+									"description": "Telefone"
+								},
+								{
+									"key": "cell-phone",
+									"value": "(24) 98498-1983",
+									"description": "Celular"
+								},
+								{
+									"key": "sex",
+									"value": "F",
+									"description": "Sexo"
+								},
+								{
+									"key": "note",
+									"value": "Sob o nome famoso de Bruna Marquezine, encontra-se uma talentosa atriz do Brasil. Sua estreia nas telas ocorreu em 2000, quando ela se destacou como uma das jovens entrevistadoras no programa para crianças chamado Gente Inocente.",
+									"description": "Observação"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{clientUrl}}update",
+							"host": [
+								"{{baseUrl}}{{clientUrl}}update"
+							]
+						},
+						"description": "Alteração de cliente"
+					},
+					"response": []
+				}
+			],
+			"description": "Cliente"
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{employeeUrl}}delete?id=1",
+							"host": [
+								"{{baseUrl}}{{employeeUrl}}delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								}
+							]
+						},
+						"description": "Remoção de funcionário"
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Edson",
+									"description": "Nome"
+								},
+								{
+									"key": "surname",
+									"value": "Arantes do Nascimento",
+									"description": "Sobrenome"
+								},
+								{
+									"key": "alias",
+									"value": "reipele",
+									"description": "Apelido"
+								},
+								{
+									"key": "password",
+									"value": "Edson era antes do nascimento",
+									"description": "Senha"
+								},
+								{
+									"key": "rg",
+									"value": "10.651.883-5",
+									"description": "RG"
+								},
+								{
+									"key": "cpf",
+									"value": "253.520.400-20",
+									"description": "CPF"
+								},
+								{
+									"key": "birthday",
+									"value": "1940-10-23",
+									"description": "Data de nascimento"
+								},
+								{
+									"key": "postal-code",
+									"value": "37410-000",
+									"description": "Código Postal"
+								},
+								{
+									"key": "district",
+									"value": "Centro",
+									"description": "Bairro"
+								},
+								{
+									"key": "city",
+									"value": "Três Corações",
+									"description": "Cidade"
+								},
+								{
+									"key": "state",
+									"value": "MG",
+									"description": "Estado"
+								},
+								{
+									"key": "address",
+									"value": "Rua Edson Arantes do Nascimento",
+									"description": "Endereço"
+								},
+								{
+									"key": "number",
+									"value": "1000",
+									"description": "Número"
+								},
+								{
+									"key": "complement",
+									"value": "Casa",
+									"description": "Complemento"
+								},
+								{
+									"key": "email",
+									"value": "suporte@pele10.org",
+									"description": "E-mail"
+								},
+								{
+									"key": "phone",
+									"value": "(37) 3406-8517",
+									"description": "Telefone"
+								},
+								{
+									"key": "cell-phone",
+									"value": "(38) 98570-8785",
+									"description": "Celular"
+								},
+								{
+									"key": "sex",
+									"value": "M",
+									"description": "Sexo"
+								},
+								{
+									"key": "note",
+									"value": "Sob a alcunha de Pelé, encontra-se um ex-jogador de futebol do Brasil que desempenhava o papel de atacante. Sua reputação o coloca entre os mais supremos atletas que o mundo já viu.",
+									"description": "Observação"
+								},
+								{
+									"key": "permission[]",
+									"value": "budget",
+									"description": "Permissão (orçamento)"
+								},
+								{
+									"key": "permission[]",
+									"value": "client",
+									"description": "Permissão (cliente)"
+								},
+								{
+									"key": "permission[]",
+									"value": "employee",
+									"description": "Permissão (funcionário)"
+								},
+								{
+									"key": "permission[]",
+									"value": "product",
+									"description": "Permissão (produto)"
+								},
+								{
+									"key": "permission[]",
+									"value": "provider",
+									"description": "Permissão (fornecedor)"
+								},
+								{
+									"key": "permission[]",
+									"value": "purchase",
+									"description": "Permissão (compra)"
+								},
+								{
+									"key": "permission[]",
+									"value": "record",
+									"description": "Permissão (registro)"
+								},
+								{
+									"key": "permission[]",
+									"value": "report",
+									"description": "Permissão (relatório)"
+								},
+								{
+									"key": "permission[]",
+									"value": "sale",
+									"description": "Permissão (venda)"
+								},
+								{
+									"key": "permission[]",
+									"value": "setting",
+									"description": "Permissão (opção)"
+								},
+								{
+									"key": "permission[]",
+									"value": "service",
+									"description": "Permissão (serviço)"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{employeeUrl}}insert",
+							"host": [
+								"{{baseUrl}}{{employeeUrl}}insert"
+							]
+						},
+						"description": "Cadastro de funcionário"
+					},
+					"response": []
+				},
+				{
+					"name": "SELECT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{employeeUrl}}select?all=RJ",
+							"host": [
+								"{{baseUrl}}{{employeeUrl}}select"
+							],
+							"query": [
+								{
+									"key": "all",
+									"value": "RJ",
+									"description": "Todos"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Identificador",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "",
+									"description": "Nome",
+									"disabled": true
+								},
+								{
+									"key": "surname",
+									"value": "",
+									"description": "Sobrenome",
+									"disabled": true
+								},
+								{
+									"key": "alias",
+									"value": "",
+									"description": "Apelido",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "",
+									"description": "Senha",
+									"disabled": true
+								},
+								{
+									"key": "rg",
+									"value": "",
+									"description": "RG",
+									"disabled": true
+								},
+								{
+									"key": "cpf",
+									"value": "",
+									"description": "CPF",
+									"disabled": true
+								},
+								{
+									"key": "birthday",
+									"value": "",
+									"description": "Data de nascimento",
+									"disabled": true
+								},
+								{
+									"key": "postal-code",
+									"value": "",
+									"description": "Código postal",
+									"disabled": true
+								},
+								{
+									"key": "district",
+									"value": "",
+									"description": "Bairro",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "",
+									"description": "Cidade",
+									"disabled": true
+								},
+								{
+									"key": "state",
+									"value": "",
+									"description": "Estado",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "",
+									"description": "Endereço",
+									"disabled": true
+								},
+								{
+									"key": "number",
+									"value": "",
+									"description": "Número",
+									"disabled": true
+								},
+								{
+									"key": "complement",
+									"value": "",
+									"description": "Complemento",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "",
+									"description": "E-mail",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "",
+									"description": "Telefone",
+									"disabled": true
+								},
+								{
+									"key": "cell-phone",
+									"value": "",
+									"description": "Celular",
+									"disabled": true
+								},
+								{
+									"key": "sex",
+									"value": "",
+									"description": "Sexo",
+									"disabled": true
+								},
+								{
+									"key": "note",
+									"value": "",
+									"description": "Observação",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Recuperação de funcionário"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								},
+								{
+									"key": "name",
+									"value": "Vinícius José",
+									"description": "Nome"
+								},
+								{
+									"key": "surname",
+									"value": "Paixão de Oliveira Júnior",
+									"description": "Sobrenome"
+								},
+								{
+									"key": "alias",
+									"value": "vinijr",
+									"description": "Apelido"
+								},
+								{
+									"key": "password",
+									"value": "Vini malvadeza",
+									"description": "Senha"
+								},
+								{
+									"key": "rg",
+									"value": "18.543.498-8",
+									"description": "RG"
+								},
+								{
+									"key": "cpf",
+									"value": "639.347.637-07",
+									"description": "CPF"
+								},
+								{
+									"key": "birthday",
+									"value": "2000-07-12",
+									"description": "Data de Nascimento"
+								},
+								{
+									"key": "postal-code",
+									"value": "20755-240",
+									"description": "Código Postal"
+								},
+								{
+									"key": "district",
+									"value": "Abolição",
+									"description": "Bairro"
+								},
+								{
+									"key": "city",
+									"value": "Rio de Janeiro",
+									"description": "Cidade"
+								},
+								{
+									"key": "state",
+									"value": "RJ",
+									"description": "Estado"
+								},
+								{
+									"key": "address",
+									"value": "Rua Braulio Muniz",
+									"description": "Endereço"
+								},
+								{
+									"key": "number",
+									"value": "194",
+									"description": "Número"
+								},
+								{
+									"key": "complement",
+									"value": "Casa",
+									"description": "Complemento"
+								},
+								{
+									"key": "email",
+									"value": "vinijr@gmail.com",
+									"description": "E-mail"
+								},
+								{
+									"key": "phone",
+									"value": "(22) 2263-8495",
+									"description": "Telefone"
+								},
+								{
+									"key": "cell-phone",
+									"value": "(22) 98781-3116",
+									"description": "Celular"
+								},
+								{
+									"key": "sex",
+									"value": "M",
+									"description": "Sexo"
+								},
+								{
+									"key": "note",
+									"value": "Sob a designação de Vinícius Júnior, apelidado de Vini, emerge um jogador de futebol do Brasil que exerce sua perícia como extremo esquerdo. No momento, exibe suas habilidades no Real Madrid.",
+									"description": "Observação"
+								},
+								{
+									"key": "permission[]",
+									"value": "budget",
+									"description": "Permissão (orçamento)"
+								},
+								{
+									"key": "permission[]",
+									"value": "client",
+									"description": "Permissão (cliente)"
+								},
+								{
+									"key": "permission[]",
+									"value": "employee",
+									"description": "Permissão (funcionário)"
+								},
+								{
+									"key": "permission[]",
+									"value": "product",
+									"description": "Permissão (produto)"
+								},
+								{
+									"key": "permission[]",
+									"value": "provider",
+									"description": "Permissão (fornecedor)"
+								},
+								{
+									"key": "permission[]",
+									"value": "purchase",
+									"description": "Permissão (compra)"
+								},
+								{
+									"key": "permission[]",
+									"value": "record",
+									"description": "Permissão (registro)"
+								},
+								{
+									"key": "permission[]",
+									"value": "report",
+									"description": "Permissão (relatório)"
+								},
+								{
+									"key": "permission[]",
+									"value": "sale",
+									"description": "Permissão (venda)"
+								},
+								{
+									"key": "permission[]",
+									"value": "setting",
+									"description": "Permissão (opção)"
+								},
+								{
+									"key": "permission[]",
+									"value": "service",
+									"description": "Permissão (serviço)"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{employeeUrl}}update",
+							"host": [
+								"{{baseUrl}}{{employeeUrl}}update"
+							]
+						},
+						"description": "Alteração de funcionário"
+					},
+					"response": []
+				}
+			],
+			"description": "Funcionário"
+		},
+		{
+			"name": "Other",
+			"item": [
+				{
+					"name": "AUTHENTICATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "alias",
+									"value": "Login do usuário",
+									"description": "Apelido",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Chave secreta",
+									"description": "Senha",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/action/user/authenticate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"action",
+								"user",
+								"authenticate"
+							]
+						},
+						"description": "Autenticação de usuário"
+					},
+					"response": []
+				},
+				{
+					"name": "SETTING",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "company-name",
+									"value": "Aderaldo & Amichi Ltda.",
+									"description": "Razão social"
+								},
+								{
+									"key": "fantasy-name",
+									"value": "Depósito de Materiais de Construção São Judas Tadeu",
+									"description": "Nome fantasia"
+								},
+								{
+									"key": "cnpj",
+									"value": "02.306.557/0001-80",
+									"description": "CNPJ"
+								},
+								{
+									"key": "postal-code",
+									"value": "86150-000",
+									"description": "Código postal"
+								},
+								{
+									"key": "district",
+									"value": "Centro",
+									"description": "Bairro"
+								},
+								{
+									"key": "city",
+									"value": "Alvorada do Sul",
+									"description": "Cidade"
+								},
+								{
+									"key": "state",
+									"value": "PR",
+									"description": "Estado (UF)"
+								},
+								{
+									"key": "address",
+									"value": "Avenida Joaquim Alves Bento de Lima",
+									"description": "Endereço"
+								},
+								{
+									"key": "number",
+									"value": "213",
+									"description": "Número"
+								},
+								{
+									"key": "email",
+									"value": "dpsjt@hotmail.com",
+									"description": "E-mail"
+								},
+								{
+									"key": "phone",
+									"value": "(43) 3661-2014",
+									"description": "Telefone"
+								},
+								{
+									"key": "website",
+									"value": "https://dpsjt.com.br",
+									"description": "Website"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/action/setting/manage",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"action",
+								"setting",
+								"manage"
+							]
+						},
+						"description": "Gerenciamento de opção"
+					},
+					"response": []
+				},
+				{
+					"name": "UNAUTHENTICATE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/action/user/unauthenticate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"action",
+								"user",
+								"unauthenticate"
+							]
+						},
+						"description": "Logout de usuário"
+					},
+					"response": []
+				}
+			],
+			"description": "Outro"
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{productUrl}}delete?id=1",
+							"host": [
+								"{{baseUrl}}{{productUrl}}delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								}
+							]
+						},
+						"description": "Remoção de produto"
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "95483",
+									"description": "Código"
+								},
+								{
+									"key": "name",
+									"value": "Teclado Mecânico Redragon Mitra",
+									"description": "Nome"
+								},
+								{
+									"key": "provider",
+									"value": "1",
+									"description": "Fornecedor"
+								},
+								{
+									"key": "unity",
+									"value": "UN",
+									"description": "Unidade"
+								},
+								{
+									"key": "gross-price",
+									"value": "269.90",
+									"description": "Preço bruto"
+								},
+								{
+									"key": "net-price",
+									"value": "411.65",
+									"description": "Preço líquido"
+								},
+								{
+									"key": "minimum-stock",
+									"value": "5",
+									"description": "Estoque mínimo"
+								},
+								{
+									"key": "maximum-stock",
+									"value": "25",
+									"description": "Estoque máximo"
+								},
+								{
+									"key": "amount",
+									"value": "15",
+									"description": "Quantidade"
+								},
+								{
+									"key": "weigth",
+									"value": "1.255",
+									"description": "Peso"
+								},
+								{
+									"key": "situation",
+									"value": "1",
+									"description": "Situação"
+								},
+								{
+									"key": "source",
+									"value": "1",
+									"description": "Origem"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{productUrl}}insert",
+							"host": [
+								"{{baseUrl}}{{productUrl}}insert"
+							]
+						},
+						"description": "Cadastro de produto"
+					},
+					"response": []
+				},
+				{
+					"name": "SELECT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{productUrl}}select?all=Xiaomi",
+							"host": [
+								"{{baseUrl}}{{productUrl}}select"
+							],
+							"query": [
+								{
+									"key": "all",
+									"value": "Xiaomi",
+									"description": "Todos"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Identificador",
+									"disabled": true
+								},
+								{
+									"key": "code",
+									"value": "",
+									"description": "Código",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "",
+									"description": "Nome",
+									"disabled": true
+								},
+								{
+									"key": "provider",
+									"value": "",
+									"description": "Fornecedor",
+									"disabled": true
+								},
+								{
+									"key": "unit",
+									"value": "",
+									"description": "Unidade",
+									"disabled": true
+								},
+								{
+									"key": "gross-price",
+									"value": "",
+									"description": "Preço bruto",
+									"disabled": true
+								},
+								{
+									"key": "net-price",
+									"value": "",
+									"description": "Preço líquido",
+									"disabled": true
+								},
+								{
+									"key": "minimum-stock",
+									"value": "",
+									"description": "Estoque mínimo",
+									"disabled": true
+								},
+								{
+									"key": "maximum-stock",
+									"value": "",
+									"description": "Estoque máximo",
+									"disabled": true
+								},
+								{
+									"key": "amount",
+									"value": "",
+									"description": "Quantidade",
+									"disabled": true
+								},
+								{
+									"key": "weigth",
+									"value": "",
+									"description": "Peso",
+									"disabled": true
+								},
+								{
+									"key": "situation",
+									"value": "",
+									"description": "Situação",
+									"disabled": true
+								},
+								{
+									"key": "source",
+									"value": "",
+									"description": "Origem",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Recuperação de produto"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								},
+								{
+									"key": "code",
+									"value": "153956",
+									"description": "Código"
+								},
+								{
+									"key": "name",
+									"value": "Cadeira Office Husky Sit 150",
+									"description": "Nome"
+								},
+								{
+									"key": "provider",
+									"value": "2",
+									"description": "Fornecedor"
+								},
+								{
+									"key": "unity",
+									"value": "UN",
+									"description": "Unidade"
+								},
+								{
+									"key": "gross-price",
+									"value": "539.95",
+									"description": "Preço bruto"
+								},
+								{
+									"key": "net-price",
+									"value": "894.68",
+									"description": "Preço líquido"
+								},
+								{
+									"key": "minimum-stock",
+									"value": "10",
+									"description": "Estoque mínimo"
+								},
+								{
+									"key": "maximum-stock",
+									"value": "50",
+									"description": "Estoque máximo"
+								},
+								{
+									"key": "amount",
+									"value": "10",
+									"description": "Quantidade"
+								},
+								{
+									"key": "weigth",
+									"value": "25.493",
+									"description": "Peso"
+								},
+								{
+									"key": "situation",
+									"value": "1",
+									"description": "Situação"
+								},
+								{
+									"key": "source",
+									"value": "0",
+									"description": "Origem"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{productUrl}}update",
+							"host": [
+								"{{baseUrl}}{{productUrl}}update"
+							]
+						},
+						"description": "Alteração de produto"
+					},
+					"response": []
+				}
+			],
+			"description": "Produto"
+		},
+		{
+			"name": "Provider",
+			"item": [
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{providerUrl}}delete?id=1",
+							"host": [
+								"{{baseUrl}}{{providerUrl}}delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								}
+							]
+						},
+						"description": "Remoção de fornecedor"
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "company-name",
+									"value": "LionHeart Software Ltda",
+									"description": "Razão social"
+								},
+								{
+									"key": "fantasy-name",
+									"value": "LHS",
+									"description": "Nome fantasia"
+								},
+								{
+									"key": "state-registration",
+									"value": "909.67734-36",
+									"description": "Inscrição estadual"
+								},
+								{
+									"key": "cnpj",
+									"value": "33.769.510/0001-87",
+									"description": "CNPJ"
+								},
+								{
+									"key": "foundation-date",
+									"value": "2018-06-03",
+									"description": "Data de fundação"
+								},
+								{
+									"key": "postal-code",
+									"value": "83403-420",
+									"description": "Código postal"
+								},
+								{
+									"key": "district",
+									"value": "Roça Grande",
+									"description": "Bairro"
+								},
+								{
+									"key": "city",
+									"value": "Colombo",
+									"description": "Cidade"
+								},
+								{
+									"key": "state",
+									"value": "PR",
+									"description": "Estado"
+								},
+								{
+									"key": "address",
+									"value": "Rua Rio Iguaçu",
+									"description": "Endereço"
+								},
+								{
+									"key": "number",
+									"value": "490",
+									"description": "Número"
+								},
+								{
+									"key": "complement",
+									"value": "Prédio vermelho ao lado da lavanderia",
+									"description": "Complemento"
+								},
+								{
+									"key": "email",
+									"value": "contato@lhs.inf.br",
+									"description": "E-mail"
+								},
+								{
+									"key": "phone",
+									"value": "(41) 3945-2150",
+									"description": "Telefone"
+								},
+								{
+									"key": "cell-phone",
+									"value": "(41) 98716-2994",
+									"description": "Celular"
+								},
+								{
+									"key": "note",
+									"value": "Atividade Principal\n6202300 - Desenvolvimento e licenciamento de programas de computador customizáveis.\n\nAtividades Secundárias\n6209100 - Suporte técnico, manutenção e outros serviços em tecnologia da informação;\n4614100 - Representantes comerciais e agentes do comércio de máquinas, equipamentos, embarcações e aeronaves.",
+									"description": "Observação",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{providerUrl}}insert",
+							"host": [
+								"{{baseUrl}}{{providerUrl}}insert"
+							]
+						},
+						"description": "Cadastro de fornecedor"
+					},
+					"response": []
+				},
+				{
+					"name": "SELECT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{providerUrl}}select?all=SP",
+							"host": [
+								"{{baseUrl}}{{providerUrl}}select"
+							],
+							"query": [
+								{
+									"key": "all",
+									"value": "SP",
+									"description": "Todos"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Identificador",
+									"disabled": true
+								},
+								{
+									"key": "company-name",
+									"value": "",
+									"description": "Razão social",
+									"disabled": true
+								},
+								{
+									"key": "fantasy-name",
+									"value": "",
+									"description": "Nome fantasia",
+									"disabled": true
+								},
+								{
+									"key": "state-registration",
+									"value": "",
+									"description": "Inscrição estadual",
+									"disabled": true
+								},
+								{
+									"key": "cnpj",
+									"value": "",
+									"description": "CNPJ",
+									"disabled": true
+								},
+								{
+									"key": "foundation-date",
+									"value": "",
+									"description": "Data de fundação",
+									"disabled": true
+								},
+								{
+									"key": "postal-code",
+									"value": "",
+									"description": "Código postal",
+									"disabled": true
+								},
+								{
+									"key": "district",
+									"value": "",
+									"description": "Bairro",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "",
+									"description": "Cidade",
+									"disabled": true
+								},
+								{
+									"key": "state",
+									"value": "",
+									"description": "Estado",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "",
+									"description": "Endereço",
+									"disabled": true
+								},
+								{
+									"key": "number",
+									"value": "",
+									"description": "Número",
+									"disabled": true
+								},
+								{
+									"key": "complement",
+									"value": "",
+									"description": "Complemento",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "",
+									"description": "E-mail",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "",
+									"description": "Telefone",
+									"disabled": true
+								},
+								{
+									"key": "cell-phone",
+									"value": "",
+									"description": "Celular",
+									"disabled": true
+								},
+								{
+									"key": "note",
+									"value": "",
+									"description": "Observação",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Recuperação de fornecedor"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								},
+								{
+									"key": "company-name",
+									"value": "Ian e Aparecida Vidros ME",
+									"description": "Razão social"
+								},
+								{
+									"key": "fantasy-name",
+									"value": "Vidraçaria Constantine",
+									"description": "Nome fantasia"
+								},
+								{
+									"key": "state-registration",
+									"value": "258.54307-68",
+									"description": "Inscrição estadual"
+								},
+								{
+									"key": "cnpj",
+									"value": "21.988.958/0001-02",
+									"description": "CNPJ"
+								},
+								{
+									"key": "foundation-date",
+									"value": "2013-06-05",
+									"description": "Data de fundação"
+								},
+								{
+									"key": "postal-code",
+									"value": "82900-080",
+									"description": "Código postal"
+								},
+								{
+									"key": "district",
+									"value": "Cajuru",
+									"description": "Bairro"
+								},
+								{
+									"key": "city",
+									"value": "Curitiba",
+									"description": "Cidade"
+								},
+								{
+									"key": "state",
+									"value": "PR",
+									"description": "Estado"
+								},
+								{
+									"key": "address",
+									"value": "Rua Tarquínio Santos",
+									"description": "Endereço"
+								},
+								{
+									"key": "number",
+									"value": "462",
+									"description": "Número"
+								},
+								{
+									"key": "complement",
+									"value": "",
+									"description": "Complemento"
+								},
+								{
+									"key": "email",
+									"value": "financeiro@constantine.com.br",
+									"description": "E-mail"
+								},
+								{
+									"key": "phone",
+									"value": "(41) 2679-8085",
+									"description": "Telefone"
+								},
+								{
+									"key": "cell-phone",
+									"value": "",
+									"description": "Celular"
+								},
+								{
+									"key": "note",
+									"value": "",
+									"description": "Observação"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{providerUrl}}update",
+							"host": [
+								"{{baseUrl}}{{providerUrl}}update"
+							]
+						},
+						"description": "Alteração de fornecedor"
+					},
+					"response": []
+				}
+			],
+			"description": "Fornecedor"
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{purchaseUrl}}delete?id=1",
+							"host": [
+								"{{baseUrl}}{{purchaseUrl}}delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								}
+							]
+						},
+						"description": "Remoção de compra"
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "provider",
+									"value": "2",
+									"description": "Fornecedor"
+								},
+								{
+									"key": "employee",
+									"value": "1",
+									"description": "Funcionário"
+								},
+								{
+									"key": "day",
+									"value": "2023-08-20",
+									"description": "Dia"
+								},
+								{
+									"key": "form-of-payment",
+									"value": "TED",
+									"description": "Forma de pagamento"
+								},
+								{
+									"key": "discount",
+									"value": "12.00",
+									"description": "Desconto"
+								},
+								{
+									"key": "total",
+									"value": "216.02",
+									"description": "Total"
+								},
+								{
+									"key": "products[]",
+									"value": "1",
+									"description": "Produto 1"
+								},
+								{
+									"key": "products[]",
+									"value": "2",
+									"description": "Produto 2"
+								},
+								{
+									"key": "products-prices[]",
+									"value": "125.50",
+									"description": "Preço do produto 1"
+								},
+								{
+									"key": "products-prices[]",
+									"value": "39.99",
+									"description": "Preço do produto 2"
+								},
+								{
+									"key": "products-quantities[]",
+									"value": "1",
+									"description": "Quantidade do produto 1"
+								},
+								{
+									"key": "products-quantities[]",
+									"value": "3",
+									"description": "Quantidade do produto 2"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{purchaseUrl}}insert",
+							"host": [
+								"{{baseUrl}}{{purchaseUrl}}insert"
+							]
+						},
+						"description": "Cadastro de compra"
+					},
+					"response": []
+				},
+				{
+					"name": "SELECT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{purchaseUrl}}select?all=PIX",
+							"host": [
+								"{{baseUrl}}{{purchaseUrl}}select"
+							],
+							"query": [
+								{
+									"key": "all",
+									"value": "PIX",
+									"description": "Todos"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Identificador",
+									"disabled": true
+								},
+								{
+									"key": "provider",
+									"value": "",
+									"description": "Fornecedor",
+									"disabled": true
+								},
+								{
+									"key": "employee",
+									"value": "",
+									"description": "Funcionário",
+									"disabled": true
+								},
+								{
+									"key": "day",
+									"value": "",
+									"description": "Dia",
+									"disabled": true
+								},
+								{
+									"key": "form-of-payment",
+									"value": "",
+									"description": "Forma de pagamento",
+									"disabled": true
+								},
+								{
+									"key": "discount",
+									"value": "",
+									"description": "Desconto",
+									"disabled": true
+								},
+								{
+									"key": "total",
+									"value": "",
+									"description": "Total",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Recuperação de compra"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "2",
+									"description": "Identificador"
+								},
+								{
+									"key": "provider",
+									"value": "19",
+									"description": "Fornecedor"
+								},
+								{
+									"key": "employee",
+									"value": "2",
+									"description": "Funcionário"
+								},
+								{
+									"key": "day",
+									"value": "2023-08-20",
+									"description": "Dia"
+								},
+								{
+									"key": "form-of-payment",
+									"value": "PIX",
+									"description": "Forma de pagamento"
+								},
+								{
+									"key": "discount",
+									"value": "7.50",
+									"description": "Desconto"
+								},
+								{
+									"key": "total",
+									"value": "392.94",
+									"description": "Total"
+								},
+								{
+									"key": "products[]",
+									"value": "3",
+									"description": "Produto 1"
+								},
+								{
+									"key": "products[]",
+									"value": "4",
+									"description": "Produto 2"
+								},
+								{
+									"key": "products[]",
+									"value": "5",
+									"description": "Produto 3"
+								},
+								{
+									"key": "products-prices[]",
+									"value": "130.00",
+									"description": "Preço do produto 1"
+								},
+								{
+									"key": "products-prices[]",
+									"value": "45.00",
+									"description": "Preço do produto 2"
+								},
+								{
+									"key": "products-prices[]",
+									"value": "79.90",
+									"description": "Preço do produto 3"
+								},
+								{
+									"key": "products-quantities[]",
+									"value": "1",
+									"description": "Quantidade do produto 1"
+								},
+								{
+									"key": "products-quantities[]",
+									"value": "3",
+									"description": "Quantidade do produto 2"
+								},
+								{
+									"key": "products-quantities[]",
+									"value": "2",
+									"description": "Quantidade do produto 3"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{purchaseUrl}}update",
+							"host": [
+								"{{baseUrl}}{{purchaseUrl}}update"
+							]
+						},
+						"description": "Alteração de compra"
+					},
+					"response": []
+				}
+			],
+			"description": "Compra"
+		},
+		{
+			"name": "Record",
+			"item": [
+				{
+					"name": "SELECT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{recordUrl}}select?all=update",
+							"host": [
+								"{{baseUrl}}{{recordUrl}}select"
+							],
+							"query": [
+								{
+									"key": "all",
+									"value": "update",
+									"description": "Todos"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Identificador",
+									"disabled": true
+								},
+								{
+									"key": "reference",
+									"value": "",
+									"description": "Referência",
+									"disabled": true
+								},
+								{
+									"key": "action",
+									"value": "",
+									"description": "Ação",
+									"disabled": true
+								},
+								{
+									"key": "entity",
+									"value": "",
+									"description": "Entidade",
+									"disabled": true
+								},
+								{
+									"key": "employee",
+									"value": "",
+									"description": "Funcionário",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "",
+									"description": "Descrição",
+									"disabled": true
+								},
+								{
+									"key": "day",
+									"value": "",
+									"description": "Dia",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Recuperação de registro"
+					},
+					"response": []
+				}
+			],
+			"description": "Registro"
+		},
+		{
+			"name": "Service",
+			"item": [
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{serviceUrl}}delete?id=1",
+							"host": [
+								"{{baseUrl}}{{serviceUrl}}delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								}
+							]
+						},
+						"description": "Remoção de serviço"
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "4001",
+									"description": "Código"
+								},
+								{
+									"key": "name",
+									"value": "Instalação Office 365",
+									"description": "Nome"
+								},
+								{
+									"key": "type",
+									"value": "Instalação de software",
+									"description": "Tipo"
+								},
+								{
+									"key": "price",
+									"value": "35.00",
+									"description": "Preço"
+								},
+								{
+									"key": "workload",
+									"value": "01:00",
+									"description": "Carga de trabalho"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{serviceUrl}}insert",
+							"host": [
+								"{{baseUrl}}{{serviceUrl}}insert"
+							]
+						},
+						"description": "Cadastro de serviço"
+					},
+					"response": []
+				},
+				{
+					"name": "SELECT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{serviceUrl}}select?all=Windows",
+							"host": [
+								"{{baseUrl}}{{serviceUrl}}select"
+							],
+							"query": [
+								{
+									"key": "all",
+									"value": "Windows",
+									"description": "Todos"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Identificador",
+									"disabled": true
+								},
+								{
+									"key": "code",
+									"value": "",
+									"description": "Código",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "",
+									"description": "Nome",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "",
+									"description": "Tipo",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "",
+									"description": "Preço",
+									"disabled": true
+								},
+								{
+									"key": "workload",
+									"value": "",
+									"description": "Carga de trabalho",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Recuperação de serviço"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								},
+								{
+									"key": "code",
+									"value": "5002",
+									"description": "Código"
+								},
+								{
+									"key": "name",
+									"value": "Instalação Windows 10",
+									"description": "Nome"
+								},
+								{
+									"key": "type",
+									"value": "Formatação de sistema",
+									"description": "Tipo"
+								},
+								{
+									"key": "price",
+									"value": "50.00",
+									"description": "Preço"
+								},
+								{
+									"key": "workload",
+									"value": "03:00",
+									"description": "Carga de trabalho"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{serviceUrl}}update",
+							"host": [
+								"{{baseUrl}}{{serviceUrl}}update"
+							]
+						},
+						"description": "Alteração de serviço"
+					},
+					"response": []
+				}
+			],
+			"description": "Serviço"
+		},
+		{
+			"name": "Sale",
+			"item": [
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{saleUrl}}delete?id=1",
+							"host": [
+								"{{baseUrl}}{{saleUrl}}delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								}
+							]
+						},
+						"description": "Remoção de venda"
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "client",
+									"value": "1",
+									"description": "Cliente"
+								},
+								{
+									"key": "day",
+									"value": "2023-08-23",
+									"description": "Dia"
+								},
+								{
+									"key": "form-of-payment",
+									"value": "PIX",
+									"description": "Forma de pagamento"
+								},
+								{
+									"key": "discount",
+									"value": "5.00",
+									"description": "Desconto"
+								},
+								{
+									"key": "total",
+									"value": "574.75",
+									"description": "Total"
+								},
+								{
+									"key": "products[]",
+									"value": "1",
+									"description": "Produto 1"
+								},
+								{
+									"key": "products[]",
+									"value": "2",
+									"description": "Produto 2"
+								},
+								{
+									"key": "products-prices[]",
+									"value": "135.00",
+									"description": "Preço do produto 1"
+								},
+								{
+									"key": "products-prices[]",
+									"value": "40.00",
+									"description": "Preço do produto 2"
+								},
+								{
+									"key": "products-quantities[]",
+									"value": "2",
+									"description": "Quantidade do produto 1"
+								},
+								{
+									"key": "products-quantities[]",
+									"value": "5",
+									"description": "Quantidade do produto 2"
+								},
+								{
+									"key": "services[]",
+									"value": "1",
+									"description": "Serviço 1"
+								},
+								{
+									"key": "services[]",
+									"value": "2",
+									"description": "Serviço 2"
+								},
+								{
+									"key": "services-prices[]",
+									"value": "35.00",
+									"description": "Preço do serviço 1"
+								},
+								{
+									"key": "services-prices[]",
+									"value": "50.00",
+									"description": "Preço do serviço 2"
+								},
+								{
+									"key": "services-quantities[]",
+									"value": "1",
+									"description": "Quantidade do serviço 1"
+								},
+								{
+									"key": "services-quantities[]",
+									"value": "1",
+									"description": "Quantidade do serviço 2"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{saleUrl}}insert",
+							"host": [
+								"{{baseUrl}}{{saleUrl}}insert"
+							]
+						},
+						"description": "Cadastro de venda"
+					},
+					"response": []
+				},
+				{
+					"name": "SELECT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}{{saleUrl}}select?all=2023-08-20",
+							"host": [
+								"{{baseUrl}}{{saleUrl}}select"
+							],
+							"query": [
+								{
+									"key": "all",
+									"value": "2023-08-20",
+									"description": "Todos"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"description": "Identificador",
+									"disabled": true
+								},
+								{
+									"key": "client",
+									"value": "",
+									"description": "Cliente",
+									"disabled": true
+								},
+								{
+									"key": "employee",
+									"value": "",
+									"description": "Funcionário",
+									"disabled": true
+								},
+								{
+									"key": "day",
+									"value": "",
+									"description": "Dia",
+									"disabled": true
+								},
+								{
+									"key": "form-of-payment",
+									"value": "",
+									"description": "Forma de pagamento",
+									"disabled": true
+								},
+								{
+									"key": "discount",
+									"value": "",
+									"description": "Desconto",
+									"disabled": true
+								},
+								{
+									"key": "total",
+									"value": "",
+									"description": "Total",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Recuperação de venda"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "Identificador"
+								},
+								{
+									"key": "client",
+									"value": "2",
+									"description": "Cliente"
+								},
+								{
+									"key": "day",
+									"value": "2023-08-28",
+									"description": "Dia"
+								},
+								{
+									"key": "form-of-payment",
+									"value": "Cartão de débito",
+									"description": "Forma de pagamento"
+								},
+								{
+									"key": "discount",
+									"value": "7.50",
+									"description": "Desconto"
+								},
+								{
+									"key": "total",
+									"value": "392.94",
+									"description": "Total"
+								},
+								{
+									"key": "products[]",
+									"value": "1",
+									"description": "Produto 1"
+								},
+								{
+									"key": "products[]",
+									"value": "2",
+									"description": "Produto 2"
+								},
+								{
+									"key": "products[]",
+									"value": "3",
+									"description": "Produto 3"
+								},
+								{
+									"key": "products-prices[]",
+									"value": "130.00",
+									"description": "Preço do produto 1"
+								},
+								{
+									"key": "products-prices[]",
+									"value": "45.00",
+									"description": "Preço do produto 2"
+								},
+								{
+									"key": "products-prices[]",
+									"value": "79.90",
+									"description": "Preço do produto 3"
+								},
+								{
+									"key": "products-quantities[]",
+									"value": "1",
+									"description": "Quantidade do produto 1"
+								},
+								{
+									"key": "products-quantities[]",
+									"value": "3",
+									"description": "Quantidade do produto 2"
+								},
+								{
+									"key": "products-quantities[]",
+									"value": "2",
+									"description": "Quantidade do produto 3"
+								},
+								{
+									"key": "services[]",
+									"value": "1",
+									"description": "Serviço 1"
+								},
+								{
+									"key": "services-prices[]",
+									"value": "35.00",
+									"description": "Preço do serviço 1"
+								},
+								{
+									"key": "services-quantities[]",
+									"value": "1",
+									"description": "Quantidade do serviço 1"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}{{saleUrl}}update",
+							"host": [
+								"{{baseUrl}}{{saleUrl}}update"
+							]
+						},
+						"description": "Alteração de venda"
+					},
+					"response": []
+				}
+			],
+			"description": "Venda"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "budgetUrl",
+			"value": "/action/budget/",
+			"type": "string"
+		},
+		{
+			"key": "clientUrl",
+			"value": "/action/client/",
+			"type": "string"
+		},
+		{
+			"key": "employeeUrl",
+			"value": "/action/employee/",
+			"type": "string"
+		},
+		{
+			"key": "productUrl",
+			"value": "/action/product/",
+			"type": "string"
+		},
+		{
+			"key": "providerUrl",
+			"value": "/action/provider/",
+			"type": "string"
+		},
+		{
+			"key": "purchaseUrl",
+			"value": "/action/purchase/",
+			"type": "string"
+		},
+		{
+			"key": "recordUrl",
+			"value": "/action/record/",
+			"type": "string"
+		},
+		{
+			"key": "saleUrl",
+			"value": "/action/sale/",
+			"type": "string"
+		},
+		{
+			"key": "serviceUrl",
+			"value": "/action/service/",
+			"type": "string"
+		}
+	]
+}
