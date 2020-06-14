@@ -12,7 +12,7 @@ date_default_timezone_set('America/Sao_Paulo');
 ini_set('default_charset', 'UTF-8');
 
 // MODO DE DEPURAÇÃO
-define('DEBUG', true);
+define('DEBUG', false);
 define('DELAY', 0.0);
 
 // MODO DE TESTE (NÃO É NECESSÁRIO REALIZAR AUTENTICAÇÃO)
@@ -43,16 +43,16 @@ define('LOADING', __DIR__ . '/templates/loading.php');
 define('SETTINGS', __DIR__ . '/templates/settings.php');
 
 // ENDEREÇO DO HOST DO MYSQL
-define('MYSQL_HOST', '192.168.0.112');
+define('MYSQL_HOST', 'host');
 
 // NOME DO BANCO DE DADOS MYSQL
-define('MYSQL_SCHEMA', 'stm');
+define('MYSQL_SCHEMA', 'schema');
 
 // USUÁRIO DO BANCO DE DADOS MYSQL
-define('MYSQL_USER', 'pi');
+define('MYSQL_USER', 'user');
 
 // SENHA DO BANCO DE DADOS MYSQL
-define('MYSQL_PASSWORD', 'mjolnir');
+define('MYSQL_PASSWORD', 'password');
 
 // TEMPO DE EXECUÇÃO MÁXIMO DE UM SCRIPT
 ini_set('max_execution_time', 30);
