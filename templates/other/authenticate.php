@@ -121,9 +121,9 @@
 				</form>
 				<!--/ FORMULÁRIO DE AUTENTICAÇÃO -->
 
-				<?php include_once(FLASH); ?>
+				<?php include_once FLASH; ?>
 
-				<?php include_once(LOADING); ?>
+				<?php include_once LOADING; ?>
 
 			</div>
 		</div>

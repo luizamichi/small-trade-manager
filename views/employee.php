@@ -8,15 +8,14 @@ namespace view\employee;
 define('HELP', __DIR__ . '/../templates/employee/help.php');
 define('REMOVE', __DIR__ . '/../templates/employee/delete.php');
 
-require_once(__DIR__ . '/../controllers/employee.php'); // CARREGA O CONTROLADOR DE FUNCIONÁRIOS (BEAUTIFY, FORMULATE)
-require_once(__DIR__ . '/../controllers/session.php'); // CARREGA O CONTROLADOR DE SESSÕES (AUTHENTICATE)
-require_once(__DIR__ . '/../controllers/setting.php'); // CARREGA O CONTROLADOR DE CONFIGURAÇÕES (LOAD)
-require_once(__DIR__ . '/../mysql.php'); // CARREGA AS FUNÇÕES DE MANIPULAÇÃO DO BANCO DE DADOS (EXECUTE)
-require_once(__DIR__ . '/other.php'); // CARREGA AS FUNÇÕES DE OUTRAS VISÕES (AUTHENTICATE)
+require_once __DIR__ . '/../controllers/employee.php'; // CARREGA O CONTROLADOR DE FUNCIONÁRIOS (BEAUTIFY, FORMULATE)
+require_once __DIR__ . '/../controllers/session.php'; // CARREGA O CONTROLADOR DE SESSÕES (AUTHENTICATE)
+require_once __DIR__ . '/../controllers/setting.php'; // CARREGA O CONTROLADOR DE CONFIGURAÇÕES (LOAD)
+require_once __DIR__ . '/../mysql.php'; // CARREGA AS FUNÇÕES DE MANIPULAÇÃO DO BANCO DE DADOS (EXECUTE)
+require_once __DIR__ . '/other.php'; // CARREGA AS FUNÇÕES DE OUTRAS VISÕES (AUTHENTICATE)
 
 
-/**
- * IMPRIME O HTML DA PÁGINA DE FUNCIONÁRIOS
+/** IMPRIME O HTML DA PÁGINA DE FUNCIONÁRIOS
  * @return bool
  */
 function index(): bool {
@@ -31,19 +30,20 @@ function index(): bool {
 
 		$query = 'select * from employees order by name asc;';
 		$tuples = \mysql\execute($query);
-		if($tuples)
+		if($tuples) {
 			$tuples = array_map('\controller\employee\beautify', $tuples);
-		else
+		}
+		else {
 			$message = 'Ainda não há funcionários cadastrados no sistema.';
+		}
 
-		require_once(__DIR__ . '/../templates/employee/index.php'); // CARREGA O TEMPLATE DE FUNCIONÁRIOS (INDEX)
+		require_once __DIR__ . '/../templates/employee/index.php'; // CARREGA O TEMPLATE DE FUNCIONÁRIOS (INDEX)
 		return true;
 	}
 }
 
 
-/**
- * IMPRIME O HTML DA PÁGINA DE INSERÇÃO DE FUNCIONÁRIOS
+/** IMPRIME O HTML DA PÁGINA DE INSERÇÃO DE FUNCIONÁRIOS
  * @return bool
  */
 function insert(): bool {
@@ -56,23 +56,23 @@ function insert(): bool {
 		define('PAGE_TITLE', 'Cadastrar Funcionário');
 		define('PAGE_NAME', 'employee');
 
-		require_once(__DIR__ . '/../templates/employee/insert.php'); // CARREGA O TEMPLATE DE FUNCIONÁRIOS (INSERT)
+		require_once __DIR__ . '/../templates/employee/insert.php'; // CARREGA O TEMPLATE DE FUNCIONÁRIOS (INSERT)
 		return true;
 	}
 }
 
 
-/**
- * IMPRIME O HTML DA PÁGINA DE ALTERAÇÃO DE FUNCIONÁRIOS
+/** IMPRIME O HTML DA PÁGINA DE ALTERAÇÃO DE FUNCIONÁRIOS
  * @return bool
  */
 function update(): bool {
-	if(!\controller\session\authenticate('employee'))
+	if(!\controller\session\authenticate('employee')) {
 		\view\other\authenticate();
+	}
 
 	else {
 		$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-		$query = 'select * from employees where id=' . $id . ';';
+		$query = 'select * from employees where id = ' . $id . ';';
 		$operation = \mysql\execute($query);
 
 		if(isset($operation[0])) {
@@ -80,31 +80,32 @@ function update(): bool {
 			define('PAGE_NAME', 'employee');
 
 			$tuple = \controller\employee\formulate($operation[0]);
-			$query = 'select * from permissions where id=' . $tuple->permission . ';';
+			$query = 'select * from permissions where id = ' . $tuple->permission . ';';
 			$tuple->permission = \mysql\execute($query)[0];
-			require_once(__DIR__ . '/../templates/employee/update.php'); // CARREGA O TEMPLATE DE FUNCIONÁRIOS (UPDATE)
+			require_once __DIR__ . '/../templates/employee/update.php'; // CARREGA O TEMPLATE DE FUNCIONÁRIOS (UPDATE)
 			return true;
 		}
 
-		else
+		else {
 			index();
+		}
 	}
 
 	return false;
 }
 
 
-/**
- * IMPRIME O HTML DA PÁGINA DE DADOS INDIVIDUAIS DO FUNCIONÁRIO
+/** IMPRIME O HTML DA PÁGINA DE DADOS INDIVIDUAIS DO FUNCIONÁRIO
  * @return bool
  */
 function view(): bool {
-	if(!\controller\session\authenticate('employee'))
+	if(!\controller\session\authenticate('employee')) {
 		\view\other\authenticate();
+	}
 
 	else {
 		$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-		$query = 'select * from employees where id=' . $id . ';';
+		$query = 'select * from employees where id = ' . $id . ';';
 		$operation = \mysql\execute($query);
 
 		if(isset($operation[0])) {
@@ -112,16 +113,17 @@ function view(): bool {
 			define('PAGE_NAME', 'employee');
 
 			$tuple = \controller\employee\beautify($operation[0]);
-			$query = 'select * from permissions where id=' . $tuple->permission . ';';
+			$query = 'select * from permissions where id = ' . $tuple->permission . ';';
 			$tuple->permission = \mysql\execute($query)[0];
 
 			$setting = \controller\setting\load();
-			require_once(__DIR__ . '/../templates/employee/view.php'); // CARREGA O TEMPLATE DE FUNCIONÁRIOS (VIEW)
+			require_once __DIR__ . '/../templates/employee/view.php'; // CARREGA O TEMPLATE DE FUNCIONÁRIOS (VIEW)
 			return true;
 		}
 
-		else
+		else {
 			index();
+		}
 	}
 
 	return false;

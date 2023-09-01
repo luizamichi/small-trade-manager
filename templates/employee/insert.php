@@ -1,4 +1,4 @@
-	<?php include_once(HEADER); ?>
+	<?php include_once HEADER; ?>
 
 	<div class="container mb-5">
 		<!-- CABEÇALHO -->
@@ -9,9 +9,9 @@
 		</div>
 		<!--/ CABEÇALHO -->
 
-		<?php include_once(FLASH); ?>
+		<?php include_once FLASH; ?>
 
-		<?php include_once(LOADING); ?>
+		<?php include_once LOADING; ?>
 
 		<!-- FORMULÁRIO DE CADASTRO -->
 		<form accept-charset="utf-8" action="<?=BASE_URL . 'action/' . PAGE_NAME?>/insert/" autocomplete="on" class="pb-3" enctype="application/x-www-form-urlencoded" id="insert-employee" method="post" name="insert-employee" rel="noopener" target="_self">
@@ -224,9 +224,9 @@
 		<!--/ FORMULÁRIO DE CADASTRO -->
 	</div>
 
-	<?php include_once(HELP); ?>
+	<?php include_once HELP; ?>
 
-	<?php include_once(FOOTER); ?>
+	<?php include_once FOOTER; ?>
 
 </body>
 

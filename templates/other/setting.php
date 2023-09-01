@@ -1,4 +1,4 @@
-	<?php include_once(HEADER); ?>
+	<?php include_once HEADER; ?>
 
 	<div class="container mb-5">
 		<!-- CABEÇALHO -->
@@ -9,13 +9,13 @@
 		</div>
 		<!--/ CABEÇALHO -->
 
-		<?php include_once(FLASH); ?>
+		<?php include_once FLASH; ?>
 
-		<?php include_once(LOADING); ?>
+		<?php include_once LOADING; ?>
 
 		<!-- FORMULÁRIO DE GERENCIAMENTO -->
 		<form accept-charset="utf-8" action="<?=BASE_URL . 'action/' . PAGE_NAME?>/manage/" autocomplete="on" class="pb-3" enctype="application/x-www-form-urlencoded" id="manage-setting" method="post" name="update-setting" rel="noopener" target="_self">
-			<input form="manage-setting" id="id" name="id" type="hidden" value="<?=$tuple->id?>"/>
+			<input form="manage-setting" id="id" name="id" type="hidden" value="<?=$tuple->id ?? ''?>"/>
 			<div class="form-row">
 				<div class="col-md-6 form-group">
 					<label for="company-name">Razão Social</label>
@@ -107,7 +107,7 @@
 
 			<?php if(!$tuple->company_name || !$tuple->fantasy_name || !$tuple->cnpj || !$tuple->phone || !$tuple->postal_code || !$tuple->district || !$tuple->city || !$tuple->state || !$tuple->address || !$tuple->number): ?>
 			<input class="btn btn-primary" form="manage-setting" type="submit" value="Cadastrar"/>
-			<input class="btn btn-dark" form="insert-sale" type="reset" value="Limpar"/>
+			<input class="btn btn-dark" form="manage-setting" type="reset" value="Limpar"/>
 			<?php else: ?>
 			<input class="btn btn-primary" form="manage-setting" type="submit" value="Alterar"/>
 			<?php endif; ?>
@@ -116,9 +116,9 @@
 		<!--/ FORMULÁRIO DE GERENCIAMENTO -->
 	</div>
 
-	<?php include_once(HELP); ?>
+	<?php include_once HELP; ?>
 
-	<?php include_once(FOOTER); ?>
+	<?php include_once FOOTER; ?>
 
 </body>
 

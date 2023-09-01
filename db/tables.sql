@@ -2,30 +2,7 @@ create database if not exists stm character set 'utf8' collate 'utf8_general_ci'
 use stm;
 set collation_connection = 'utf8_general_ci';
 set sql_mode = 'no_auto_value_on_zero';
-set time_zone = '+03:00';
-
--- INFORMAÇÕES DO IBGE
-create table if not exists regions (
-	id int unsigned auto_increment not null primary key,
-	initials varchar(2) character set 'utf8' not null,
-	name varchar(15) character set 'utf8' not null
-) engine='InnoDB' default charset='utf8' collate='utf8_general_ci';
-
-create table if not exists states (
-	id int unsigned auto_increment not null primary key,
-	initials char(2) character set 'utf8' not null,
-	name varchar(20) character set 'utf8' not null,
-	region int unsigned not null,
-	foreign key (region) references regions(id)
-) engine='InnoDB' default charset='utf8' collate='utf8_general_ci';
-
-create table if not exists cities (
-	id int unsigned auto_increment not null primary key,
-	name varchar(35) character set 'utf8' not null,
-	state int unsigned not null,
-	foreign key (state) references states(id)
-) engine='InnoDB' default charset='utf8' collate='utf8_general_ci';
--- !INFORMAÇÕES DO IBGE
+set time_zone = '-03:00';
 
 -- DADOS DO SISTEMA
 create table if not exists budgets (
@@ -77,7 +54,7 @@ create table if not exists employees (
 	complement varchar(32) character set 'utf8' null,
 	email varchar(32) character set 'utf8' not null unique,
 	phone char(10) character set 'utf8' null,
-	cell_phone char(11) character set 'utf8' null,
+	cell_phone char(11) character set 'utf8' null unique,
 	sex char(1) character set 'utf8' not null,
 	note varchar(512) character set 'utf8' null,
 	permission int unsigned not null unique,
@@ -101,7 +78,7 @@ create table if not exists permissions (
 
 create table if not exists products (
 	id int unsigned auto_increment not null primary key,
-	code int unsigned not null,
+	code int unsigned not null unique,
 	name varchar(32) character set 'utf8' not null,
 	provider int unsigned not null,
 	unity varchar(4) character set 'utf8' not null,

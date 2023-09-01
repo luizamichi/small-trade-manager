@@ -10,9 +10,12 @@ namespace api\util;
  * @return void
  */
 function content(): void {
+	// DEFINE O CONTEÚDO DA RESPOSTA (JSON)
 	header('Content-Type: application/json; charset=utf-8');
-	$expiration_date = date_add(date_create(), date_interval_create_from_date_string('1 month'));
-	header('Expires: ' . date_format($expiration_date, 'D, d M Y H:i:s \G\M\T'));
+
+	// DEFINE UMA DATA DE EXPIRAÇÃO DO CONTEÚDO (1 MÊS)
+	$expirationDate = date_add(date_create(), date_interval_create_from_date_string('1 month'));
+	header('Expires: ' . date_format($expirationDate, 'D, d M Y H:i:s \G\M\T'));
 
 	// HABILITA O COMPARTILHAMENTO DE RECURSOS ENTRE DIFERENTES ORIGENS (CORS)
 	header('Access-Control-Allow-Origin: *');
@@ -25,19 +28,28 @@ function content(): void {
  * @param int $status
  * @param bool $success
  * @param string $message
- * @param array $data
+ * @param array<mixed> $data
  * @return bool
  */
-function response(int $status=200, bool $success=true, string $message='Resposta padrão da API.', array $data=[]): bool {
+function response(int $status=200, bool $success=true, string $message='', array $data=[]): bool {
 	http_response_code($status);
+	$success = $success && $status >= 400 ? false : $success;
 
-	echo(json_encode([
+	if(empty($message)) {
+		$message = match($status) {
+			400 => 'Requisição mal formulada.',
+			401 => 'Usuário não autorizado.',
+			default => 'Resposta padrão da API.'
+		};
+	}
+
+	echo json_encode([
 		'status' => $status,
 		'success' => $success,
 		'message' => $message,
 		'data' => $data,
 		'error' => error_get_last()
-	]));
+	]);
 
 	return $success;
 }

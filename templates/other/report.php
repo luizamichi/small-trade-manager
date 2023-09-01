@@ -1,4 +1,4 @@
-	<?php include_once(HEADER); ?>
+	<?php include_once HEADER; ?>
 
 	<div class="container mb-5">
 		<!-- CABEÇALHO -->
@@ -9,7 +9,7 @@
 		</div>
 		<!--/ CABEÇALHO -->
 
-		<?php include_once(FLASH); ?>
+		<?php include_once FLASH; ?>
 
 		<?php if($purchases): ?>
 		<!-- GRÁFICOS DE COMPRAS -->
@@ -28,7 +28,7 @@
 		<?php endif; ?>
 	</div>
 
-	<?php include_once(FOOTER); ?>
+	<?php include_once FOOTER; ?>
 
 	<!-- GERADOR DE GRÁFICOS -->
 	<script src="<?=BASE_URL?>js/chart.js"></script>
@@ -41,7 +41,7 @@
 				datasets: [
 					{
 						label: "Compra",
-						backgroundColor: "rgba(142, 94, 162, 0.75)",
+						backgroundColor: "rgba(146, 9, 226, 0.5)",
 						borderColor: "#8e5ea2",
 						borderWidth: 1,
 						data: [<?=$purchases->values?>]
@@ -80,7 +80,7 @@
 				labels: [<?=$sales->days?>],
 				datasets: [{
 					label: "Venda",
-					backgroundColor: "rgba(62, 149, 205, 0.75)",
+					backgroundColor: "rgba(62, 149, 205, 0.5)",
 					borderColor: "#3e95cd",
 					borderWidth: 1,
 					data: [<?=$sales->values?>]

@@ -1,0 +1,3044 @@
+{
+	"_type": "export",
+	"__export_format": 4,
+	"__export_date": "2023-08-28T23:39:52.125Z",
+	"__export_source": "insomnia.desktop.app:v2023.5.6",
+	"resources": [
+		{
+			"_id": "req_a3eb5566f48345b581d2226a04a0e76c",
+			"parentId": "fld_79a5b7da4a8f45309b10df8c077a83cb",
+			"modified": 1693265742662,
+			"created": 1693265742662,
+			"url": "{{baseUrl}}{{budgetUrl}}update",
+			"name": "UPDATE",
+			"description": "Alteração de orçamento",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"type": "text",
+						"name": "id",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "day",
+						"disabled": false,
+						"value": "2023-08-20"
+					},
+					{
+						"name": "form-of-payment",
+						"disabled": false,
+						"value": "Cartão de crédito"
+					},
+					{
+						"name": "discount",
+						"disabled": false,
+						"value": "8.00"
+					},
+					{
+						"name": "total",
+						"disabled": false,
+						"value": "170.20"
+					},
+					{
+						"name": "products[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "products[]",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "products-prices[]",
+						"disabled": false,
+						"value": "100.00"
+					},
+					{
+						"name": "products-prices[]",
+						"disabled": false,
+						"value": "45.00"
+					},
+					{
+						"name": "products-quantities[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "products-quantities[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "services[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "services-prices[]",
+						"disabled": false,
+						"value": "40.00"
+					},
+					{
+						"name": "services-quantities[]",
+						"disabled": false,
+						"value": "1"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742662,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_79a5b7da4a8f45309b10df8c077a83cb",
+			"parentId": "fld_9712582b83f34638ae208cc4d3c4984e",
+			"modified": 1693265834738,
+			"created": 1693265742649,
+			"name": "Budget",
+			"description": "Orçamento",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1693265742844,
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_9712582b83f34638ae208cc4d3c4984e",
+			"parentId": "wrk_18252fe1260b4e8a8b3c837977fe54dc",
+			"modified": 1693265742647,
+			"created": 1693265742647,
+			"name": "Small Trade Manager",
+			"description": "Gerenciador de pequeno negócio",
+			"environment": {
+				"baseUrl": "http://localhost:8080",
+				"budgetUrl": "/action/budget/",
+				"clientUrl": "/action/client/",
+				"employeeUrl": "/action/employee/",
+				"productUrl": "/action/product/",
+				"providerUrl": "/action/provider/",
+				"purchaseUrl": "/action/purchase/",
+				"recordUrl": "/action/record/",
+				"saleUrl": "/action/sale/",
+				"serviceUrl": "/action/service/"
+			},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1693265742647,
+			"_type": "request_group"
+		},
+		{
+			"_id": "wrk_18252fe1260b4e8a8b3c837977fe54dc",
+			"parentId": null,
+			"modified": 1693265768495,
+			"created": 1693265742643,
+			"name": "Small Trade Manager",
+			"description": "",
+			"scope": "collection",
+			"_type": "workspace"
+		},
+		{
+			"_id": "req_9ddf29eba38c492785005cce1808b52e",
+			"parentId": "fld_79a5b7da4a8f45309b10df8c077a83cb",
+			"modified": 1693265742659,
+			"created": 1693265742659,
+			"url": "{{baseUrl}}{{budgetUrl}}select",
+			"name": "SELECT",
+			"description": "Recuperação de orçamento",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "all",
+					"value": "2023-08-20",
+					"disabled": false
+				},
+				{
+					"name": "id",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "client",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "employee",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "day",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "form-of-payment",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "discount",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "total",
+					"value": "",
+					"disabled": true
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742659,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_18d82d280b3b4195b2e8e651024d1616",
+			"parentId": "fld_79a5b7da4a8f45309b10df8c077a83cb",
+			"modified": 1693265742657,
+			"created": 1693265742657,
+			"url": "{{baseUrl}}{{budgetUrl}}insert",
+			"name": "INSERT",
+			"description": "Cadastro de orçamento",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "day",
+						"disabled": false,
+						"value": "2023-08-20"
+					},
+					{
+						"name": "form-of-payment",
+						"disabled": false,
+						"value": "Dinheiro"
+					},
+					{
+						"name": "discount",
+						"disabled": false,
+						"value": "0.00"
+					},
+					{
+						"name": "total",
+						"disabled": false,
+						"value": "325.00"
+					},
+					{
+						"name": "products[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "products-prices[]",
+						"disabled": false,
+						"value": "100.00"
+					},
+					{
+						"name": "products-quantities[]",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "services[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "services[]",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "services-prices[]",
+						"disabled": false,
+						"value": "50.00"
+					},
+					{
+						"name": "services-prices[]",
+						"disabled": false,
+						"value": "75.00"
+					},
+					{
+						"name": "services-quantities[]",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "services-quantities[]",
+						"disabled": false,
+						"value": "1"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742657,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2249a51a871c49a8bcbf4575c142b449",
+			"parentId": "fld_79a5b7da4a8f45309b10df8c077a83cb",
+			"modified": 1693265742651,
+			"created": 1693265742651,
+			"url": "{{baseUrl}}{{budgetUrl}}delete",
+			"name": "DELETE",
+			"description": "Remoção de orçamento",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "id",
+					"value": "1",
+					"disabled": false
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742651,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2ff335b842554c13910000b2f6acd8fb",
+			"parentId": "fld_a5f3c61e5a0a48d3949a61acbdb75c65",
+			"modified": 1693265742673,
+			"created": 1693265742673,
+			"url": "{{baseUrl}}{{clientUrl}}update",
+			"name": "UPDATE",
+			"description": "Alteração de cliente",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "id",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "name",
+						"disabled": false,
+						"value": "Bruna"
+					},
+					{
+						"name": "surname",
+						"disabled": false,
+						"value": "Reis Maia"
+					},
+					{
+						"name": "rg",
+						"disabled": false,
+						"value": "14.749.133-2"
+					},
+					{
+						"name": "cpf",
+						"disabled": false,
+						"value": "422.447.010-18"
+					},
+					{
+						"name": "birthday",
+						"disabled": false,
+						"value": "1995-08-04"
+					},
+					{
+						"name": "postal-code",
+						"disabled": false,
+						"value": "22793-081"
+					},
+					{
+						"name": "district",
+						"disabled": false,
+						"value": "Barra da Tijuca"
+					},
+					{
+						"name": "city",
+						"disabled": false,
+						"value": "Rio de Janeiro"
+					},
+					{
+						"name": "state",
+						"disabled": false,
+						"value": "RJ"
+					},
+					{
+						"name": "address",
+						"disabled": false,
+						"value": "Avenida das Américas"
+					},
+					{
+						"name": "number",
+						"disabled": false,
+						"value": "5740"
+					},
+					{
+						"name": "complement",
+						"disabled": false,
+						"value": "Casa Del Mar"
+					},
+					{
+						"name": "email",
+						"disabled": false,
+						"value": "brunamarquezine@gmail.com"
+					},
+					{
+						"name": "phone",
+						"disabled": false,
+						"value": "(22) 3727-5876"
+					},
+					{
+						"name": "cell-phone",
+						"disabled": false,
+						"value": "(24) 98498-1983"
+					},
+					{
+						"name": "sex",
+						"disabled": false,
+						"value": "F"
+					},
+					{
+						"name": "note",
+						"disabled": false,
+						"value": "Sob o nome famoso de Bruna Marquezine, encontra-se uma talentosa atriz do Brasil. Sua estreia nas telas ocorreu em 2000, quando ela se destacou como uma das jovens entrevistadoras no programa para crianças chamado Gente Inocente."
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742673,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_a5f3c61e5a0a48d3949a61acbdb75c65",
+			"parentId": "fld_9712582b83f34638ae208cc4d3c4984e",
+			"modified": 1693265837096,
+			"created": 1693265742664,
+			"name": "Client",
+			"description": "Cliente",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1693265742794,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_6ea2ff6bb40041269c2efd7c13f32119",
+			"parentId": "fld_a5f3c61e5a0a48d3949a61acbdb75c65",
+			"modified": 1693265742670,
+			"created": 1693265742670,
+			"url": "{{baseUrl}}{{clientUrl}}select",
+			"name": "SELECT",
+			"description": "Recuperação de cliente",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "all",
+					"value": "PR",
+					"disabled": false
+				},
+				{
+					"name": "id",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "name",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "surname",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "rg",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "cpf",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "birthday",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "postal-code",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "district",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "city",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "state",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "address",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "number",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "complement",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "email",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "phone",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "cell-phone",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "sex",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "note",
+					"value": "",
+					"disabled": true
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742670,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6838e3dee4a945d99bd1cadeda506d9e",
+			"parentId": "fld_a5f3c61e5a0a48d3949a61acbdb75c65",
+			"modified": 1693265742668,
+			"created": 1693265742668,
+			"url": "{{baseUrl}}{{clientUrl}}insert",
+			"name": "INSERT",
+			"description": "Cadastro de cliente",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "name",
+						"disabled": false,
+						"value": "Neymar"
+					},
+					{
+						"name": "surname",
+						"disabled": false,
+						"value": "Santos"
+					},
+					{
+						"name": "rg",
+						"disabled": false,
+						"value": "16.300.454-7"
+					},
+					{
+						"name": "cpf",
+						"disabled": false,
+						"value": "039.527.110-04"
+					},
+					{
+						"name": "birthday",
+						"disabled": false,
+						"value": "1992-02-05"
+					},
+					{
+						"name": "postal-code",
+						"disabled": false,
+						"value": "11724-000"
+					},
+					{
+						"name": "district",
+						"disabled": false,
+						"value": "Jardim Gloria"
+					},
+					{
+						"name": "city",
+						"disabled": false,
+						"value": "Praia Grande"
+					},
+					{
+						"name": "state",
+						"disabled": false,
+						"value": "SP"
+					},
+					{
+						"name": "address",
+						"disabled": false,
+						"value": "Avenida Ministro Marcos Freire"
+					},
+					{
+						"name": "number",
+						"disabled": false,
+						"value": "2112"
+					},
+					{
+						"name": "complement",
+						"disabled": false,
+						"value": "Instituto Projeto Neymar Jr."
+					},
+					{
+						"name": "email",
+						"disabled": false,
+						"value": "contato@institutonjr.org.br"
+					},
+					{
+						"name": "phone",
+						"disabled": false,
+						"value": "(17) 3748-6732"
+					},
+					{
+						"name": "cell-phone",
+						"disabled": false,
+						"value": "(15) 97938-8303"
+					},
+					{
+						"name": "sex",
+						"disabled": false,
+						"value": "M"
+					},
+					{
+						"name": "note",
+						"disabled": false,
+						"value": "Neymar Jr., ponta-esquerda e meia-atacante de renome, representa o Al-Hilal e a Seleção Brasileira, destacando-se como a figura proeminente do futebol nacional e um dos mais notáveis talentos globais."
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742668,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_eedad346d8564159a834f7d612eb7dc8",
+			"parentId": "fld_a5f3c61e5a0a48d3949a61acbdb75c65",
+			"modified": 1693265742666,
+			"created": 1693265742666,
+			"url": "{{baseUrl}}{{clientUrl}}delete",
+			"name": "DELETE",
+			"description": "Remoção de cliente",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "id",
+					"value": "1",
+					"disabled": false
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742666,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_09d1a911977542a1b1a5fe2d8b8031e3",
+			"parentId": "fld_69935ca7811e427d82ae6925c4421914",
+			"modified": 1693265742695,
+			"created": 1693265742695,
+			"url": "{{baseUrl}}/action/user/unauthenticate",
+			"name": "UNAUTHENTICATE",
+			"description": "Logout de usuário",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742695,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_69935ca7811e427d82ae6925c4421914",
+			"parentId": "fld_5de040b860dd4867894e7311970b7ba0",
+			"modified": 1693265841653,
+			"created": 1693265742689,
+			"name": "Other",
+			"description": "Outro",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1693265742785,
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_5de040b860dd4867894e7311970b7ba0",
+			"parentId": "fld_9712582b83f34638ae208cc4d3c4984e",
+			"modified": 1693265838777,
+			"created": 1693265742676,
+			"name": "Employee",
+			"description": "Funcionário",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1693265742769,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_ef0e9fed65e34a9a828161bcae8f058f",
+			"parentId": "fld_69935ca7811e427d82ae6925c4421914",
+			"modified": 1693265742693,
+			"created": 1693265742693,
+			"url": "{{baseUrl}}/action/setting/manage",
+			"name": "SETTING",
+			"description": "Gerenciamento de opção",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "company-name",
+						"disabled": false,
+						"value": "Aderaldo & Amichi Ltda."
+					},
+					{
+						"name": "fantasy-name",
+						"disabled": false,
+						"value": "Depósito de Materiais de Construção São Judas Tadeu"
+					},
+					{
+						"name": "cnpj",
+						"disabled": false,
+						"value": "02.306.557/0001-80"
+					},
+					{
+						"name": "postal-code",
+						"disabled": false,
+						"value": "86150-000"
+					},
+					{
+						"name": "district",
+						"disabled": false,
+						"value": "Centro"
+					},
+					{
+						"name": "city",
+						"disabled": false,
+						"value": "Alvorada do Sul"
+					},
+					{
+						"name": "state",
+						"disabled": false,
+						"value": "PR"
+					},
+					{
+						"name": "address",
+						"disabled": false,
+						"value": "Avenida Joaquim Alves Bento de Lima"
+					},
+					{
+						"name": "number",
+						"disabled": false,
+						"value": "213"
+					},
+					{
+						"name": "email",
+						"disabled": false,
+						"value": "dpsjt@hotmail.com"
+					},
+					{
+						"name": "phone",
+						"disabled": false,
+						"value": "(43) 3661-2014"
+					},
+					{
+						"name": "website",
+						"disabled": false,
+						"value": "https://dpsjt.com.br"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742693,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_89a0907a8cdf48cba4c1dda2b641f6fa",
+			"parentId": "fld_69935ca7811e427d82ae6925c4421914",
+			"modified": 1693265742691,
+			"created": 1693265742691,
+			"url": "{{baseUrl}}/action/user/authenticate",
+			"name": "AUTHENTICATE",
+			"description": "Autenticação de usuário",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"type": "text",
+						"name": "alias",
+						"disabled": false,
+						"value": "Login do usuário"
+					},
+					{
+						"type": "text",
+						"name": "password",
+						"disabled": false,
+						"value": "Chave secreta"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742691,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_91182157d45549678e282af5017784f2",
+			"parentId": "fld_5de040b860dd4867894e7311970b7ba0",
+			"modified": 1693265742685,
+			"created": 1693265742685,
+			"url": "{{baseUrl}}{{employeeUrl}}update",
+			"name": "UPDATE",
+			"description": "Alteração de funcionário",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "id",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "name",
+						"disabled": false,
+						"value": "Vinícius José"
+					},
+					{
+						"name": "surname",
+						"disabled": false,
+						"value": "Paixão de Oliveira Júnior"
+					},
+					{
+						"name": "alias",
+						"disabled": false,
+						"value": "vinijr"
+					},
+					{
+						"name": "password",
+						"disabled": false,
+						"value": "Vini malvadeza"
+					},
+					{
+						"name": "rg",
+						"disabled": false,
+						"value": "18.543.498-8"
+					},
+					{
+						"name": "cpf",
+						"disabled": false,
+						"value": "639.347.637-07"
+					},
+					{
+						"name": "birthday",
+						"disabled": false,
+						"value": "2000-07-12"
+					},
+					{
+						"name": "postal-code",
+						"disabled": false,
+						"value": "20755-240"
+					},
+					{
+						"name": "district",
+						"disabled": false,
+						"value": "Abolição"
+					},
+					{
+						"name": "city",
+						"disabled": false,
+						"value": "Rio de Janeiro"
+					},
+					{
+						"name": "state",
+						"disabled": false,
+						"value": "RJ"
+					},
+					{
+						"name": "address",
+						"disabled": false,
+						"value": "Rua Braulio Muniz"
+					},
+					{
+						"name": "number",
+						"disabled": false,
+						"value": "194"
+					},
+					{
+						"name": "complement",
+						"disabled": false,
+						"value": "Casa"
+					},
+					{
+						"name": "email",
+						"disabled": false,
+						"value": "vinijr@gmail.com"
+					},
+					{
+						"name": "phone",
+						"disabled": false,
+						"value": "(22) 2263-8495"
+					},
+					{
+						"name": "cell-phone",
+						"disabled": false,
+						"value": "(22) 98781-3116"
+					},
+					{
+						"name": "sex",
+						"disabled": false,
+						"value": "M"
+					},
+					{
+						"name": "note",
+						"disabled": false,
+						"value": "Sob a designação de Vinícius Júnior, apelidado de Vini, emerge um jogador de futebol do Brasil que exerce sua perícia como extremo esquerdo. No momento, exibe suas habilidades no Real Madrid."
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "budget"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "client"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "employee"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "product"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "provider"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "purchase"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "record"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "report"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "sale"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "setting"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "service"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742685,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_7dd49e67dfb84dc3b831f065d213992e",
+			"parentId": "fld_5de040b860dd4867894e7311970b7ba0",
+			"modified": 1693265742683,
+			"created": 1693265742683,
+			"url": "{{baseUrl}}{{employeeUrl}}select",
+			"name": "SELECT",
+			"description": "Recuperação de funcionário",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "all",
+					"value": "RJ",
+					"disabled": false
+				},
+				{
+					"name": "id",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "name",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "surname",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "alias",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "password",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "rg",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "cpf",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "birthday",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "postal-code",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "district",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "city",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "state",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "address",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "number",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "complement",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "email",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "phone",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "cell-phone",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "sex",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "note",
+					"value": "",
+					"disabled": true
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742683,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_ee868e328cec4ebaac8003a4962e9662",
+			"parentId": "fld_5de040b860dd4867894e7311970b7ba0",
+			"modified": 1693265742680,
+			"created": 1693265742680,
+			"url": "{{baseUrl}}{{employeeUrl}}insert",
+			"name": "INSERT",
+			"description": "Cadastro de funcionário",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "name",
+						"disabled": false,
+						"value": "Edson"
+					},
+					{
+						"name": "surname",
+						"disabled": false,
+						"value": "Arantes do Nascimento"
+					},
+					{
+						"name": "alias",
+						"disabled": false,
+						"value": "reipele"
+					},
+					{
+						"name": "password",
+						"disabled": false,
+						"value": "Edson era antes do nascimento"
+					},
+					{
+						"name": "rg",
+						"disabled": false,
+						"value": "10.651.883-5"
+					},
+					{
+						"name": "cpf",
+						"disabled": false,
+						"value": "253.520.400-20"
+					},
+					{
+						"name": "birthday",
+						"disabled": false,
+						"value": "1940-10-23"
+					},
+					{
+						"name": "postal-code",
+						"disabled": false,
+						"value": "37410-000"
+					},
+					{
+						"name": "district",
+						"disabled": false,
+						"value": "Centro"
+					},
+					{
+						"name": "city",
+						"disabled": false,
+						"value": "Três Corações"
+					},
+					{
+						"name": "state",
+						"disabled": false,
+						"value": "MG"
+					},
+					{
+						"name": "address",
+						"disabled": false,
+						"value": "Rua Edson Arantes do Nascimento"
+					},
+					{
+						"name": "number",
+						"disabled": false,
+						"value": "1000"
+					},
+					{
+						"name": "complement",
+						"disabled": false,
+						"value": "Casa"
+					},
+					{
+						"name": "email",
+						"disabled": false,
+						"value": "suporte@pele10.org"
+					},
+					{
+						"name": "phone",
+						"disabled": false,
+						"value": "(37) 3406-8517"
+					},
+					{
+						"name": "cell-phone",
+						"disabled": false,
+						"value": "(38) 98570-8785"
+					},
+					{
+						"name": "sex",
+						"disabled": false,
+						"value": "M"
+					},
+					{
+						"name": "note",
+						"disabled": false,
+						"value": "Sob a alcunha de Pelé, encontra-se um ex-jogador de futebol do Brasil que desempenhava o papel de atacante. Sua reputação o coloca entre os mais supremos atletas que o mundo já viu."
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "budget"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "client"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "employee"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "product"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "provider"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "purchase"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "record"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "report"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "sale"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "setting"
+					},
+					{
+						"name": "permission[]",
+						"disabled": false,
+						"value": "service"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742680,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_d5745acae54f4735b842d7e5f06ab7fd",
+			"parentId": "fld_5de040b860dd4867894e7311970b7ba0",
+			"modified": 1693265742678,
+			"created": 1693265742678,
+			"url": "{{baseUrl}}{{employeeUrl}}delete",
+			"name": "DELETE",
+			"description": "Remoção de funcionário",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "id",
+					"value": "1",
+					"disabled": false
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742678,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_7b2796a6b2e04e0f8d1bfedd49d55149",
+			"parentId": "fld_8c870ffa04ea4c23aa22bf86c737bc4c",
+			"modified": 1693265742705,
+			"created": 1693265742705,
+			"url": "{{baseUrl}}{{productUrl}}update",
+			"name": "UPDATE",
+			"description": "Alteração de produto",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "id",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "code",
+						"disabled": false,
+						"value": "153956"
+					},
+					{
+						"name": "name",
+						"disabled": false,
+						"value": "Cadeira Office Husky Sit 150"
+					},
+					{
+						"name": "provider",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "unity",
+						"disabled": false,
+						"value": "UN"
+					},
+					{
+						"name": "gross-price",
+						"disabled": false,
+						"value": "539.95"
+					},
+					{
+						"name": "net-price",
+						"disabled": false,
+						"value": "894.68"
+					},
+					{
+						"name": "minimum-stock",
+						"disabled": false,
+						"value": "10"
+					},
+					{
+						"name": "maximum-stock",
+						"disabled": false,
+						"value": "50"
+					},
+					{
+						"name": "amount",
+						"disabled": false,
+						"value": "10"
+					},
+					{
+						"name": "weigth",
+						"disabled": false,
+						"value": "25.493"
+					},
+					{
+						"name": "situation",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "source",
+						"disabled": false,
+						"value": "0"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742705,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_8c870ffa04ea4c23aa22bf86c737bc4c",
+			"parentId": "fld_9712582b83f34638ae208cc4d3c4984e",
+			"modified": 1693265843536,
+			"created": 1693265742697,
+			"name": "Product",
+			"description": "Produto",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1693265742756.5,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_df9688cd52d24937bc8b39f6d56fd727",
+			"parentId": "fld_8c870ffa04ea4c23aa22bf86c737bc4c",
+			"modified": 1693265742702,
+			"created": 1693265742702,
+			"url": "{{baseUrl}}{{productUrl}}select",
+			"name": "SELECT",
+			"description": "Recuperação de produto",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "all",
+					"value": "Xiaomi",
+					"disabled": false
+				},
+				{
+					"name": "id",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "code",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "name",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "provider",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "unit",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "gross-price",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "net-price",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "minimum-stock",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "maximum-stock",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "amount",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "weigth",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "situation",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "source",
+					"value": "",
+					"disabled": true
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742702,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_a2f19bc882de407ea4481dcce3d366af",
+			"parentId": "fld_8c870ffa04ea4c23aa22bf86c737bc4c",
+			"modified": 1693265742700,
+			"created": 1693265742700,
+			"url": "{{baseUrl}}{{productUrl}}insert",
+			"name": "INSERT",
+			"description": "Cadastro de produto",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "code",
+						"disabled": false,
+						"value": "95483"
+					},
+					{
+						"name": "name",
+						"disabled": false,
+						"value": "Teclado Mecânico Redragon Mitra"
+					},
+					{
+						"name": "provider",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "unity",
+						"disabled": false,
+						"value": "UN"
+					},
+					{
+						"name": "gross-price",
+						"disabled": false,
+						"value": "269.90"
+					},
+					{
+						"name": "net-price",
+						"disabled": false,
+						"value": "411.65"
+					},
+					{
+						"name": "minimum-stock",
+						"disabled": false,
+						"value": "5"
+					},
+					{
+						"name": "maximum-stock",
+						"disabled": false,
+						"value": "25"
+					},
+					{
+						"name": "amount",
+						"disabled": false,
+						"value": "15"
+					},
+					{
+						"name": "weigth",
+						"disabled": false,
+						"value": "1.255"
+					},
+					{
+						"name": "situation",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "source",
+						"disabled": false,
+						"value": "1"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742700,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6b84aedadaf945af89de54bb8e55f0b7",
+			"parentId": "fld_8c870ffa04ea4c23aa22bf86c737bc4c",
+			"modified": 1693265742699,
+			"created": 1693265742699,
+			"url": "{{baseUrl}}{{productUrl}}delete",
+			"name": "DELETE",
+			"description": "Remoção de produto",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "id",
+					"value": "1",
+					"disabled": false
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742699,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2cdd2b6d1e834038b87180bdff7c0241",
+			"parentId": "fld_a714995f097e4d45a94b0f5e18c2b288",
+			"modified": 1693265742715,
+			"created": 1693265742715,
+			"url": "{{baseUrl}}{{providerUrl}}update",
+			"name": "UPDATE",
+			"description": "Alteração de fornecedor",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "id",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "company-name",
+						"disabled": false,
+						"value": "Ian e Aparecida Vidros ME"
+					},
+					{
+						"name": "fantasy-name",
+						"disabled": false,
+						"value": "Vidraçaria Constantine"
+					},
+					{
+						"name": "state-registration",
+						"disabled": false,
+						"value": "258.54307-68"
+					},
+					{
+						"name": "cnpj",
+						"disabled": false,
+						"value": "21.988.958/0001-02"
+					},
+					{
+						"name": "foundation-date",
+						"disabled": false,
+						"value": "2013-06-05"
+					},
+					{
+						"name": "postal-code",
+						"disabled": false,
+						"value": "82900-080"
+					},
+					{
+						"name": "district",
+						"disabled": false,
+						"value": "Cajuru"
+					},
+					{
+						"name": "city",
+						"disabled": false,
+						"value": "Curitiba"
+					},
+					{
+						"name": "state",
+						"disabled": false,
+						"value": "PR"
+					},
+					{
+						"name": "address",
+						"disabled": false,
+						"value": "Rua Tarquínio Santos"
+					},
+					{
+						"name": "number",
+						"disabled": false,
+						"value": "462"
+					},
+					{
+						"name": "complement",
+						"disabled": false,
+						"value": ""
+					},
+					{
+						"name": "email",
+						"disabled": false,
+						"value": "financeiro@constantine.com.br"
+					},
+					{
+						"name": "phone",
+						"disabled": false,
+						"value": "(41) 2679-8085"
+					},
+					{
+						"name": "cell-phone",
+						"disabled": false,
+						"value": ""
+					},
+					{
+						"name": "note",
+						"disabled": false,
+						"value": ""
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742715,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_a714995f097e4d45a94b0f5e18c2b288",
+			"parentId": "fld_9712582b83f34638ae208cc4d3c4984e",
+			"modified": 1693265845585,
+			"created": 1693265742707,
+			"name": "Provider",
+			"description": "Fornecedor",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1693265742750.25,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_c6d967c210c74d4cb3bfee4b347cfe7e",
+			"parentId": "fld_a714995f097e4d45a94b0f5e18c2b288",
+			"modified": 1693265742713,
+			"created": 1693265742713,
+			"url": "{{baseUrl}}{{providerUrl}}select",
+			"name": "SELECT",
+			"description": "Recuperação de fornecedor",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "all",
+					"value": "SP",
+					"disabled": false
+				},
+				{
+					"name": "id",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "company-name",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "fantasy-name",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "state-registration",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "cnpj",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "foundation-date",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "postal-code",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "district",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "city",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "state",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "address",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "number",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "complement",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "email",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "phone",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "cell-phone",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "note",
+					"value": "",
+					"disabled": true
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742713,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_d0f3962764b747b290b94101ca217659",
+			"parentId": "fld_a714995f097e4d45a94b0f5e18c2b288",
+			"modified": 1693265742711,
+			"created": 1693265742711,
+			"url": "{{baseUrl}}{{providerUrl}}insert",
+			"name": "INSERT",
+			"description": "Cadastro de fornecedor",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "company-name",
+						"disabled": false,
+						"value": "LionHeart Software Ltda"
+					},
+					{
+						"name": "fantasy-name",
+						"disabled": false,
+						"value": "LHS"
+					},
+					{
+						"name": "state-registration",
+						"disabled": false,
+						"value": "909.67734-36"
+					},
+					{
+						"name": "cnpj",
+						"disabled": false,
+						"value": "33.769.510/0001-87"
+					},
+					{
+						"name": "foundation-date",
+						"disabled": false,
+						"value": "2018-06-03"
+					},
+					{
+						"name": "postal-code",
+						"disabled": false,
+						"value": "83403-420"
+					},
+					{
+						"name": "district",
+						"disabled": false,
+						"value": "Roça Grande"
+					},
+					{
+						"name": "city",
+						"disabled": false,
+						"value": "Colombo"
+					},
+					{
+						"name": "state",
+						"disabled": false,
+						"value": "PR"
+					},
+					{
+						"name": "address",
+						"disabled": false,
+						"value": "Rua Rio Iguaçu"
+					},
+					{
+						"name": "number",
+						"disabled": false,
+						"value": "490"
+					},
+					{
+						"name": "complement",
+						"disabled": false,
+						"value": "Prédio vermelho ao lado da lavanderia"
+					},
+					{
+						"name": "email",
+						"disabled": false,
+						"value": "contato@lhs.inf.br"
+					},
+					{
+						"name": "phone",
+						"disabled": false,
+						"value": "(41) 3945-2150"
+					},
+					{
+						"name": "cell-phone",
+						"disabled": false,
+						"value": "(41) 98716-2994"
+					},
+					{
+						"type": "text",
+						"name": "note",
+						"disabled": false,
+						"value": "Atividade Principal\n6202300 - Desenvolvimento e licenciamento de programas de computador customizáveis.\n\nAtividades Secundárias\n6209100 - Suporte técnico, manutenção e outros serviços em tecnologia da informação;\n4614100 - Representantes comerciais e agentes do comércio de máquinas, equipamentos, embarcações e aeronaves."
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742711,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_3db9c48c56bd48329b70aaca9daa9760",
+			"parentId": "fld_a714995f097e4d45a94b0f5e18c2b288",
+			"modified": 1693265742709,
+			"created": 1693265742709,
+			"url": "{{baseUrl}}{{providerUrl}}delete",
+			"name": "DELETE",
+			"description": "Remoção de fornecedor",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "id",
+					"value": "1",
+					"disabled": false
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742709,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_3a182e4d95fd4f5d952664cdfd28a1c9",
+			"parentId": "fld_5d0072408fe848ea810bb2f1c736dd6a",
+			"modified": 1693265742727,
+			"created": 1693265742727,
+			"url": "{{baseUrl}}{{purchaseUrl}}update",
+			"name": "UPDATE",
+			"description": "Alteração de compra",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "id",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "provider",
+						"disabled": false,
+						"value": "19"
+					},
+					{
+						"name": "employee",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "day",
+						"disabled": false,
+						"value": "2023-08-20"
+					},
+					{
+						"name": "form-of-payment",
+						"disabled": false,
+						"value": "PIX"
+					},
+					{
+						"name": "discount",
+						"disabled": false,
+						"value": "7.50"
+					},
+					{
+						"name": "total",
+						"disabled": false,
+						"value": "392.94"
+					},
+					{
+						"name": "products[]",
+						"disabled": false,
+						"value": "3"
+					},
+					{
+						"name": "products[]",
+						"disabled": false,
+						"value": "4"
+					},
+					{
+						"name": "products[]",
+						"disabled": false,
+						"value": "5"
+					},
+					{
+						"name": "products-prices[]",
+						"disabled": false,
+						"value": "130.00"
+					},
+					{
+						"name": "products-prices[]",
+						"disabled": false,
+						"value": "45.00"
+					},
+					{
+						"name": "products-prices[]",
+						"disabled": false,
+						"value": "79.90"
+					},
+					{
+						"name": "products-quantities[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "products-quantities[]",
+						"disabled": false,
+						"value": "3"
+					},
+					{
+						"name": "products-quantities[]",
+						"disabled": false,
+						"value": "2"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742727,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_5d0072408fe848ea810bb2f1c736dd6a",
+			"parentId": "fld_9712582b83f34638ae208cc4d3c4984e",
+			"modified": 1693265847095,
+			"created": 1693265742718,
+			"name": "Purchase",
+			"description": "Compra",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1693265742747.125,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_d6ac2d3da10d48c4b9174da6527d45be",
+			"parentId": "fld_5d0072408fe848ea810bb2f1c736dd6a",
+			"modified": 1693265742725,
+			"created": 1693265742725,
+			"url": "{{baseUrl}}{{purchaseUrl}}select",
+			"name": "SELECT",
+			"description": "Recuperação de compra",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "all",
+					"value": "PIX",
+					"disabled": false
+				},
+				{
+					"name": "id",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "provider",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "employee",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "day",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "form-of-payment",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "discount",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "total",
+					"value": "",
+					"disabled": true
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742725,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_41d5d603d0e44979859c85bc42981c95",
+			"parentId": "fld_5d0072408fe848ea810bb2f1c736dd6a",
+			"modified": 1693265742723,
+			"created": 1693265742723,
+			"url": "{{baseUrl}}{{purchaseUrl}}insert",
+			"name": "INSERT",
+			"description": "Cadastro de compra",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "provider",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "employee",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "day",
+						"disabled": false,
+						"value": "2023-08-20"
+					},
+					{
+						"name": "form-of-payment",
+						"disabled": false,
+						"value": "TED"
+					},
+					{
+						"name": "discount",
+						"disabled": false,
+						"value": "12.00"
+					},
+					{
+						"name": "total",
+						"disabled": false,
+						"value": "216.02"
+					},
+					{
+						"name": "products[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "products[]",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "products-prices[]",
+						"disabled": false,
+						"value": "125.50"
+					},
+					{
+						"name": "products-prices[]",
+						"disabled": false,
+						"value": "39.99"
+					},
+					{
+						"name": "products-quantities[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "products-quantities[]",
+						"disabled": false,
+						"value": "3"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742723,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_21327ab6013749ee9b9056af90cd7b59",
+			"parentId": "fld_5d0072408fe848ea810bb2f1c736dd6a",
+			"modified": 1693265742720,
+			"created": 1693265742720,
+			"url": "{{baseUrl}}{{purchaseUrl}}delete",
+			"name": "DELETE",
+			"description": "Remoção de compra",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "id",
+					"value": "1",
+					"disabled": false
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742720,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_fd0b916936ed42aa9ce62dd226772696",
+			"parentId": "fld_4d66ad8937964bca9383254a79734bd6",
+			"modified": 1693265742731,
+			"created": 1693265742731,
+			"url": "{{baseUrl}}{{recordUrl}}select",
+			"name": "SELECT",
+			"description": "Recuperação de registro",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "all",
+					"value": "update",
+					"disabled": false
+				},
+				{
+					"name": "id",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "reference",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "action",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "entity",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "employee",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "description",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "day",
+					"value": "",
+					"disabled": true
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742731,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_4d66ad8937964bca9383254a79734bd6",
+			"parentId": "fld_9712582b83f34638ae208cc4d3c4984e",
+			"modified": 1693265849003,
+			"created": 1693265742729,
+			"name": "Record",
+			"description": "Registro",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1693265742745.5625,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_b3073475723e41f19037d6f1950ceba4",
+			"parentId": "fld_e3388faa0b08494cb58a7ee991ad2fd0",
+			"modified": 1693265742750,
+			"created": 1693265742750,
+			"url": "{{baseUrl}}{{saleUrl}}update",
+			"name": "UPDATE",
+			"description": "Alteração de venda",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "id",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "client",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "day",
+						"disabled": false,
+						"value": "2023-08-28"
+					},
+					{
+						"name": "form-of-payment",
+						"disabled": false,
+						"value": "Cartão de débito"
+					},
+					{
+						"name": "discount",
+						"disabled": false,
+						"value": "7.50"
+					},
+					{
+						"name": "total",
+						"disabled": false,
+						"value": "392.94"
+					},
+					{
+						"name": "products[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "products[]",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "products[]",
+						"disabled": false,
+						"value": "3"
+					},
+					{
+						"name": "products-prices[]",
+						"disabled": false,
+						"value": "130.00"
+					},
+					{
+						"name": "products-prices[]",
+						"disabled": false,
+						"value": "45.00"
+					},
+					{
+						"name": "products-prices[]",
+						"disabled": false,
+						"value": "79.90"
+					},
+					{
+						"name": "products-quantities[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "products-quantities[]",
+						"disabled": false,
+						"value": "3"
+					},
+					{
+						"name": "products-quantities[]",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "services[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "services-prices[]",
+						"disabled": false,
+						"value": "35.00"
+					},
+					{
+						"name": "services-quantities[]",
+						"disabled": false,
+						"value": "1"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742750,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_e3388faa0b08494cb58a7ee991ad2fd0",
+			"parentId": "fld_9712582b83f34638ae208cc4d3c4984e",
+			"modified": 1693265742744,
+			"created": 1693265742744,
+			"name": "Sale",
+			"description": "Venda",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1693265742744,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_207d05ae7872478c9e9658145a52f092",
+			"parentId": "fld_e3388faa0b08494cb58a7ee991ad2fd0",
+			"modified": 1693265742749,
+			"created": 1693265742749,
+			"url": "{{baseUrl}}{{saleUrl}}select",
+			"name": "SELECT",
+			"description": "Recuperação de venda",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "all",
+					"value": "2023-08-20",
+					"disabled": false
+				},
+				{
+					"name": "id",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "client",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "employee",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "day",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "form-of-payment",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "discount",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "total",
+					"value": "",
+					"disabled": true
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742749,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b64755e262494bdbacf575fe05a6ed45",
+			"parentId": "fld_e3388faa0b08494cb58a7ee991ad2fd0",
+			"modified": 1693265742747,
+			"created": 1693265742747,
+			"url": "{{baseUrl}}{{saleUrl}}insert",
+			"name": "INSERT",
+			"description": "Cadastro de venda",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "client",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "day",
+						"disabled": false,
+						"value": "2023-08-23"
+					},
+					{
+						"name": "form-of-payment",
+						"disabled": false,
+						"value": "PIX"
+					},
+					{
+						"name": "discount",
+						"disabled": false,
+						"value": "5.00"
+					},
+					{
+						"name": "total",
+						"disabled": false,
+						"value": "574.75"
+					},
+					{
+						"name": "products[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "products[]",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "products-prices[]",
+						"disabled": false,
+						"value": "135.00"
+					},
+					{
+						"name": "products-prices[]",
+						"disabled": false,
+						"value": "40.00"
+					},
+					{
+						"name": "products-quantities[]",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "products-quantities[]",
+						"disabled": false,
+						"value": "5"
+					},
+					{
+						"name": "services[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "services[]",
+						"disabled": false,
+						"value": "2"
+					},
+					{
+						"name": "services-prices[]",
+						"disabled": false,
+						"value": "35.00"
+					},
+					{
+						"name": "services-prices[]",
+						"disabled": false,
+						"value": "50.00"
+					},
+					{
+						"name": "services-quantities[]",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "services-quantities[]",
+						"disabled": false,
+						"value": "1"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742747,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_0d0c239d9f294799901bb3dc30234a62",
+			"parentId": "fld_e3388faa0b08494cb58a7ee991ad2fd0",
+			"modified": 1693265742745,
+			"created": 1693265742745,
+			"url": "{{baseUrl}}{{saleUrl}}delete",
+			"name": "DELETE",
+			"description": "Remoção de venda",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "id",
+					"value": "1",
+					"disabled": false
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742745,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_da3082a147ce4799a4be82517f702616",
+			"parentId": "fld_499b5e5711694491bcb85ac673c37f2c",
+			"modified": 1693265742742,
+			"created": 1693265742742,
+			"url": "{{baseUrl}}{{serviceUrl}}update",
+			"name": "UPDATE",
+			"description": "Alteração de serviço",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "id",
+						"disabled": false,
+						"value": "1"
+					},
+					{
+						"name": "code",
+						"disabled": false,
+						"value": "5002"
+					},
+					{
+						"name": "name",
+						"disabled": false,
+						"value": "Instalação Windows 10"
+					},
+					{
+						"name": "type",
+						"disabled": false,
+						"value": "Formatação de sistema"
+					},
+					{
+						"name": "price",
+						"disabled": false,
+						"value": "50.00"
+					},
+					{
+						"name": "workload",
+						"disabled": false,
+						"value": "03:00"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742742,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_499b5e5711694491bcb85ac673c37f2c",
+			"parentId": "fld_9712582b83f34638ae208cc4d3c4984e",
+			"modified": 1693265742733,
+			"created": 1693265742733,
+			"name": "Service",
+			"description": "Serviço",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1693265742733,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_7efb7d392fc44c92aef953de9d56e1e6",
+			"parentId": "fld_499b5e5711694491bcb85ac673c37f2c",
+			"modified": 1693265742740,
+			"created": 1693265742740,
+			"url": "{{baseUrl}}{{serviceUrl}}select",
+			"name": "SELECT",
+			"description": "Recuperação de serviço",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "all",
+					"value": "Windows",
+					"disabled": false
+				},
+				{
+					"name": "id",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "code",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "name",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "type",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "price",
+					"value": "",
+					"disabled": true
+				},
+				{
+					"name": "workload",
+					"value": "",
+					"disabled": true
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742740,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_9d493ae12209416fb12c074b2c7b3e20",
+			"parentId": "fld_499b5e5711694491bcb85ac673c37f2c",
+			"modified": 1693265742736,
+			"created": 1693265742736,
+			"url": "{{baseUrl}}{{serviceUrl}}insert",
+			"name": "INSERT",
+			"description": "Cadastro de serviço",
+			"method": "POST",
+			"body": {
+				"params": [
+					{
+						"name": "code",
+						"disabled": false,
+						"value": "4001"
+					},
+					{
+						"name": "name",
+						"disabled": false,
+						"value": "Instalação Office 365"
+					},
+					{
+						"name": "type",
+						"disabled": false,
+						"value": "Instalação de software"
+					},
+					{
+						"name": "price",
+						"disabled": false,
+						"value": "35.00"
+					},
+					{
+						"name": "workload",
+						"disabled": false,
+						"value": "01:00"
+					}
+				],
+				"mimeType": "multipart/form-data"
+			},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742736,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_fec1ab6f610b4fd28412037c57f6e0a7",
+			"parentId": "fld_499b5e5711694491bcb85ac673c37f2c",
+			"modified": 1693265742734,
+			"created": 1693265742734,
+			"url": "{{baseUrl}}{{serviceUrl}}delete",
+			"name": "DELETE",
+			"description": "Remoção de serviço",
+			"method": "GET",
+			"body": {},
+			"parameters": [
+				{
+					"name": "id",
+					"value": "1",
+					"disabled": false
+				}
+			],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1693265742735,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "env_b99b48453b04dcead40099f2a6e02e2548d53440",
+			"parentId": "wrk_18252fe1260b4e8a8b3c837977fe54dc",
+			"modified": 1693265751495,
+			"created": 1693265751495,
+			"name": "Base Environment",
+			"data": {},
+			"dataPropertyOrder": null,
+			"color": null,
+			"isPrivate": false,
+			"metaSortKey": 1693265751496,
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_b99b48453b04dcead40099f2a6e02e2548d53440",
+			"parentId": "wrk_18252fe1260b4e8a8b3c837977fe54dc",
+			"modified": 1693265751500,
+			"created": 1693265751500,
+			"name": "Default Jar",
+			"cookies": [],
+			"_type": "cookie_jar"
+		}
+	]
+}

@@ -5,20 +5,19 @@
 
 namespace view\other;
 
-require_once(__DIR__ . '/../controllers/session.php'); // CARREGA O CONTROLADOR DE SESSÕES (AUTHENTICATE, UNAUTHENTICATE)
-require_once(__DIR__ . '/../controllers/setting.php'); // CARREGA O CONTROLADOR DE OPÇÕES (FORMULATE)
-require_once(__DIR__ . '/../mysql.php'); // CARREGA AS FUNÇÕES DE MANIPULAÇÃO DO BANCO DE DADOS (EXECUTE)
+require_once __DIR__ . '/../controllers/session.php'; // CARREGA O CONTROLADOR DE SESSÕES (AUTHENTICATE, UNAUTHENTICATE)
+require_once __DIR__ . '/../controllers/setting.php'; // CARREGA O CONTROLADOR DE OPÇÕES (FORMULATE)
+require_once __DIR__ . '/../mysql.php'; // CARREGA AS FUNÇÕES DE MANIPULAÇÃO DO BANCO DE DADOS (EXECUTE)
 
 
-/**
- * IMPRIME O HTML DA PÁGINA DE AUTENTICAÇÃO DO USUÁRIO (LOGIN)
+/** IMPRIME O HTML DA PÁGINA DE AUTENTICAÇÃO DO USUÁRIO (LOGIN)
  * @return bool
  */
 function authenticate(): bool {
 	if(!\controller\session\authenticate()) {
 		define('PAGE_TITLE', 'Autenticação');
 		define('PAGE_NAME', 'user');
-		require_once(__DIR__ . '/../templates/other/authenticate.php'); // CARREGA O TEMPLATE DE AUTENTICAÇÃO (AUTHENTICATE)
+		require_once __DIR__ . '/../templates/other/authenticate.php'; // CARREGA O TEMPLATE DE AUTENTICAÇÃO (AUTHENTICATE)
 		return true;
 	}
 
@@ -29,8 +28,7 @@ function authenticate(): bool {
 }
 
 
-/**
- * IMPRIME O HTML DA PÁGINA DE ERRO
+/** IMPRIME O HTML DA PÁGINA DE ERRO
  * @return bool
  */
 function error(): bool {
@@ -41,14 +39,13 @@ function error(): bool {
 
 	else {
 		define('PAGE_TITLE', 'Erro');
-		require_once(__DIR__ . '/../templates/other/error.php'); // CARREGA O TEMPLATE DE ERRO (ERROR)
+		require_once __DIR__ . '/../templates/other/error.php'; // CARREGA O TEMPLATE DE ERRO (ERROR)
 		return true;
 	}
 }
 
 
-/**
- * IMPRIME O HTML DA PÁGINA DE INÍCIO
+/** IMPRIME O HTML DA PÁGINA DE INÍCIO
  * @return bool
  */
 function index(): bool {
@@ -60,19 +57,19 @@ function index(): bool {
 	else {
 		define('PAGE_TITLE', 'Início');
 		define('PAGE_NAME', 'index');
-		require_once(__DIR__ . '/../templates/other/index.php'); // CARREGA O TEMPLATE DE INÍCIO (INDEX)
+		require_once __DIR__ . '/../templates/other/index.php'; // CARREGA O TEMPLATE DE INÍCIO (INDEX)
 		return true;
 	}
 }
 
 
-/**
- * IMPRIME O HTML DA PÁGINA DE RELATÓRIOS
+/** IMPRIME O HTML DA PÁGINA DE RELATÓRIOS
  * @return bool
  */
 function report(): bool {
-	if(!\controller\session\authenticate('report'))
+	if(!\controller\session\authenticate('report')) {
 		authenticate();
+	}
 
 	else {
 		define('PAGE_TITLE', 'Relatórios');
@@ -80,23 +77,25 @@ function report(): bool {
 
 		$query = 'select purchases.*, providers.fantasy_name from purchases inner join providers on purchases.provider = providers.id where day >= "' . date('Y-m-d', strtotime(date('Y-m-d') . ' - 1 month')) . '";';
 		$purchases = \mysql\execute($query);
-		foreach($purchases as $index => $purchase)
-			$purchases[$index]->day = date_format(date_create($purchase->day), 'd/m/Y H:i');
 
 		$query = 'select sales.*, clients.name, clients.surname from sales inner join clients on sales.client = clients.id where day >= "' . date('Y-m-d', strtotime(date('Y-m-d') . ' - 1 month')) . '";';
 		$sales = \mysql\execute($query);
-		foreach($sales as $index => $sale)
-			$sales[$index]->day = date_format(date_create($sale->day), 'd/m/Y H:i');
 
 		if($purchases) { // EXISTE AO MENOS UMA COMPRA REALIZADA NOS ÚLTIMOS 30 DIAS
-			$days = array_map(function(object $purchase): string {
-				return '"' . $purchase->day . '"';
-			}, $purchases);
-
 			$providers = array_map(function(object $purchase): string {
 				return $purchase->fantasy_name;
 			}, $purchases);
 			sort($providers);
+
+			$query = 'select date(day) day, sum(total) total from purchases where day >= "' . date('Y-m-d', strtotime(date('Y-m-d') . ' - 1 month')) . '" group by date(day);';
+			$purchases = \mysql\execute($query);
+			foreach($purchases as $index => $purchase) {
+				$purchases[$index]->day = date_format(date_create($purchase->day), 'd/m/Y');
+			}
+
+			$days = array_map(function(object $purchase): string {
+				return '"' . $purchase->day . '"';
+			}, $purchases);
 
 			$values = array_map(function(object $purchase): float {
 				return $purchase->total;
@@ -107,14 +106,20 @@ function report(): bool {
 		}
 
 		if($sales) { // EXISTE AO MENOS UMA VENDA REALIZADA NOS ÚLTIMOS 30 DIAS
-			$days = array_map(function(object $sale): string {
-				return '"' . $sale->day . '"';
-			}, $sales);
-
 			$clients = array_map(function(object $sale): string {
 				return $sale->name . ' ' . $sale->surname;
 			}, $sales);
 			sort($clients);
+
+			$query = 'select date(day) day, sum(total) total from sales where day >= "' . date('Y-m-d', strtotime(date('Y-m-d') . ' - 1 month')) . '" group by date(day);';
+			$sales = \mysql\execute($query);
+			foreach($sales as $index => $sale) {
+				$sales[$index]->day = date_format(date_create($sale->day), 'd/m/Y');
+			}
+
+			$days = array_map(function(object $sale): string {
+				return '"' . $sale->day . '"';
+			}, $sales);
 
 			$values = array_map(function(object $sale): float {
 				return $sale->total;
@@ -126,13 +131,15 @@ function report(): bool {
 
 		$query = 'select (select count(*) from purchases) purchases, (select count(*) from sales) sales from dual;';
 		$count = \mysql\execute($query)[0] ?? (object) ['purchases' => [], 'sales' => []];
-		if(!$purchases && !$sales && ($count->purchases > 0 || $count->sales > 0))
+		if(!$purchases && !$sales && ($count->purchases > 0 || $count->sales > 0)) {
 			$message = 'Ainda não foram realizadas compras ou vendas nos últimos 30 dias.';
+		}
 
-		elseif(!$purchases && !$sales)
+		elseif(!$purchases && !$sales) {
 			$message = 'Ainda não foram realizadas compras ou vendas no sistema.';
+		}
 
-		require_once(__DIR__ . '/../templates/other/report.php'); // CARREGA O TEMPLATE DE RELATÓRIOS (REPORT)
+		require_once __DIR__ . '/../templates/other/report.php'; // CARREGA O TEMPLATE DE RELATÓRIOS (REPORT)
 		return true;
 	}
 
@@ -140,13 +147,13 @@ function report(): bool {
 }
 
 
-/**
- * IMPRIME O HTML DA PÁGINA DE OPÇÕES
+/** IMPRIME O HTML DA PÁGINA DE OPÇÕES
  * @return bool
  */
 function setting(): bool {
-	if(!\controller\session\authenticate('setting'))
+	if(!\controller\session\authenticate('setting')) {
 		\view\other\authenticate();
+	}
 
 	else {
 		define('PAGE_TITLE', 'Opções');
@@ -156,12 +163,14 @@ function setting(): bool {
 		$query = 'select * from settings;';
 		$operation = \mysql\execute($query);
 
-		if(isset($operation[0]))
+		if(isset($operation[0])) {
 			$tuple = \controller\setting\formulate($operation[0]);
-		else
+		}
+		else {
 			$tuple = (object) ['company_name' => '', 'fantasy_name' => '', 'cnpj' => '', 'email' => '', 'phone' => '', 'postal_code' => '', 'district' => '', 'city' => '', 'state' => '', 'address' => '', 'number' => '', 'website' => ''];
+		}
 
-		require_once(__DIR__ . '/../templates/other/setting.php'); // CARREGA O TEMPLATE DE OPÇÕES (SETTING)
+		require_once __DIR__ . '/../templates/other/setting.php'; // CARREGA O TEMPLATE DE OPÇÕES (SETTING)
 		return true;
 	}
 
@@ -169,8 +178,7 @@ function setting(): bool {
 }
 
 
-/**
- * IMPRIME O HTML DA PÁGINA DE AUTENTICAÇÃO DO USUÁRIO OU DA PÁGINA DE INÍCIO
+/** IMPRIME O HTML DA PÁGINA DE AUTENTICAÇÃO DO USUÁRIO OU DA PÁGINA DE INÍCIO
  * @return bool
  */
 function unauthenticate(): bool {

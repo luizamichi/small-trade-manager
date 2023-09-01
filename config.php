@@ -21,7 +21,7 @@ session_name('STM');
 session_set_cookie_params(['samesite' => 'Lax']);
 
 // CAMINHO NO SERVIDOR PARA O SISTEMA
-define('BASE_URL', '/stm/');
+define('BASE_URL', '/');
 
 // TEMPO DE DURAÇÃO DA SESSÃO
 define('SESSION_TIME', 3600);
@@ -38,16 +38,16 @@ define('LOADING', __DIR__ . '/templates/loading.php');
 define('SETTINGS', __DIR__ . '/templates/settings.php');
 
 // ENDEREÇO DO HOST DO MYSQL
-define('MYSQL_HOST', 'host');
+define('MYSQL_HOST', '192.168.1.9');
 
 // NOME DO BANCO DE DADOS MYSQL
-define('MYSQL_SCHEMA', 'schema');
+define('MYSQL_SCHEMA', 'stm');
 
 // USUÁRIO DO BANCO DE DADOS MYSQL
-define('MYSQL_USER', 'user');
+define('MYSQL_USER', 'pi');
 
 // SENHA DO BANCO DE DADOS MYSQL
-define('MYSQL_PASSWORD', 'password');
+define('MYSQL_PASSWORD', 'mjolnir');
 
 // TEMPO DE EXECUÇÃO MÁXIMO DE UM SCRIPT
 ini_set('max_execution_time', 30);

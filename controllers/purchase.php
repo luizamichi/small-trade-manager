@@ -5,8 +5,10 @@
 
 namespace controller\purchase;
 
-require_once(__DIR__ . '/../mysql.php'); // CARREGA AS FUNÇÕES DE MANIPULAÇÃO DO BANCO DE DADOS (EXECUTE)
-require_once(__DIR__ . '/session.php'); // CARREGA O CONTROLADOR DE SESSÕES (GET)
+require_once __DIR__ . '/../mysql.php'; // CARREGA AS FUNÇÕES DE MANIPULAÇÃO DO BANCO DE DADOS (EXECUTE)
+require_once __DIR__ . '/../util.php'; // CARREGA AS FUNÇÕES ÚTEIS (STRTOFLOAT)
+require_once __DIR__ . '/session.php'; // CARREGA O CONTROLADOR DE SESSÕES (GET)
+
 
 /** FORMATA OS DADOS DE FORMA MAIS BONITA PARA EXIBIÇÃO EM TELA
  * @param object $tuple
@@ -14,14 +16,15 @@ require_once(__DIR__ . '/session.php'); // CARREGA O CONTROLADOR DE SESSÕES (GE
  */
 function beautify(object $tuple): object {
 	$tuple->total = 'R$ ' . number_format((float) $tuple->total - ((float) $tuple->total * (float) $tuple->discount), 2, ',', '.'); // FUNÇÃO DESCONTINUADA - MONEY_FORMAT('%.2N', (FLOAT) $TUPLE->TOTAL)
-	$tuple->discount = number_format($tuple->discount * 100, 2, ',', '.') . ' %';
+	$tuple->discount = number_format($tuple->discount * 100, 2, ',', '.') . '%';
 	$tuple->day = substr($tuple->day, 8, 2) . '/' . substr($tuple->day, 5, 2) . '/' . substr($tuple->day, 0, 4) . ' às ' . substr($tuple->day, 11, 8);
+
 	return $tuple;
 }
 
 
 /** CONVERTE O VETOR EM OBJETO
- * @param array $values
+ * @param array<string,mixed> $values
  * @return object
  */
 function convert(array $values): object {
@@ -32,43 +35,44 @@ function convert(array $values): object {
 
 /** VALIDA SE A COMPRA POSSUI ALGUM ATRIBUTO ÚNICO VINCULADO A OUTRA COMPRA
  * @param object $tuple
- * @return array
+ * @return array<string>
  */
 function duplicate(object $tuple): array {
 	$problems = [];
 	$tuple->id ??= -1;
 
-	$query = 'select * from providers where id="' . $tuple->provider . '";';
+	$query = 'select * from providers where id = "' . $tuple->provider . '";';
 	$operation = \mysql\execute($query);
-	if(!$operation) // NÃO ENCONTROU UM FORNECEDOR
+	if(!$operation) { // NÃO ENCONTROU UM FORNECEDOR
 		array_push($problems, 'fornecedor não existe');
+	}
 
 	else {
-		$query = 'select * from products where provider=' . $tuple->provider . ';';
+		$query = 'select * from products where provider = ' . $tuple->provider . ';';
 		$operation = \mysql\execute($query);
 		if($operation) {
 			$errors = 0;
-			$products = array_reduce($operation, function($carry, $item) {
-				$carry[] = $item->id;
-				return $carry;
-			});
-			foreach($tuple->products as $product)
-				if(!in_array($product, $products))
+			$products = array_column($operation, "id");
+
+			foreach($tuple->products as $product) {
+				if(!in_array($product, $products)) {
 					$errors += 1;
+				}
+			}
 
-			if($errors == count($operation) - count($tuple->products) || $errors == 0)
-				unset($errors);
-
-			if(isset($errors))
+			if($errors != 0) {
 				array_push($problems, $errors . ' produto(s) não pertence(m) ao fornecedor');
+			}
 		}
 
-		else // NÃO ENCONTROU PRODUTOS VINCULADOS AO FORNECEDOR
+		else { // NÃO ENCONTROU PRODUTOS VINCULADOS AO FORNECEDOR
 			array_push($problems, 'fornecedor não possui produtos cadastrados');
+		}
 	}
 
-	if($tuple->id == -1) // REMOVE O ID, CASO O OBJETO NÃO TINHA QUANDO ENTROU NA FUNÇÃO
+	if($tuple->id == -1) { // REMOVE O ID, CASO O OBJETO NÃO TINHA QUANDO ENTROU NA FUNÇÃO
 		unset($tuple->id);
+	}
 
 	return $problems;
 }
@@ -85,12 +89,12 @@ function errors(object $tuple): bool {
 
 /** FILTRA OS VALORES NECESSÁRIOS PASSADOS POR GET OU POST E RETORNA UM VETOR
  * @param string $method
- * @return array
+ * @return array<string,mixed>
  */
 function filter(string $method='GET'): array {
 	$method = \strtoupper($method) == 'POST' ? INPUT_POST : INPUT_GET;
 
-	$array['all'] = filter_input($method, 'all', FILTER_SANITIZE_STRING, FILTER_SANITIZE_MAGIC_QUOTES);
+	$array['all'] = filter_input($method, 'all', FILTER_DEFAULT, FILTER_SANITIZE_ADD_SLASHES);
 	$array['id'] = filter_input($method, 'id', FILTER_SANITIZE_NUMBER_INT, FILTER_SANITIZE_URL);
 	$array['id'] = is_numeric($array['id']) ? (int) $array['id'] : null;
 
@@ -110,25 +114,27 @@ function filter(string $method='GET'): array {
 	$array['quantities'] = is_array($array['quantities']) ? $array['quantities'] : [];
 
 	$array['day'] = filter_input($method, 'day', FILTER_SANITIZE_NUMBER_INT);
-	$array['form_of_payment'] = filter_input($method, 'form-of-payment', FILTER_SANITIZE_STRING);
+	$array['form_of_payment'] = filter_input($method, 'form-of-payment', FILTER_DEFAULT);
 
-	$array['discount'] = filter_input($method, 'discount', FILTER_SANITIZE_STRING);
-	$array['discount'] = str_replace(',', '.', $array['discount']);
-	$array['discount'] = is_numeric($array['discount']) ? str_replace(',', '.', $array['discount'] / 100) : null;
+	$array['discount'] = filter_input($method, 'discount', FILTER_DEFAULT);
+	$array['discount'] = \util\strToFloat($array['discount']);
+	$array['discount'] = is_numeric($array['discount']) ? $array['discount'] / 100 : null;
 
 	$array['total'] = filter_input($method, 'total', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-	$array['total'] = str_replace(',', '', $array['total']);
+	$array['total'] = \util\strToFloat($array['total']);
 	$array['total'] = is_numeric($array['total']) ? $array['total'] : null;
 
 	foreach($array as $index => $value) { // CONVERTE TODOS OS VALORES EM STRING
 		if(is_array($value)) {
-			$array[$index] = array_map(function($item) {
+			$array[$index] = array_map(function(string $item): ?string {
 				return trim($item) ?: null;
 			}, $value);
 		}
-		else
-			$array[$index] = trim($value) ?: (is_numeric($array[$index]) ? trim($value) : (is_array($array[$index]) ? $value : null));
+		else {
+			$array[$index] = trim((string) $value) ?: (is_numeric($array[$index]) ? trim($value) : (is_array($array[$index]) ? $value : null));
+		}
 	}
+
 	return $array;
 }
 
@@ -138,27 +144,30 @@ function filter(string $method='GET'): array {
  * @return object
  */
 function formulate(object $tuple): object {
-	$tuple->discount = number_format($tuple->discount * 100, 2, ',', '.') . ' %';
+	$tuple->discount = number_format($tuple->discount * 100, 2, ',', '.') . '%';
 	return $tuple;
 }
 
 
 /** VERIFICA SE HÁ ALGUM VALOR VÁLIDO E RETORNA UM BOOLEANO
- * @param array $values
+ * @param array<string,mixed> $values
  * @return bool
  */
 function null(array $values): bool {
 	$null = 0;
-	foreach($values as $index => $value)
-		if($values[$index] != null)
+	foreach($values as $index => $_) {
+		if($values[$index] != null) {
 			$null++;
+		}
+	}
+
 	return !$null;
 }
 
 
 /** CORRIGE O VETOR, COMPLEMENTANDO OS ATRIBUTOS QUE ESTÃO FALTANDO
- * @param array $values
- * @return array
+ * @param array<string,mixed> $values
+ * @return array<string,mixed>
  */
 function rectify(array $values): array {
 	$array['id'] = $values['id'] ?? 0;
@@ -172,70 +181,83 @@ function rectify(array $values): array {
 	$array['discount'] = $values['discount'] ?? 0.0;
 	$array['total'] = $values['total'] ?? 0.0;
 	$array = reduce($array);
+
 	return $array;
 }
 
 
 /** UNIFICA AS CHAVES (PRODUTOS) REPETIDAS
- * @param array $array
- * @return array
+ * @param array<string,mixed> $array
+ * @return array<string,mixed>
  */
 function reduce(array $array): array {
 	$products = $quantities = $prices = [];
 	$count = min(count($array['products']), count($array['quantities']), count($array['prices']));
+
 	for($i = 0; $i < $count; $i++) {
 		if(in_array($array['products'][$i], $products)) {
 			$index = array_search($array['products'][$i], $array['products']);
-			$quantities[$index] += $array['quantities'][$i];
+			$quantities[$index] += (int) $array['quantities'][$i];
 		}
 		else {
-			array_push($products, $array['products'][$i]);
-			array_push($quantities, $array['quantities'][$i]);
-			array_push($prices, $array['prices'][$i]);
+			array_push($products, (int) $array['products'][$i]);
+			array_push($quantities, (int) $array['quantities'][$i]);
+			array_push($prices, (int) $array['prices'][$i]);
 		}
 	}
+
 	$array['products'] = $products;
 	$array['quantities'] = $quantities;
 	$array['prices'] = $prices;
-	$array['cart'] = array_map(function($product, $quantity, $price) {
+	$array['cart'] = array_map(function(int $product, int $quantity, float $price): array {
 		return ['product' => $product, 'quantity' => $quantity, 'price' => $price];
 	}, $products, $quantities, $prices);
+
 	return $array;
 }
 
 
 /** VALIDA SE A COMPRA ESTÁ ATENDENDO TODOS OS REQUISITOS EXIGIDOS E RETORNA UMA LISTA COM OS PROBLEMAS
  * @param object $tuple
- * @return array
+ * @return array<string>
  */
 function validate(object $tuple): array {
 	$problems = [];
-	if(!is_int($tuple->provider + 0) || $tuple->provider <= 0) // INFORMOU UM FORNECEDOR INVÁLIDO
+	if(!is_int($tuple->provider + 0) || $tuple->provider <= 0) { // INFORMOU UM FORNECEDOR INVÁLIDO
 		array_push($problems, 'fornecedor');
+	}
 
-	if(!is_int($tuple->employee + 0) || $tuple->employee <= 0) // INFORMOU UM FUNCIONÁRIO INVÁLIDO
+	if(!is_int($tuple->employee + 0) || $tuple->employee <= 0) { // INFORMOU UM FUNCIONÁRIO INVÁLIDO
 		array_push($problems, 'funcionário');
+	}
 
-	if(!is_array($tuple->products) || count($tuple->products) <= 0) // INFORMOU UM PRODUTO INVÁLIDO
+	if(!is_array($tuple->products) || count($tuple->products) == 0) { // INFORMOU UM PRODUTO INVÁLIDO
 		array_push($problems, 'produtos');
+	}
 
-	if(!is_array($tuple->quantities) || count($tuple->quantities) <= 0) // INFORMOU UMA QUANTIDADE INVÁLIDA
+	if(!is_array($tuple->quantities) || count($tuple->quantities) == 0) { // INFORMOU UMA QUANTIDADE INVÁLIDA
 		array_push($problems, 'quantidades');
+	}
 
-	if(!is_array($tuple->prices) || count($tuple->prices) <= 0) // INFORMOU UM PREÇO INVÁLIDO
+	if(!is_array($tuple->prices) || count($tuple->prices) == 0) { // INFORMOU UM PREÇO INVÁLIDO
 		array_push($problems, 'preços');
+	}
 
-	if(!checkdate(substr($tuple->day, 5, 2), substr($tuple->day, 8, 2), substr($tuple->day, 0, 4))) // INFORMOU UMA DATA INVÁLIDA
+	if(!checkdate((int) substr($tuple->day, 5, 2), (int) substr($tuple->day, 8, 2), (int) substr($tuple->day, 0, 4))) { // INFORMOU UMA DATA INVÁLIDA
 		array_push($problems, 'data');
+	}
 
-	if(!in_array($tuple->form_of_payment, ['A prazo', 'Cartão de crédito', 'Cartão de débito', 'Dinheiro', 'DOC', 'PIX', 'TED'])) // INFORMOU UMA FORMA DE PAGAMENTO INVÁLIDA
+	if(!in_array($tuple->form_of_payment, ['A prazo', 'Cartão de crédito', 'Cartão de débito', 'Dinheiro', 'DOC', 'PIX', 'TED'])) { // INFORMOU UMA FORMA DE PAGAMENTO INVÁLIDA
 		array_push($problems, 'forma de pagamento');
+	}
 
-	if(!is_float($tuple->discount + 0.0) || $tuple->discount < 0.0 || $tuple->discount > 100.0) // INFORMOU UM DESCONTO INVÁLIDO
+	if(!is_float($tuple->discount + 0.0) || $tuple->discount < 0.0 || $tuple->discount > 100.0) { // INFORMOU UM DESCONTO INVÁLIDO
 		array_push($problems, 'desconto');
+	}
 
-	if(!is_float($tuple->total + 0.0) || $tuple->total <= 0.0) // INFORMOU UM TOTAL INVÁLIDO
+	if(!is_float($tuple->total + 0.0) || $tuple->total <= 0.0) { // INFORMOU UM TOTAL INVÁLIDO
 		array_push($problems, 'total');
+	}
 
 	return array_merge($problems, duplicate($tuple));
 }

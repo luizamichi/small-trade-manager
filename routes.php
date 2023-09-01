@@ -5,7 +5,7 @@
 
 namespace routes;
 
-require_once(__DIR__ . '/config.php'); // CARREGA AS CONFIGURAÇÕES GLOBAIS (BASE_URL)
+require_once __DIR__ . '/config.php'; // CARREGA AS CONFIGURAÇÕES GLOBAIS (BASE_URL)
 
 
 /** ROTAS PARA A REALIZAÇÃO DO CRUD DE ORÇAMENTOS
@@ -13,24 +13,12 @@ require_once(__DIR__ . '/config.php'); // CARREGA AS CONFIGURAÇÕES GLOBAIS (BA
  * @return bool
  */
 function budget(string $request): bool {
-	switch(true) {
-		case stristr($request, BASE_URL . 'action/budget/delete'):
-			require_once(__DIR__ . '/api/budget.php'); // CARREGA AS FUNÇÕES DA API DE ORÇAMENTOS (DELETE)
-			return \api\budget\delete();
-
-		case stristr($request, BASE_URL . 'action/budget/insert'):
-			require_once(__DIR__ . '/api/budget.php'); // CARREGA AS FUNÇÕES DA API DE ORÇAMENTOS (INSERT)
-			return \api\budget\insert();
-
-		case stristr($request, BASE_URL . 'action/budget/select'):
-			require_once(__DIR__ . '/api/budget.php'); // CARREGA AS FUNÇÕES DA API DE ORÇAMENTOS (SELECT)
-			return \api\budget\select();
-
-		case stristr($request, BASE_URL . 'action/budget/update'):
-			require_once(__DIR__ . '/api/budget.php'); // CARREGA AS FUNÇÕES DA API DE ORÇAMENTOS (UPDATE)
-			return \api\budget\update();
-	}
-	return false;
+	return import(__DIR__ . '/api/budget.php', $request, [
+		'action/budget/delete' => fn(): bool => \api\budget\delete(), // CARREGA AS FUNÇÕES DA API DE ORÇAMENTOS (DELETE)
+		'action/budget/insert' => fn(): bool => \api\budget\insert(), // CARREGA AS FUNÇÕES DA API DE ORÇAMENTOS (INSERT)
+		'action/budget/select' => fn(): bool => \api\budget\select(), // CARREGA AS FUNÇÕES DA API DE ORÇAMENTOS (SELECT)
+		'action/budget/update' => fn(): bool => \api\budget\update() // CARREGA AS FUNÇÕES DA API DE ORÇAMENTOS (UPDATE)
+	]);
 }
 
 
@@ -39,24 +27,12 @@ function budget(string $request): bool {
  * @return bool
  */
 function client(string $request): bool {
-	switch(true) {
-		case stristr($request, BASE_URL . 'action/client/delete'):
-			require_once(__DIR__ . '/api/client.php'); // CARREGA AS FUNÇÕES DA API DE CLIENTES (DELETE)
-			return \api\client\delete();
-
-		case stristr($request, BASE_URL . 'action/client/insert'):
-			require_once(__DIR__ . '/api/client.php'); // CARREGA AS FUNÇÕES DA API DE CLIENTES (INSERT)
-			return \api\client\insert();
-
-		case stristr($request, BASE_URL . 'action/client/select'):
-			require_once(__DIR__ . '/api/client.php'); // CARREGA AS FUNÇÕES DA API DE CLIENTES (SELECT)
-			return \api\client\select();
-
-		case stristr($request, BASE_URL . 'action/client/update'):
-			require_once(__DIR__ . '/api/client.php'); // CARREGA AS FUNÇÕES DA API DE CLIENTES (UPDATE)
-			return \api\client\update();
-	}
-	return false;
+	return import(__DIR__ . '/api/client.php', $request, [
+		'action/client/delete' => fn(): bool => \api\client\delete(), // CARREGA AS FUNÇÕES DA API DE CLIENTES (DELETE)
+		'action/client/insert' => fn(): bool => \api\client\insert(), // CARREGA AS FUNÇÕES DA API DE CLIENTES (INSERT)
+		'action/client/select' => fn(): bool => \api\client\select(), // CARREGA AS FUNÇÕES DA API DE CLIENTES (SELECT)
+		'action/client/update' => fn(): bool => \api\client\update() // CARREGA AS FUNÇÕES DA API DE CLIENTES (UPDATE)
+	]);
 }
 
 
@@ -65,23 +41,29 @@ function client(string $request): bool {
  * @return bool
  */
 function employee(string $request): bool {
-	switch(true) {
-		case stristr($request, BASE_URL . 'action/employee/delete'):
-			require_once(__DIR__ . '/api/employee.php'); // CARREGA AS FUNÇÕES DA API DE FUNCIONÁRIOS (DELETE)
-			return \api\employee\delete();
+	return import(__DIR__ . '/api/employee.php', $request, [
+		'action/employee/delete' => fn(): bool => \api\employee\delete(), // CARREGA AS FUNÇÕES DA API DE FUNCIONÁRIOS (DELETE)
+		'action/employee/insert' => fn(): bool => \api\employee\insert(), // CARREGA AS FUNÇÕES DA API DE FUNCIONÁRIOS (INSERT)
+		'action/employee/select' => fn(): bool => \api\employee\select(), // CARREGA AS FUNÇÕES DA API DE FUNCIONÁRIOS (SELECT)
+		'action/employee/update' => fn(): bool => \api\employee\update() // CARREGA AS FUNÇÕES DA API DE FUNCIONÁRIOS (UPDATE)
+	]);
+}
 
-		case stristr($request, BASE_URL . 'action/employee/insert'):
-			require_once(__DIR__ . '/api/employee.php'); // CARREGA AS FUNÇÕES DA API DE FUNCIONÁRIOS (INSERT)
-			return \api\employee\insert();
 
-		case stristr($request, BASE_URL . 'action/employee/select'):
-			require_once(__DIR__ . '/api/employee.php'); // CARREGA AS FUNÇÕES DA API DE FUNCIONÁRIOS (SELECT)
-			return \api\employee\select();
-
-		case stristr($request, BASE_URL . 'action/employee/update'):
-			require_once(__DIR__ . '/api/employee.php'); // CARREGA AS FUNÇÕES DA API DE FUNCIONÁRIOS (UPDATE)
-			return \api\employee\update();
+/** INCLUI O ARQUIVO SOLICITADO E REALIZA A CHAMADA DA FUNÇÃO SE O ENDPOINT DA REQUISIÇÃO FOR ENCONTRADO
+ * @param string $path
+ * @param string $request
+ * @param array<string,callable> $cases
+ * @return bool
+ */
+function import(string $path, string $request, array $cases): bool {
+	foreach ($cases as $endpoint => $callback) {
+		if(stristr($request, BASE_URL . $endpoint)) {
+			require_once BASE_URL . $path;
+			return $callback();
+		}
 	}
+
 	return false;
 }
 
@@ -91,20 +73,11 @@ function employee(string $request): bool {
  * @return bool
  */
 function other(string $request): bool {
-	switch(true) {
-		case strstr($request, BASE_URL . 'action/setting/manage'):
-			require_once(__DIR__ . '/api/other.php'); // CARREGA AS FUNÇÕES DA API DE DIVERSIDADES (SETTING)
-			return \api\other\setting();
-
-		case strstr($request, BASE_URL . 'action/user/authenticate'):
-			require_once(__DIR__ . '/api/other.php'); // CARREGA AS FUNÇÕES DA API DE DIVERSIDADES (AUTHENTICATE)
-			return \api\other\authenticate();
-
-		case strstr($request, BASE_URL . 'action/user/unauthenticate'):
-			require_once(__DIR__ . '/api/other.php'); // CARREGA AS FUNÇÕES DA API DE DIVERSIDADES (UNAUTHENTICATE)
-			return \api\other\unauthenticate();
-	}
-	return false;
+	return import(__DIR__ . '/api/other.php', $request, [
+		'action/setting/manage' => fn(): bool => \api\other\setting(), // CARREGA AS FUNÇÕES DA API DE DIVERSIDADES (SETTING)
+		'action/user/authenticate' => fn(): bool => \api\other\authenticate(), // CARREGA AS FUNÇÕES DA API DE DIVERSIDADES (AUTHENTICATE)
+		'action/user/unauthenticate' => fn(): bool => \api\other\unauthenticate() // CARREGA AS FUNÇÕES DA API DE DIVERSIDADES (UNAUTHENTICATE)
+	]);
 }
 
 
@@ -113,24 +86,12 @@ function other(string $request): bool {
  * @return bool
  */
 function product(string $request): bool {
-	switch(true) {
-		case stristr($request, BASE_URL . 'action/product/delete'):
-			require_once(__DIR__ . '/api/product.php'); // CARREGA AS FUNÇÕES DA API DE PRODUTOS (DELETE)
-			return \api\product\delete();
-
-		case stristr($request, BASE_URL . 'action/product/insert'):
-			require_once(__DIR__ . '/api/product.php'); // CARREGA AS FUNÇÕES DA API DE PRODUTOS (INSERT)
-			return \api\product\insert();
-
-		case stristr($request, BASE_URL . 'action/product/select'):
-			require_once(__DIR__ . '/api/product.php'); // CARREGA AS FUNÇÕES DA API DE PRODUTOS (SELECT)
-			return \api\product\select();
-
-		case stristr($request, BASE_URL . 'action/product/update'):
-			require_once(__DIR__ . '/api/product.php'); // CARREGA AS FUNÇÕES DA API DE PRODUTOS (UPDATE)
-			return \api\product\update();
-	}
-	return false;
+	return import(__DIR__ . '/api/product.php', $request, [
+		'action/product/delete' => fn(): bool => \api\product\delete(), // CARREGA AS FUNÇÕES DA API DE PRODUTOS (DELETE)
+		'action/product/insert' => fn(): bool => \api\product\insert(), // CARREGA AS FUNÇÕES DA API DE PRODUTOS (INSERT)
+		'action/product/select' => fn(): bool => \api\product\select(), // CARREGA AS FUNÇÕES DA API DE PRODUTOS (SELECT)
+		'action/product/update' => fn(): bool => \api\product\update(), // CARREGA AS FUNÇÕES DA API DE PRODUTOS (UPDATE)
+	]);
 }
 
 
@@ -139,24 +100,12 @@ function product(string $request): bool {
  * @return bool
  */
 function provider(string $request): bool {
-	switch(true) {
-		case stristr($request, BASE_URL . 'action/provider/delete'):
-			require_once(__DIR__ . '/api/provider.php'); // CARREGA AS FUNÇÕES DA API DE FORNECEDORES (DELETE)
-			return \api\provider\delete();
-
-		case stristr($request, BASE_URL . 'action/provider/insert'):
-			require_once(__DIR__ . '/api/provider.php'); // CARREGA AS FUNÇÕES DA API DE FORNECEDORES (INSERT)
-			return \api\provider\insert();
-
-		case stristr($request, BASE_URL . 'action/provider/select'):
-			require_once(__DIR__ . '/api/provider.php'); // CARREGA AS FUNÇÕES DA API DE FORNECEDORES (SELECT)
-			return \api\provider\select();
-
-		case stristr($request, BASE_URL . 'action/provider/update'):
-			require_once(__DIR__ . '/api/provider.php'); // CARREGA AS FUNÇÕES DA API DE FORNECEDORES (UPDATE)
-			return \api\provider\update();
-	}
-	return false;
+	return import(__DIR__ . '/api/provider.php', $request, [
+		'action/provider/delete' => fn(): bool => \api\provider\delete(), // CARREGA AS FUNÇÕES DA API DE FORNECEDORES (DELETE)
+		'action/provider/insert' => fn(): bool => \api\provider\insert(), // CARREGA AS FUNÇÕES DA API DE FORNECEDORES (INSERT)
+		'action/provider/select' => fn(): bool => \api\provider\select(), // CARREGA AS FUNÇÕES DA API DE FORNECEDORES (SELECT)
+		'action/provider/update' => fn(): bool => \api\provider\update() // CARREGA AS FUNÇÕES DA API DE FORNECEDORES (UPDATE)
+	]);
 }
 
 
@@ -165,24 +114,12 @@ function provider(string $request): bool {
  * @return bool
  */
 function purchase(string $request): bool {
-	switch(true) {
-		case stristr($request, BASE_URL . 'action/purchase/delete'):
-			require_once(__DIR__ . '/api/purchase.php'); // CARREGA AS FUNÇÕES DA API DE COMPRAS (DELETE)
-			return \api\purchase\delete();
-
-		case stristr($request, BASE_URL . 'action/purchase/insert'):
-			require_once(__DIR__ . '/api/purchase.php'); // CARREGA AS FUNÇÕES DA API DE COMPRAS (INSERT)
-			return \api\purchase\insert();
-
-		case stristr($request, BASE_URL . 'action/purchase/select'):
-			require_once(__DIR__ . '/api/purchase.php'); // CARREGA AS FUNÇÕES DA API DE COMPRAS (SELECT)
-			return \api\purchase\select();
-
-		case stristr($request, BASE_URL . 'action/purchase/update'):
-			require_once(__DIR__ . '/api/purchase.php'); // CARREGA AS FUNÇÕES DA API DE COMPRAS (UPDATE)
-			return \api\purchase\update();
-	}
-	return false;
+	return import(__DIR__ . '/api/purchase.php', $request, [
+		'action/purchase/delete' => fn(): bool => \api\purchase\delete(), // CARREGA AS FUNÇÕES DA API DE COMPRAS (DELETE)
+		'action/purchase/insert' => fn(): bool => \api\purchase\insert(), // CARREGA AS FUNÇÕES DA API DE COMPRAS (INSERT)
+		'action/purchase/select' => fn(): bool => \api\purchase\select(), // CARREGA AS FUNÇÕES DA API DE COMPRAS (SELECT)
+		'action/purchase/update' => fn(): bool => \api\purchase\update() // CARREGA AS FUNÇÕES DA API DE COMPRAS (UPDATE)
+	]);
 }
 
 
@@ -191,12 +128,9 @@ function purchase(string $request): bool {
  * @return bool
  */
 function record(string $request): bool {
-	switch(true) {
-		case stristr($request, BASE_URL . 'action/record/select'):
-			require_once(__DIR__ . '/api/record.php'); // CARREGA AS FUNÇÕES DA API DE REGISTROS (SELECT)
-			return \api\record\select();
-	}
-	return false;
+	return import(__DIR__ . '/api/record.php', $request, [
+		'action/record/select' => fn(): bool => \api\record\select() // CARREGA AS FUNÇÕES DA API DE REGISTROS (SELECT)
+	]);
 }
 
 
@@ -205,24 +139,12 @@ function record(string $request): bool {
  * @return bool
  */
 function sale(string $request): bool {
-	switch(true) {
-		case stristr($request, BASE_URL . 'action/sale/delete'):
-			require_once(__DIR__ . '/api/sale.php'); // CARREGA AS FUNÇÕES DA API DE VENDAS (DELETE)
-			return \api\sale\delete();
-
-		case stristr($request, BASE_URL . 'action/sale/insert'):
-			require_once(__DIR__ . '/api/sale.php'); // CARREGA AS FUNÇÕES DA API DE VENDAS (INSERT)
-			return \api\sale\insert();
-
-		case stristr($request, BASE_URL . 'action/sale/select'):
-			require_once(__DIR__ . '/api/sale.php'); // CARREGA AS FUNÇÕES DA API DE VENDAS (SELECT)
-			return \api\sale\select();
-
-		case stristr($request, BASE_URL . 'action/sale/update'):
-			require_once(__DIR__ . '/api/sale.php'); // CARREGA AS FUNÇÕES DA API DE VENDAS (UPDATE)
-			return \api\sale\update();
-	}
-	return false;
+	return import(__DIR__ . '/api/sale.php', $request, [
+		'action/sale/delete' => fn(): bool => \api\sale\delete(), // CARREGA AS FUNÇÕES DA API DE VENDAS (DELETE)
+		'action/sale/insert' => fn(): bool => \api\sale\insert(), // CARREGA AS FUNÇÕES DA API DE VENDAS (INSERT)
+		'action/sale/select' => fn(): bool => \api\sale\select(), // CARREGA AS FUNÇÕES DA API DE VENDAS (SELECT)
+		'action/sale/update' => fn(): bool => \api\sale\update() // CARREGA AS FUNÇÕES DA API DE VENDAS (UPDATE)
+	]);
 }
 
 
@@ -231,24 +153,12 @@ function sale(string $request): bool {
  * @return bool
  */
 function service(string $request): bool {
-	switch(true) {
-		case stristr($request, BASE_URL . 'action/service/delete'):
-			require_once(__DIR__ . '/api/service.php'); // CARREGA AS FUNÇÕES DA API DE SERVIÇOS (DELETE)
-			return \api\service\delete();
-
-		case stristr($request, BASE_URL . 'action/service/insert'):
-			require_once(__DIR__ . '/api/service.php'); // CARREGA AS FUNÇÕES DA API DE SERVIÇOS (INSERT)
-			return \api\service\insert();
-
-		case stristr($request, BASE_URL . 'action/service/select'):
-			require_once(__DIR__ . '/api/service.php'); // CARREGA AS FUNÇÕES DA API DE SERVIÇOS (SELECT)
-			return \api\service\select();
-
-		case stristr($request, BASE_URL . 'action/service/update'):
-			require_once(__DIR__ . '/api/service.php'); // CARREGA AS FUNÇÕES DA API DE SERVIÇOS (UPDATE)
-			return \api\service\update();
-	}
-	return false;
+	return import(__DIR__ . '/api/service.php', $request, [
+		'action/service/delete' => fn(): bool => \api\service\delete(), // CARREGA AS FUNÇÕES DA API DE SERVIÇOS (DELETE)
+		'action/service/insert' => fn(): bool => \api\service\insert(), // CARREGA AS FUNÇÕES DA API DE SERVIÇOS (INSERT)
+		'action/service/select' => fn(): bool => \api\service\select(), // CARREGA AS FUNÇÕES DA API DE SERVIÇOS (SELECT)
+		'action/service/update' => fn(): bool => \api\service\update() // CARREGA AS FUNÇÕES DA API DE SERVIÇOS (UPDATE)
+	]);
 }
 
 

@@ -1,4 +1,4 @@
-	<?php include_once(HEADER); ?>
+	<?php include_once HEADER; ?>
 
 	<div class="container mb-5">
 		<!-- CABEÇALHO -->
@@ -9,9 +9,9 @@
 		</div>
 		<!--/ CABEÇALHO -->
 
-		<?php include_once(FLASH); ?>
+		<?php include_once FLASH; ?>
 
-		<?php include_once(LOADING); ?>
+		<?php include_once LOADING; ?>
 
 		<form accept-charset="utf-8" action="<?=BASE_URL . 'action/' . PAGE_NAME?>/select/" autocomplete="on" class="form-inline justify-content-center" enctype="application/x-www-form-urlencoded" id="search-budget" method="get" name="search-budget" rel="noopener" target="_self">
 			<div class="align-items-center form-row">
@@ -61,9 +61,9 @@
 		<!--/ LISTA DE ORÇAMENTOS -->
 	</div>
 
-	<?php include_once(REMOVE); ?>
+	<?php include_once REMOVE; ?>
 
-	<?php include_once(FOOTER); ?>
+	<?php include_once FOOTER; ?>
 
 </body>
 

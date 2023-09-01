@@ -1,4 +1,4 @@
-	<?php include_once(HEADER); ?>
+	<?php include_once HEADER; ?>
 
 	<div class="container mb-5" id="content">
 		<!-- CABEÇALHO -->
@@ -9,11 +9,11 @@
 		</div>
 		<!--/ CABEÇALHO -->
 
-		<?php include_once(SETTINGS); ?>
+		<?php include_once SETTINGS; ?>
 
-		<?php include_once(FLASH); ?>
+		<?php include_once FLASH; ?>
 
-		<?php include_once(LOADING); ?>
+		<?php include_once LOADING; ?>
 
 		<!-- DADOS DO SERVIÇO -->
 		<div class="row">
@@ -57,9 +57,9 @@
 		</div>
 	</div>
 
-	<?php include_once(REMOVE); ?>
+	<?php include_once REMOVE; ?>
 
-	<?php include_once(FOOTER); ?>
+	<?php include_once FOOTER; ?>
 
 </body>
 

@@ -1,4 +1,4 @@
-	<?php include_once(HEADER); ?>
+	<?php include_once HEADER; ?>
 
 	<div class="container mb-5">
 		<!-- CABEÇALHO -->
@@ -9,7 +9,7 @@
 		</div>
 		<!--/ CABEÇALHO -->
 
-		<?php include_once(FLASH); ?>
+		<?php include_once FLASH; ?>
 
 		<!-- TEXTO DE APRESENTAÇÃO -->
 		<p class="lead text-justify">O Small Trade Manager é ideal para o gerenciamento de qualquer empresa, independente do seu segmento de mercado e porte que tenha, as lojas são empreendimentos que precisam, todos os dias, lidar com um grande fluxo de informação. E para conseguir manter tudo em ordem, funcionando de maneira adequada, não basta contar com uma equipe de funcionários competente. Ela precisa ter a ajuda de ferramentas que não só possibilitem o seu trabalho como o torne mais eficiente.</p>
@@ -19,7 +19,7 @@
 		<!--/ TEXTO DE APRESENTAÇÃO -->
 	</div>
 
-	<?php include_once(FOOTER); ?>
+	<?php include_once FOOTER; ?>
 
 </body>
 

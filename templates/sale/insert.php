@@ -1,4 +1,4 @@
-	<?php include_once(HEADER); ?>
+	<?php include_once HEADER; ?>
 
 	<div class="container mb-5">
 		<!-- CABEÇALHO -->
@@ -9,9 +9,9 @@
 		</div>
 		<!--/ CABEÇALHO -->
 
-		<?php include_once(FLASH); ?>
+		<?php include_once FLASH; ?>
 
-		<?php include_once(LOADING); ?>
+		<?php include_once LOADING; ?>
 
 		<!-- FORMULÁRIO DE CADASTRO -->
 		<form accept-charset="utf-8" action="<?=BASE_URL . 'action/' . PAGE_NAME?>/insert/" autocomplete="on" class="pb-3" enctype="application/x-www-form-urlencoded" id="insert-sale" method="post" name="insert-sale" rel="noopener" target="_self">
@@ -152,7 +152,7 @@
 				</div>
 				<div class="col-md-3 form-group">
 					<label for="discount">Desconto</label>
-					<input class="form-control" form="insert-sale" id="discount" maxlength="6" minlength="4" name="discount" pattern="[0-9]{1},[0-9]{2}|[0-9]{2},[0-9]{2}|[0-9]{3},[0-9]{2}" placeholder="Opcional" type="text" value="<?=number_format(isset($tuple) ? $tuple->discount : 0.0, 2, ',', '.')?>"/>
+					<input class="form-control" form="insert-sale" id="discount" maxlength="6" minlength="4" name="discount" pattern="[0-9]{1},[0-9]{2}|[0-9]{2},[0-9]{2}|[0-9]{3},[0-9]{2}" placeholder="Opcional" type="text" value="<?=number_format(isset($tuple) ? (float) $tuple->discount : 0.0, 2, ',', '.')?>"/>
 				</div>
 				<div class="col-md-4 form-group">
 					<label for="total">Total</label>
@@ -167,9 +167,9 @@
 		<!--/ FORMULÁRIO DE CADASTRO -->
 	</div>
 
-	<?php include_once(HELP); ?>
+	<?php include_once HELP; ?>
 
-	<?php include_once(FOOTER); ?>
+	<?php include_once FOOTER; ?>
 
 </body>
 

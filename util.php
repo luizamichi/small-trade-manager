@@ -5,8 +5,8 @@
 
 namespace util;
 
-require_once(__DIR__ . '/config.php'); // CARREGA AS CONFIGURAÇÕES GLOBAIS (DEBUG)
-require_once(__DIR__ . '/controllers/session.php'); // CARREGA O CONTROLADOR DE SESSÕES (ACTIVE)
+require_once __DIR__ . '/config.php'; // CARREGA AS CONFIGURAÇÕES GLOBAIS (DEBUG)
+require_once __DIR__ . '/controllers/session.php'; // CARREGA O CONTROLADOR DE SESSÕES (ACTIVE)
 
 
 /** RETORNA PARA A PÁGINA ANTERIOR OU PARA O ENDEREÇO INFORMADO
@@ -16,7 +16,7 @@ require_once(__DIR__ . '/controllers/session.php'); // CARREGA O CONTROLADOR DE 
 function back(string $location=null): void {
 	$location = $location ?? $_SERVER['HTTP_REFERER'] ?? 'javascript:history.go(-1)';
 	header('Location: ' . $location);
-	exit();
+	exit;
 }
 
 
@@ -25,7 +25,7 @@ function back(string $location=null): void {
  * @return void
  */
 function cl(string $text): void {
-	echo((php_sapi_name() == 'cli' ? $text : '<pre>' . htmlentities($text) . '</pre>') . PHP_EOL);
+	echo (php_sapi_name() == 'cli' ? $text : '<pre>' . htmlentities($text) . '</pre>') . PHP_EOL;
 }
 
 
@@ -36,14 +36,66 @@ function cl(string $text): void {
  */
 function color(string $text, string $color='NORMAL'): string {
 	$colors = [
-		'NORMAL' => '[0m', 'BOLD' => '[1m', 'UNDERSCORE' => '[4m', 'REVERSE' => '[7m',
-		'BLACK' => '[0;30m', 'RED' => '[0;31m', 'GREEN' => '[0;32m', 'YELLOW' => '[0;33m', 'BLUE' => '[0;34m', 'PURPLE' => '[0;35m', 'CYAN' => '[0;36m', 'WHITE' => '[0;37m',
-		'BLACK_BOLD' => '[1;30m', 'RED_BOLD' => '[1;31m', 'GREEN_BOLD' => '[1;32m', 'YELLOW_BOLD' => '[1;33m', 'BLUE_BOLD' => '[1;34m', 'PURPLE_BOLD' => '[1;35m', 'CYAN_BOLD' => '[1;36m', 'WHITE_BOLD' => '[1;37m',
-		'BLACK_UNDERSCORE' => '[4;30m', 'RED_UNDERSCORE' => '[4;31m', 'GREEN_UNDERSCORE' => '[4;32m', 'YELLOW_UNDERSCORE' => '[4;33m', 'BLUE_UNDERSCORE' => '[4;34m', 'PURPLE_UNDERSCORE' => '[4;35m', 'CYAN_UNDERSCORE' => '[4;36m', 'WHITE_UNDERSCORE' => '[4;37m',
-		'BACKGROUND_BLACK' => '[40m', 'BACKGROUND_RED' => '[41m', 'BACKGROUND_GREEN' => '[42m', 'BACKGROUND_YELLOW' => '[43m', 'BACKGROUND_BLUE' => '[44m', 'BACKGROUND_PURPLE' => '[45m', 'BACKGROUND_CYAN' => '[46m', 'BACKGROUND_WHITE' => '[47m',
-		'HIGH_BLACK' => '[0;90m', 'HIGH_RED' => '[0;91m', 'HIGH_GREEN' => '[0;92m', 'HIGH_YELLOW' => '[0;93m', 'HIGH_BLUE' => '[0;94m', 'HIGH_PURPLE' => '[0;95m', 'HIGH_CYAN' => '[0;96m', 'HIGH_WHITE' => '[0;97m',
-		'BOLD_HIGH_BLACK' => '[1;90m', 'BOLD_HIGH_RED' => '[1;91m', 'BOLD_HIGH_GREEN' => '[1;92m', 'BOLD_HIGH_YELLOW' => '[1;93m', 'BOLD_HIGH_BLUE' => '[1;94m', 'BOLD_HIGH_PURPLE' => '[1;95m', 'BOLD_HIGH_CYAN' => '[1;96m', 'BOLD_HIGH_WHITE' => '[1;97m',
-		'HIGH_BACKGROUND_BLACK' => '[0;100m', 'HIGH_BACKGROUND_RED' => '[0;101m', 'HIGH_BACKGROUND_GREEN' => '[0;102m', 'HIGH_BACKGROUND_YELLOW' => '[0;103m', 'HIGH_BACKGROUND_BLUE' => '[0;104m', 'HIGH_BACKGROUND_PURPLE' => '[0;105m', 'HIGH_BACKGROUND_CYAN' => '[0;106m', 'HIGH_BACKGROUND_WHITE' => '[0;107m'
+		'NORMAL' => '[0m',
+		'BOLD' => '[1m',
+		'UNDERSCORE' => '[4m',
+		'REVERSE' => '[7m',
+		'BLACK' => '[0;30m',
+		'RED' => '[0;31m',
+		'GREEN' => '[0;32m',
+		'YELLOW' => '[0;33m',
+		'BLUE' => '[0;34m',
+		'PURPLE' => '[0;35m',
+		'CYAN' => '[0;36m',
+		'WHITE' => '[0;37m',
+		'BLACK_BOLD' => '[1;30m',
+		'RED_BOLD' => '[1;31m',
+		'GREEN_BOLD' => '[1;32m',
+		'YELLOW_BOLD' => '[1;33m',
+		'BLUE_BOLD' => '[1;34m',
+		'PURPLE_BOLD' => '[1;35m',
+		'CYAN_BOLD' => '[1;36m',
+		'WHITE_BOLD' => '[1;37m',
+		'BLACK_UNDERSCORE' => '[4;30m',
+		'RED_UNDERSCORE' => '[4;31m',
+		'GREEN_UNDERSCORE' => '[4;32m',
+		'YELLOW_UNDERSCORE' => '[4;33m',
+		'BLUE_UNDERSCORE' => '[4;34m',
+		'PURPLE_UNDERSCORE' => '[4;35m',
+		'CYAN_UNDERSCORE' => '[4;36m',
+		'WHITE_UNDERSCORE' => '[4;37m',
+		'BACKGROUND_BLACK' => '[40m',
+		'BACKGROUND_RED' => '[41m',
+		'BACKGROUND_GREEN' => '[42m',
+		'BACKGROUND_YELLOW' => '[43m',
+		'BACKGROUND_BLUE' => '[44m',
+		'BACKGROUND_PURPLE' => '[45m',
+		'BACKGROUND_CYAN' => '[46m',
+		'BACKGROUND_WHITE' => '[47m',
+		'HIGH_BLACK' => '[0;90m',
+		'HIGH_RED' => '[0;91m',
+		'HIGH_GREEN' => '[0;92m',
+		'HIGH_YELLOW' => '[0;93m',
+		'HIGH_BLUE' => '[0;94m',
+		'HIGH_PURPLE' => '[0;95m',
+		'HIGH_CYAN' => '[0;96m',
+		'HIGH_WHITE' => '[0;97m',
+		'BOLD_HIGH_BLACK' => '[1;90m',
+		'BOLD_HIGH_RED' => '[1;91m',
+		'BOLD_HIGH_GREEN' => '[1;92m',
+		'BOLD_HIGH_YELLOW' => '[1;93m',
+		'BOLD_HIGH_BLUE' => '[1;94m',
+		'BOLD_HIGH_PURPLE' => '[1;95m',
+		'BOLD_HIGH_CYAN' => '[1;96m',
+		'BOLD_HIGH_WHITE' => '[1;97m',
+		'HIGH_BACKGROUND_BLACK' => '[0;100m',
+		'HIGH_BACKGROUND_RED' => '[0;101m',
+		'HIGH_BACKGROUND_GREEN' => '[0;102m',
+		'HIGH_BACKGROUND_YELLOW' => '[0;103m',
+		'HIGH_BACKGROUND_BLUE' => '[0;104m',
+		'HIGH_BACKGROUND_PURPLE' => '[0;105m',
+		'HIGH_BACKGROUND_CYAN' => '[0;106m',
+		'HIGH_BACKGROUND_WHITE' => '[0;107m'
 	];
 
 	$color = \strtoupper($color);
@@ -56,10 +108,12 @@ function color(string $text, string $color='NORMAL'): string {
  * @param mixed ...$variable
  * @return void
  */
-function dd(...$variable): void {
-	foreach($variable as $value)
+function dd(mixed ...$variable): void {
+	foreach($variable as $value) {
 		var_dump($value);
-	exit();
+	}
+
+	exit;
 }
 
 
@@ -67,27 +121,28 @@ function dd(...$variable): void {
  * @param mixed ...$variable
  * @return void
  */
-function de(...$variable): void {
+function de(mixed ...$variable): void {
 	foreach($variable as $value) {
-		if(is_array($value))
+		if(is_array($value)) {
 			print_r($value);
-
-		elseif(is_bool($value))
-			echo(($value ? 'true' : 'false') . PHP_EOL);
-
-		elseif(is_object($value))
-			echo(json_encode($value, JSON_PRETTY_PRINT) . PHP_EOL);
-
-		else
-			echo($value . PHP_EOL);
+		}
+		elseif(is_bool($value)) {
+			echo ($value ? 'true' : 'false') . PHP_EOL;
+		}
+		elseif(is_object($value)) {
+			echo json_encode($value, JSON_PRETTY_PRINT) . PHP_EOL;
+		}
+		else {
+			echo $value . PHP_EOL;
+		}
 	}
 
-	exit();
+	exit;
 }
 
 
-/** ATIVA A REPORTAÇÃO DE ERROS E EXCESSÕES
- * @param bool $activate
+/** ATIVA A REPORTAÇÃO DE ERROS E EXCEÇÕES
+ * @param bool $active
  * @return void
  */
 function debug(bool $active=false): void {
@@ -110,18 +165,19 @@ function debug(bool $active=false): void {
 function flash(string ...$messages): void {
 	\controller\session\active();
 
-	if(isset($_SESSION['messages']) && is_array($_SESSION['messages']))
+	if(isset($_SESSION['messages']) && is_array($_SESSION['messages'])) {
 		$_SESSION['messages'] = array_merge($_SESSION['messages'], $messages);
-	else
+	}
+	else {
 		$_SESSION['messages'] = $messages;
+	}
 }
 
 
-/**
- * REQUISIÇÃO GET
+/** REQUISIÇÃO GET
  * @param string $url
- * @param array $params
- * @return array
+ * @param array<string,mixed> $params
+ * @return array<string,mixed>
  */
 function get(string $url, array $params=[]): array {
 	$params = http_build_query($params);
@@ -141,8 +197,7 @@ function get(string $url, array $params=[]): array {
 
 
 /** RETORNA AS MENSAGENS SALVAS NA SESSÃO
- * @return array
- * @return void
+ * @return array<string>
  */
 function messages(): array {
 	\controller\session\active();
@@ -157,11 +212,10 @@ function messages(): array {
 }
 
 
-/**
- * REQUISIÇÃO POST
+/** REQUISIÇÃO POST
  * @param string $url
- * @param array $params
- * @return array
+ * @param array<string,mixed> $params
+ * @return array<string,mixed>
  */
 function post(string $url, array $params=[]): array {
 	$curl = curl_init();
@@ -185,10 +239,21 @@ function post(string $url, array $params=[]): array {
  * @return string
  */
 function sanitize(string $text): string {
-	$quotation_marks = addslashes($text);
-	$html = filter_var($quotation_marks, FILTER_SANITIZE_STRING);
-	$spaces = trim($html);
-	return $spaces;
+	$quotationMarks = addslashes($text);
+	$html = filter_var($quotationMarks, FILTER_DEFAULT);
+	return trim($html);
+}
+
+
+/** CONVERTE UM TEXTO COM UM VALOR MONETÁRIO EM UM PONTO FLUTUANTE (DO TIPO TEXTO)
+ * @param string $number
+ * @return string
+ */
+function strToFloat(?string $number): string {
+	if(str_contains((string) $number, ',')) {
+		return str_replace(',', '.', str_replace('.', '', (string) $number));
+	}
+	return (string) $number;
 }
 
 
@@ -197,7 +262,7 @@ function sanitize(string $text): string {
  * @param mixed $default
  * @return mixed
  */
-function ve(&$variable, $default=null) {
+function ve(mixed &$variable, mixed $default=null): mixed {
 	return isset($variable) ? $variable : $default;
 }
 

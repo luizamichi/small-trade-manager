@@ -1,4 +1,4 @@
-	<?php include_once(HEADER); ?>
+	<?php include_once HEADER; ?>
 
 	<div class="container mb-5">
 		<!-- CABEÇALHO -->
@@ -9,9 +9,9 @@
 		</div>
 		<!--/ CABEÇALHO -->
 
-		<?php include_once(FLASH); ?>
+		<?php include_once FLASH; ?>
 
-		<?php include_once(LOADING); ?>
+		<?php include_once LOADING; ?>
 
 		<form accept-charset="utf-8" class="form-inline justify-content-center" action="<?=BASE_URL . 'action/' . PAGE_NAME?>/select/" autocomplete="on" enctype="application/x-www-form-urlencoded" id="search-product" method="get" name="search-product" rel="noopener" target="_self">
 			<div class="form-row align-items-center">
@@ -61,9 +61,9 @@
 		<!--/ LISTA DE PRODUTOS -->
 	</div>
 
-	<?php include_once(REMOVE); ?>
+	<?php include_once REMOVE; ?>
 
-	<?php include_once(FOOTER); ?>
+	<?php include_once FOOTER; ?>
 
 </body>
 
