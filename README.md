@@ -1,9 +1,12 @@
 # Small Trade Manager
 Projeto destinado à disciplina "Construção de Software".
 
+### Requisitos
+- [PHP 8.1](https://www.php.net)
+
 ### Frameworks Utilizados
 - [Bootstrap 4.6.2](https://getbootstrap.com)
-- [Chart.js 2.9.4](https://www.chartjs.org)
+- [Chart.js 4.4.0](https://www.chartjs.org)
 - [jQuery 3.7.1](https://jquery.com)
 - [jQuery Mask Plugin 1.14.16](https://igorescobar.github.io/jQuery-Mask-Plugin)
 - [printThis 1.15.0](https://jasonday.github.io/printThis)

@@ -17,7 +17,7 @@ define('DEBUG', true);
 define('TEST', false);
 
 // NOME DO COOKIE PARA A SESSÃO
-session_name('STM');
+session_name('SMALL_TRADE_MANAGER');
 session_set_cookie_params(['samesite' => 'Lax']);
 
 // CAMINHO NO SERVIDOR PARA O SISTEMA
@@ -38,16 +38,16 @@ define('LOADING', __DIR__ . '/templates/loading.php');
 define('SETTINGS', __DIR__ . '/templates/settings.php');
 
 // ENDEREÇO DO HOST DO MYSQL
-define('MYSQL_HOST', '192.168.1.9');
+define('MYSQL_HOST', 'host');
 
 // NOME DO BANCO DE DADOS MYSQL
-define('MYSQL_SCHEMA', 'stm');
+define('MYSQL_SCHEMA', 'schema');
 
 // USUÁRIO DO BANCO DE DADOS MYSQL
-define('MYSQL_USER', 'pi');
+define('MYSQL_USER', 'user');
 
 // SENHA DO BANCO DE DADOS MYSQL
-define('MYSQL_PASSWORD', 'mjolnir');
+define('MYSQL_PASSWORD', 'password');
 
 // TEMPO DE EXECUÇÃO MÁXIMO DE UM SCRIPT
 ini_set('max_execution_time', 30);

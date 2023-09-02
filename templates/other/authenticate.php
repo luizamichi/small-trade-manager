@@ -166,8 +166,8 @@
 							$("#flash-message").show();
 						}
 					},
-					error: function() {
-						$("#flash-message").text("Não foi possível efetuar a autenticação, houve um erro de comunicação com o servidor.");
+					error: function (jqXHR, _, _) {
+						$("#flash-message").text(jqXHR?.responseJSON?.message || "Não foi possível efetuar a autenticação, houve um erro de comunicação com o servidor.");
 						$("#flash-message").addClass("alert-danger");
 						$("#flash-message").show();
 					}

@@ -66,6 +66,7 @@ function get(): array {
 	$session['user'] = isset($_SESSION['user']) ? \unserialize($_SESSION['user']) : null;
 	$session['destroy'] = isset($_SESSION['destroy']) ? $_SESSION['destroy'] : '';
 	$session['message'] = isset($_SESSION['message']) ? $_SESSION['message'] : [];
+	$session['history'] = isset($_SESSION['history']) ? $_SESSION['history'] : null;
 
 	return $session;
 }

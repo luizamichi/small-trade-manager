@@ -174,6 +174,23 @@ function flash(string ...$messages): void {
 }
 
 
+/** SALVA ERROS CAPTURADOS E TRATADOS
+ * @param \Exception $exception
+ * @return void
+ */
+function history(\Exception $exception): void {
+	\controller\session\active();
+
+	$_SESSION['history'] = [
+		'type' => $exception->getCode(),
+		'message' => $exception->getMessage(),
+		'file' => $exception->getFile(),
+		'line' => $exception->getLine(),
+		'trace' => $exception->getTraceAsString()
+	];
+}
+
+
 /** REQUISIÇÃO GET
  * @param string $url
  * @param array<string,mixed> $params
@@ -246,7 +263,7 @@ function sanitize(string $text): string {
 
 
 /** CONVERTE UM TEXTO COM UM VALOR MONETÁRIO EM UM PONTO FLUTUANTE (DO TIPO TEXTO)
- * @param string $number
+ * @param ?string $number
  * @return string
  */
 function strToFloat(?string $number): string {

@@ -6,6 +6,7 @@
 namespace mysql;
 
 require_once __DIR__ . '/config.php'; // CARREGA AS CONFIGURAÇÕES GLOBAIS (MYSQL_HOST, MYSQL_PASSWORD, MYSQL_SCHEMA, MYSQL_USER)
+require_once __DIR__ . '/util.php'; // CARREGA AS FUNÇÕES ÚTEIS (HISTORY)
 require_once __DIR__ . '/controllers/session.php'; // CARREGA O CONTROLADOR DE SESSÕES (GET)
 
 
@@ -22,12 +23,12 @@ function close(): void {
 
 
 /** CONVERTE O OBJETO EM UM VETOR PARA SER UTILIZADO EM CONSULTAS, INSERÇÕES, ALTERAÇÕES E REMOÇÕES NO BANCO DE DADOS
- * @param object $register
+ * @param object $record
  * @return array<string,mixed>
  */
-function convert(object $register): array {
+function convert(object $record): array {
 	$tuple = [];
-	foreach((array) $register as $key => $value) {
+	foreach((array) $record as $key => $value) {
 		$tuple[':' . $key] = $value;
 	}
 
@@ -37,15 +38,15 @@ function convert(object $register): array {
 
 /** EXECUTA UMA INSTRUÇÃO NO BANCO DE DADOS MYSQL/MARIADB
  * @param string $query
- * @param object &$register
+ * @param ?object &$record
  * @return array<object>|bool
  */
-function execute(string $query, object &$register=null): array|bool {
-	global $bd;
+function execute(string $query, ?object &$record=null): array|bool {
+	global $db;
 
 	$operation = strtolower(substr($query, 0, 6));
-	$tuple = $register ? convert($register) : $register;
-	$connection = $bd ?? open();
+	$tuple = $record ? convert($record) : $record;
+	$connection = $db ?? open();
 	$stmt = null;
 
 	if($connection) {
@@ -58,7 +59,8 @@ function execute(string $query, object &$register=null): array|bool {
 				$queries = explode(';', $query);
 				foreach($queries as $query) {
 					if(!empty($query)) {
-						$connection->exec($query);
+						$stmt = $connection->prepare($query);
+						$stmt->execute();
 					}
 				}
 			}
@@ -73,8 +75,8 @@ function execute(string $query, object &$register=null): array|bool {
 			}
 
 			elseif(in_array($operation, ['delete', 'insert', 'update'])) { // RETORNA SE A OPERAÇÃO FOI BEM SUCEDIDA (OPERAÇÕES DE REMOÇÃO, INSERÇÃO OU ALTERAÇÃO)
-				if($operation == 'insert' && $register) {
-					$register->id = $connection->lastInsertId() ?: ($register->id ?? 0);
+				if($operation == 'insert' && $record) {
+					$record->id = $connection->lastInsertId() ?: ($record->id ?? 0);
 				}
 
 				$commit = $connection->commit();
@@ -83,6 +85,8 @@ function execute(string $query, object &$register=null): array|bool {
 		}
 
 		catch(\PDOException $e) {
+			\util\history($e);
+
 			if($operation == 'select') {
 				return [];
 			}
@@ -104,8 +108,8 @@ function execute(string $query, object &$register=null): array|bool {
 		}
 
 		elseif(in_array($operation, ['delete', 'insert', 'update'])) {
-			if($operation == 'insert' && $register) {
-				$register->id ??= 0;
+			if($operation == 'insert' && $record) {
+				$record->id ??= 0;
 			}
 			return false;
 		}
@@ -121,7 +125,7 @@ function execute(string $query, object &$register=null): array|bool {
  * @param string $entity
  * @param string $description
  * @return bool
-*/
+ */
 function log(int $reference, string $action, string $entity, string $description=null): bool {
 	if($reference <= 0) { // BUSCA O ID DO ÚLTIMO REGISTRO CADASTRADO
 		$query = 'select * from ' . $entity . ' where id = (select max(id) from ' . $entity . ');';
@@ -138,9 +142,9 @@ function log(int $reference, string $action, string $entity, string $description
 
 
 /** ESTABELECE UMA CONEXÃO COM O BANCO DE DADOS
- * @return object
+ * @return ?\PDO
  */
-function open(): ?object {
+function open(): ?\PDO {
 	global $db;
 
 	if(!$db) {
@@ -152,6 +156,7 @@ function open(): ?object {
 		}
 
 		catch(\PDOException $e) {
+			\util\history($e);
 			return null;
 		}
 	}

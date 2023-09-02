@@ -716,8 +716,8 @@ $(document).ready(function () {
 			},
 			error: function (jqXHR, _, _) {
 				const message = jqXHR?.responseJSON?.message || "Não foi possível efetuar a operação, houve um erro de comunicação com o servidor.";
-				$("#flash-message").text(message);
 				$("#flash-message").addClass(jqXHR.status >= 500 ? "alert-danger" : "alert-warning").removeClass("alert-success alert-primary" + (jqXHR.status >= 500 ? "alert-danger" : "alert-warning"));
+				$("#flash-message").text(message);
 			}
 		});
 		return false;

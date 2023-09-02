@@ -1,5 +1,5 @@
-create database if not exists stm character set 'utf8' collate 'utf8_general_ci';
-use stm;
+create database if not exists small_trade_manager character set 'utf8' collate 'utf8_general_ci';
+use small_trade_manager;
 set collation_connection = 'utf8_general_ci';
 set sql_mode = 'no_auto_value_on_zero';
 set time_zone = '-03:00';
@@ -45,7 +45,7 @@ create table if not exists employees (
 	rg char(9) character set 'utf8' null unique,
 	cpf char(11) character set 'utf8' not null unique,
 	birthday date not null,
-	postal_code char(9) character set 'utf8' null,
+	postal_code char(8) character set 'utf8' null,
 	district varchar(32) character set 'utf8' null,
 	city varchar(64) character set 'utf8' not null,
 	state char(2) character set 'utf8' not null,
@@ -100,7 +100,7 @@ create table if not exists providers (
 	state_registration char(12) character set 'utf8' null unique,
 	cnpj char(14) character set 'utf8' not null unique,
 	foundation_date date not null,
-	postal_code char(9) character set 'utf8' null,
+	postal_code char(8) character set 'utf8' null,
 	district varchar(32) character set 'utf8' null,
 	city varchar(64) character set 'utf8' not null,
 	state char(2) character set 'utf8' not null,
@@ -162,7 +162,7 @@ create table if not exists settings (
 	company_name varchar(32) character set 'utf8' not null,
 	fantasy_name varchar(64) character set 'utf8' not null,
 	cnpj char(14) character set 'utf8' not null unique,
-	postal_code char(9) character set 'utf8' null,
+	postal_code char(8) character set 'utf8' null,
 	district varchar(32) character set 'utf8' null,
 	city varchar(64) character set 'utf8' not null,
 	state char(2) character set 'utf8' not null,

@@ -5,6 +5,9 @@
 
 namespace api\util;
 
+require_once __DIR__ . '/../config.php'; // CARREGA AS CONFIGURAÇÕES GLOBAIS (DEBUG)
+require_once __DIR__ . '/../controllers/session.php'; // CARREGA O CONTROLADOR DE SESSÕES (GET)
+
 
 /** ALTERA O CABEÇALHO DO DOCUMENTO PARA DEIXAR O TIPO DO CONTEÚDO COMO JSON
  * @return void
@@ -48,7 +51,8 @@ function response(int $status=200, bool $success=true, string $message='', array
 		'success' => $success,
 		'message' => $message,
 		'data' => $data,
-		'error' => error_get_last()
+		'error' => DEBUG ? error_get_last() : null,
+		'history' => DEBUG ? \controller\session\get()['history'] : null
 	]);
 
 	return $success;

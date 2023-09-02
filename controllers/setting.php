@@ -115,6 +115,7 @@ function formulate(object $tuple): object {
 
 
 /** BUSCA A ÚLTIMA TUPLA NO BANCO DE DADOS
+ * @return ?object
  */
 function load(int $id=0): ?object {
 	$query = 'select * from settings ' . ($id > 0 ? 'where id = ' . $id : '') . ' order by id desc;';
